@@ -1648,3 +1648,6 @@ triplelift.com, 12884, RESELLER, 6c33edb13117fd86
 triplelift.com, 13010, RESELLER, 6c33edb13117fd86
 smartadserver.com, 4468, RESELLER
 video.unrulymedia.com, 76764238648089251, RESELLER
+
+telaria.com, , RESELLER, 1a4e959a1b50034a
+tremorhub.com, , RESELLER, 1a4e959a1b50034a
