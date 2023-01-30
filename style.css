@@ -15,7 +15,7 @@ body{
 }
 
 .responsive {
-    width: 25%;
+    width: 35%;
     height: auto;
   }
 
@@ -27,11 +27,17 @@ h2,.white{
 a{
     color: yellow;
     text-decoration: none;
+    white-space: nowrap;
 }
+
+li {
+    white-space: nowrap;
+    text-decoration: none;
+  }
 
 /* section 1 */
 .section-1{
-    padding-top: 40vh;
+    padding-top: 25%;
     text-align: center;
 }
 
