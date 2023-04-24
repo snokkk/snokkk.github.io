@@ -11,7 +11,7 @@ body{
     padding: 0;
     font-family: 'Roboto', sans-serif;
     background-color: #101214;
-    color: #7A7C80;
+    color: rgb(163, 165, 170);
 }
 
 .responsive {
@@ -58,7 +58,7 @@ li {
 }
 
 .section-1 a{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     padding: 10px;
 }
 /* section 2 */
@@ -73,7 +73,7 @@ li {
 }
 
 .section-2 p{
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     padding-bottom: 15px;
     margin:0;
 }
