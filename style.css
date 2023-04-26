@@ -78,6 +78,12 @@ li {
     margin:0;
 }
 
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .section-2 a{
     display: block;
     padding: 5px;
