@@ -4,13 +4,11 @@ appodeal.com, 38833, DIRECT
 #BidMachine
 bidmachine.io, 38833, DIRECT
 #AdMob
-#Replace the Publisher_ID below with your Admob Publisher ID
 google.com, pub-4171290473029851, DIRECT, f08c47fec0942fa0
 #Meta-Audience
 #Replace the Business_ID below with your Meta Business ID
 facebook.com,Business_ID,RESELLER,c3e20eee3f780d68 
 #Add other networks if applicable
-
 
 #Resellers
 152media.info,152M5,RESELLER
@@ -786,3 +784,4 @@ yeahmobi.com,5135082,RESELLER
 yeahmobi.com,5135195,RESELLER
 yeahmobi.com,5135347,RESELLER
 yieldlab.net,2172218,RESELLER
+ 
