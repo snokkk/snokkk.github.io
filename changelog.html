@@ -17,21 +17,28 @@
     ul {
       padding-left: 20px;
     }
-    /* Стили для блока перевода */
     #google_translate_element {
       margin-bottom: 20px;
     }
 
-    /* Адаптивные стили для виджета Google Translate */
-    @media screen and (max-width: 600px) {
-      .goog-te-menu-frame {
-        /* Уменьшаем масштаб для удобства на мобильных экранах */
+    /* --- Адаптивные стили для Google Translate --- */
+    @media (max-width: 600px) {
+      /* 1) Масштабируем само окно-iframe */
+      .goog-te-menu-frame,
+      .goog-te-menu-frame.skiptranslate {
+        width: auto !important;
+        height: auto !important;
+        overflow: hidden !important;
         transform: scale(0.8) !important;
         transform-origin: 0 0 !important;
+        position: relative !important;
+        left: -20px !important; /* сдвиг, если нужно; подберите своё значение */
+      }
 
-        /* Делаем возможной прокрутку при необходимости */
-        height: auto !important;
-        overflow: auto !important;
+      /* 2) Задаём максимальную высоту меню и прокрутку */
+      .goog-te-menu2 {
+        max-height: 200px !important;
+        overflow-y: auto !important;
       }
     }
   </style>
@@ -82,8 +89,8 @@
     <li>Fixed a bug where the online window did not close under certain conditions</li>
   </ul>
 
-  <!-- Скрипты для Google Translate -->
-  <script type="text/javascript">
+  <!-- Подключаем скрипты Google Translate -->
+  <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
