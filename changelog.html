@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Game Update Notes</title>
   <style>
     body {
@@ -21,15 +21,27 @@
     #google_translate_element {
       margin-bottom: 20px;
     }
+
+    /* Адаптивные стили для виджета Google Translate */
+    @media screen and (max-width: 600px) {
+      .goog-te-menu-frame {
+        /* Уменьшаем масштаб для удобства на мобильных экранах */
+        transform: scale(0.8) !important;
+        transform-origin: 0 0 !important;
+
+        /* Делаем возможной прокрутку при необходимости */
+        height: auto !important;
+        overflow: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Элемент Google Translate -->
   <div id="google_translate_element"></div>
+
   <h2>Imposter 3D: Online horror changelog</h2>
-    <p></p>
-    The list of changes may not contain all changes
-    <p></p>
+  <p>The list of changes may not contain all changes</p>
 
   <h2>v10.2.1</h2>
   <ul>
@@ -45,6 +57,7 @@
   <ul>
     Known bugs:
     <li>Messages from the quick chat are not translated into the device language</li>
+    <li>Sometimes the timer freezes</li>
     <li>...The list of bugs is being updated...</li>
   </ul>
 
@@ -69,7 +82,7 @@
     <li>Fixed a bug where the online window did not close under certain conditions</li>
   </ul>
 
-  <!-- Скрипты Google Translate -->
+  <!-- Скрипты для Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -78,6 +91,6 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
