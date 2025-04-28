@@ -3,81 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game Update Notes</title>
+  <title>Imposter 3D Online — Help & FAQ</title>
+
+  <!-- ==========  СТИЛИ  ========== -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      padding: 10px;
-    }
-    h2 {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    #google_translate_element {
-      margin-bottom: 20px;
+    /* ---------- CSS-переменные для лёгкой настройки ---------- */
+    :root{
+      --bg-color:#f3f5f9;
+      --card-bg:#ffffff;
+      --accent:#5e8bff;
+      --txt-main:#1d2433;
+      --txt-sub:#5b6475;
+      --radius:12px;
+      --shadow:0 4px 14px rgba(0,0,0,.08);
     }
 
-    /* --- Адаптивные стили для Google Translate --- */
-    @media (max-width: 600px) {
-      /* 1) Масштабируем само окно-iframe */
-      .goog-te-menu-frame,
-      .goog-te-menu-frame.skiptranslate {
-        width: auto !important;
-        height: auto !important;
-        overflow: hidden !important;
-        transform: scale(0.8) !important;
-        transform-origin: 0 0 !important;
-        position: relative !important;
-        left: -20px !important; /* сдвиг, если нужно; подберите своё значение */
+    @media (prefers-color-scheme:dark){
+      :root{
+        --bg-color:#1c1e24;
+        --card-bg:#25272e;
+        --accent:#6e9dff;
+        --txt-main:#f1f2f5;
+        --txt-sub:#9aa0b5;
+        --shadow:0 4px 14px rgba(0,0,0,.45);
       }
+    }
 
-      /* 2) Задаём максимальную высоту меню и прокрутку */
-      .goog-te-menu2 {
-        max-height: 200px !important;
-        overflow-y: auto !important;
+    /* ---------- Базовая сетка ---------- */
+    *{box-sizing:border-box; margin:0; padding:0;}
+    body{
+      font:400 16px/1.6 "Inter", "Segoe UI", Arial, sans-serif;
+      background:var(--bg-color);
+      color:var(--txt-main);
+      padding:32px 16px;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:.5em;
+      text-align:center;
+    }
+    .wrapper{
+      max-width:850px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:32px;
+    }
+
+    /* ---------- «Карточки» секций ---------- */
+    section{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px 24px;
+    }
+    section h2{
+      font-size:1.35rem;
+      margin-bottom:.7em;
+      color:var(--accent);
+    }
+    ul{padding-left:24px; display:flex; flex-direction:column; gap:.55em;}
+    li{
+      list-style:disc;
+      color:var(--txt-sub);
+    }
+    a{
+      color:var(--accent);
+      text-decoration-color:rgba(94,139,255,.35);
+      text-underline-offset:3px;
+    }
+    a:hover{opacity:.8;}
+
+    /* ---------- Google Translate (адаптив) ---------- */
+    #google_translate_element{margin:0 0 24px 0;}
+    @media(max-width:600px){
+      .goog-te-menu-frame,
+      .goog-te-menu-frame.skiptranslate{
+        width:auto!important;
+        height:auto!important;
+        overflow:hidden!important;
+        transform:scale(.85)!important;
+        transform-origin:0 0!important;
+        position:relative!important;
+        left:-14px!important;
+      }
+      .goog-te-menu2{
+        max-height:200px!important;
+        overflow-y:auto!important;
       }
     }
   </style>
+
+  <!-- ==========  ШРИФТ  ========== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- Элемент Google Translate -->
-  <div id="google_translate_element"></div>
+  <h1>Solving Problems in Imposter 3D Online Horror</h1>
 
-  <h2>Solving problems in Imposter 3D Online horror</h2>
-  <p>Here are ways to solve problems you may have in the game</p>
-  <h2>I am not logged in to my account / unable to register</h2>
-  <ul>
-    <li>1. When logging in to your account, make sure your login and password are correct.</li>
-    <li>1.1 If the game says that the password is not correct, then double-check the correctness of the password, pay attention to capital and small letters.</li>
-    <li>1.2 If the game says that your account does not exist, then check the correctness of entering the login, pay attention to small and capital letters. Also try to remember if you have not deleted your account.</li>
-    <li>2. If the game writes “failure” or does not write anything to you, it may be because your internet provider is blocking access to Google's servers.</li>
-    <li>If you still can't get into your account, email snowbatstudio@gmail.com and we'll try to resolve your issue.</li>
-  </ul>
+  <div class="wrapper">
 
-  <h2>I downloaded the PC (Window) version of the game from itch.io and I can't get into my account.</h2>
-  <ul>
-    <li>1. Check in which folder the game is installed. There should not be any special characters and text in Russian (or other language) in the folder path. For example, “C:\Users\User\пользователь\Desktop\игры”. Here, “игры” and “пользователь” are invalid characters. The path to the game should consist of English (Latin) letters only, for example, “C:\Games\”.</li>
-    <li>2. If you have Windows 7 and below, this may be the problem, and it is only possible to upgrade to a newer version of Windows.</li>
-    <li>3. Antivirus or your internet provider is blocking access to Google (or Google is blocked in your region).</li>
-    <li>If you still can't get into your account, email snowbatstudio@gmail.com and we'll try to resolve your issue.</li>
-  </ul>
+    <!-- Google Translate -->
+    <div id="google_translate_element"></div>
 
-  <h2>I can't delete my account</h2>
-  <ul>
-    <li>If you are unable to delete an account, please email snowbatstudio@gmail.com with the login of the account you want to delete, as well as the approximate date of registration and the approximate level of the player. Within 7 working days the account will be deleted. You can read more about deleting an account here https://snokkk.github.io/imp3d_account.html</li>
-  </ul>
+    <section>
+      <h2>I am not logged in to my account / unable to register</h2>
+      <ul>
+        <li>1. When logging in to your account, make sure your login and password are correct.</li>
+        <li>1.1 If the game says that the password is not correct, then double-check the correctness of the password, pay attention to capital and small letters.</li>
+        <li>1.2 If the game says that your account does not exist, then check the correctness of entering the login, pay attention to small and capital letters. Also try to remember if you have not deleted your account.</li>
+        <li>2. If the game writes “failure” or does not write anything to you, it may be because your internet provider is blocking access to Google's servers.</li>
+        <li>If you still can't get into your account, email <a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a> and we'll try to resolve your issue.</li>
+      </ul>
+    </section>
 
-  <!-- Подключаем скрипты Google Translate -->
+    <section>
+      <h2>I downloaded the PC (Windows) version of the game from itch.io and can't log in</h2>
+      <ul>
+        <li>1. Check in which folder the game is installed. There should not be any special characters and text in Russian (or other language) in the folder path. For example, “C:\Users\User\пользователь\Desktop\игры”. Here, “игры” and “пользователь” are invalid characters. The path to the game should consist of English (Latin) letters only, for example, “C:\Games\”.</li>
+        <li>2. If you have Windows 7 and below, this may be the problem, and it is only possible to upgrade to a newer version of Windows.</li>
+        <li>3. Antivirus or your internet provider is blocking access to Google (or Google is blocked in your region).</li>
+        <li>If you still can't get into your account, email <a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a> and we'll try to resolve your issue.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>I can't delete my account</h2>
+      <ul>
+        <li>If you’re unable to delete an account, email <a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a> with the login of the account you want to delete, the approximate registration date and the player's level. Your account will be removed within 7 working days. You can read more about deleting an account <a href="https://snokkk.github.io/imp3d_account.html" target="_blank" rel="noopener">here</a>.</li>
+      </ul>
+    </section>
+
+  </div><!-- /.wrapper -->
+
+  <!-- Google Translate scripts -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+        pageLanguage:'en',
+        layout:google.translate.TranslateElement.InlineLayout.SIMPLE
+      },'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
