@@ -123,7 +123,7 @@
   }
   
 
-  .infoCard {
+  .infoCardLink {
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* заголовок наверху, кнопка внизу */
@@ -137,6 +137,16 @@
     min-height: 260px;
     position: relative;
     overflow: hidden;
+  }
+
+  .infoCardLink.alt{color:#fff;background:var(--stripe),var(--purple-grad);}
+  .infoCardLink.empty{background:transparent;box-shadow:none}
+
+
+  .infoCard{
+    background:var(--stripe),var(--card-bg);background-size:220px auto,auto;
+    border-radius:var(--radius);padding:34px 26px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:28px;
+    color:#000;min-height:260px;position:relative;overflow:hidden;
   }
   .infoCard.alt{color:#fff;background:var(--stripe),var(--purple-grad);}
   .infoCard.empty{background:transparent;box-shadow:none}
