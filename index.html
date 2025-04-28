@@ -1,52 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <title>Snow Bat</title>
-    <link rel="icon" type="image/x-icon" href="logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Snow Bat</title>
+
+  <!-- Favicon / Icons -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="grid-2">
-      <div class="section-1">
-        <a href="index.html">
-        <img src="logo.png" alt="SnowBat logo" class="responsive">
-      </a>
-        <h2>
-            Snow Bat               
-          Indie dev - Danila Demkin (Kekl)
 
-        </h2>          
-          <a href="https://play.google.com/store/apps/dev?id=8893350295556564477"><i class="fab fa-google-play"></i></a>
-          <a href="https://apps.apple.com/us/developer/danila-demkin/id1607882211"><i class="fab fa-app-store"></i></a>
-          <a href="https://discord.gg/AX9CUSaHTQ"><i class="fab fa-discord"></i></a>
-          <a href="https://t.me/snowbastudio"><i class="fab fa-telegram"></i></a>
+  <!-- ===== TOP-BAR ===== -->
+  <header class="topbar">
+    <!-- раньше был <div class="brand"> … </div> -->
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="SnowBat logo">
+      <div class="brand__text">
+        <span class="dev">Indie dev - Danila Demkin</span>
+        <span class="nickname">(Kekl)</span>
       </div>
-        <div class="section-2">
-            <h2>Games</h2>
-            <a href="games.html"><div class="image-row">
-            <img src="impIcon.png" alt="Imposter 3D: online horror game logo" class="responsive" sizes="100">
-            <img src="rootlingsIcon.png" alt="Rootlings game icon" class="responsive" sizes="100">
-            <img src="abcIcon.png" alt="ABC Lore game logo" class="responsive">
-          </div></a>
-            <p></p>
-            <a href="games.html">View all games</a>
-            <h2>Privacy Policy</h2>
-            <a href="privacy.html"> Click to see the full text of Privacy Policy</a>
-              <h2>Game and chat rules (Imposter 3D: Online horror)</h2>
-              <a href="gamerules.html"> Click to see the full text of game and chat rules</a>
-              <h2>Deleting data (account) from Imposter 3D game</h2>
-              <p>If you want to delete your account and all your data from the game Imposter 3D,</p>
-              <a href="imp3d_account.html"> go to this page.</a>
-              <h2>Solving problems with the game</h2>
-              <a href="troubleshooting.html">Click here to see how to solve some game problems</a>
-              </p>    
-            <h2>Contact</h2>
-            <p>snowbatstudio@gmail.com</p>
+    </a>
+
+    <nav class="topbar__nav">
+      <a href="https://play.google.com/store/apps/dev?id=8893350295556564477" target="_blank" aria-label="Google Play"><i class="fab fa-google-play"></i></a>
+      <a href="https://apps.apple.com/us/developer/danila-demkin/id1607882211"  target="_blank" aria-label="App Store"><i class="fab fa-app-store"></i></a>
+      <a href="https://discord.gg/AX9CUSaHTQ" target="_blank" aria-label="Discord"><i class="fab fa-discord"></i></a>
+      <a href="https://t.me/snowbastudio" target="_blank" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.youtube.com/@snowbat" target="_blank" aria-label="Youtube"><i class="fab fa-youtube"></i></a>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero container">
+
+    <!-- ——— Главная игра ——— -->
+    <div class="hero__main">
+      <!-- Поставьте здесь реальное горизонтальное promo-изображение -->
+      <img src="impBanner.png" alt="Imposter 3D: Online horror">
+      
+      <div class="hero__info">
+        <h3>Imposter 3D: Online horror</h3>
+        <span class="genre">Horror · Multiplayer</span>
+
+        <div class="platforms">
+          <i class="fab fa-google-play" title="Android"></i>
+          <i class="fab fa-app-store"  title="iOS"></i>
+          <i class="fab fa-windows"    title="Windows"></i>
+          <i class="fas fa-globe"      title="Browser"></i>
         </div>
+
+        <!-- Основная «Download» ведёт на Google Play; при желании поменяйте -->
+      </div>
     </div>
+
+    <!-- ——— Две мини-карточки справа остаются прежними ——— -->
+    <div class="hero__side">
+      <article class="miniCard discordCard">
+        <h4>Join our Community!</h4>
+        <a href="https://discord.gg/AX9CUSaHTQ" target="_blank" class="btn">Discord</a>
+        <a href="https://t.me/snowbastudio" target="_blank" class="btn">Telegram</a>
+        <a href="https://www.youtube.com/@snowbat" target="_blank" class="btn">YouTube</a>
+      </article>
+
+      <article class="miniCard">
+        <h4>Imposter 3D<br>Privacy Policy</h4>
+        <a href="privacy.html" class="btn">Learn more</a>
+      </article>
+    </div>
+  </section>
+
+
+<!-- ===== MY GAMES ===== -->
+<section class="games container">
+  <h2><i class="fas fa-gamepad"></i> My Games</h2>
+
+  <div class="gamesRow">
+        
+  <article class="gameCard">
+    <img src="impBanner.png" alt="Imposter 3D icon">
+    <div class="gameCard__info">
+      <h5>Imposter 3D: Online horror</h5>
+      <small>Horror · Multiplayer · Cross-platform</small>
+
+      <div class="platforms">
+        <i class="fab fa-google-play" title="Android"></i>
+        <i class="fab fa-app-store"   title="iOS"></i>
+        <i class="fab fa-windows"     title="Windows"></i>
+        <i class="fas fa-globe"       title="Browser"></i>
+      </div>
+
+      <!-- Дропдаун «Download» -->
+      <details class="download-dropdown">
+        <summary class="btn btn--light">Download</summary>
+        <ul class="download-list">
+          <li><a href="https://play.google.com/store/apps/details?id=com.SnowBat.OnlineImposter3D" target="_blank">Google Play (Android)</a></li>
+          <li><a href="https://apps.apple.com/us/app/imposter-3d-online-horror/id1607882209" target="_blank">App Store (iOS)</a></li>
+          <li><a href="https://snowbat.itch.io/krisper-the-impostor" target="_blank">PC (Windows)</a></li>
+          <li><a href="https://yandex.ru/games/app/216037" target="_blank">Yandex Games (Browser)</a></li>
+          <li><a href="https://playhop.com/app/216037" target="_blank">PlayHop (Browser)</a></li>
+          <li><a href="https://galaxy.store/3donline" target="_blank">Samsung Galaxy Store</a></li>
+          <li><a href="https://www.amazon.com/Blast-Studio-Imposter-3D-online/dp/B0B542L2WV" target="_blank">Amazon AppStore</a></li>
+          <li><a href="https://appgallery.huawei.ru/app/C104433955" target="_blank">Huawei AppGallery</a></li>
+          <li><a href="https://www.rustore.ru/catalog/app/com.SnowBat.OnlineImposter3D" target="_blank">RuStore</a></li>
+        </ul>
+      </details>
+    </div>
+  </article>
+
+      <!-- Loonies -->
+      <article class="gameCard soon">
+        <img src="loonies_banner.png" alt="Loonies.io icon">
+        <div class="gameCard__info">
+          <h5>Loonies.io</h5>
+          <small>Shooter · 2D</small>
+          <div class="platforms">
+            <i class="fas fa-globe"></i>
+          </div>
+          <details class="download-dropdown">
+            <summary class="btn btn--dark">Soon</summary>
+          </details>
+        </div>
+      </article>
+
+          <!-- Rootlings -->
+          <article class="gameCard new">
+            <img src="rootlings_banner.png" alt="Rootlings icon">
+            <div class="gameCard__info">
+              <h5>Rootlings: Secrets of the Depths</h5>
+              <small>Creative · Life Sim · Resource Mgr</small>
+              <div class="platforms">
+                <a href="https://playhop.com/app/395866" target="_blank"><i class="fas fa-globe"></i></a>
+              </div>
+              <details class="download-dropdown">
+                <summary class="btn btn--light">Download</summary>
+                <ul class="download-list">
+                  <li><a href="https://yandex.ru/games/app/395866" target="_blank" rel="noopener noreferrer">Yandex games (Browser)</a></li>
+                  <li><a href="https://playhop.com/app/395866" target="_blank" rel="noopener noreferrer">PlayHop (Browser)</a></li>
+                </ul>
+              </details>
+            </div>
+          </article>
+
+    <!-- Zombie ABC -->
+    <article class="gameCard">
+      <img src="zombie_banner.png" alt="Zombie ABC icon">
+      <div class="gameCard__info">
+        <h5>Zombie ABC: Online 3D Shooter</h5>
+        <small>Action · Shooter · Multiplayer</small>
+        <div class="platforms">
+          <a href="https://play.google.com/store/apps/details?id=com.SnowBat.ABCLore" target="_blank"><i class="fab fa-google-play"></i></a>
+          <a href="https://snowbat.itch.io/abc-lore-zombie-online" target="_blank"><i class="fab fa-windows"></i></a>
+          <a href="https://www.rustore.ru/catalog/app/com.SnowBat.ABCLore" target="_blank"><i class="fas fa-mobile-alt"></i></a>
+        </div>
+        <details class="download-dropdown">
+          <summary class="btn btn--light">Download</summary>
+          <ul class="download-list">
+            <li><a href="https://play.google.com/store/apps/details?id=com.SnowBat.ABCLore" target="_blank" rel="noopener noreferrer">Google Play (Android)</a></li>
+            <li><a href="https://www.rustore.ru/catalog/app/com.SnowBat.ABCLore" target="_blank" rel="noopener noreferrer">RuStore (Android)</a></li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- Space Break -->
+    <article class="gameCard">
+      <img src="spaceBreakIcon.png" alt="Space Break icon">
+      <div class="gameCard__info">
+        <h5>Space Break</h5>
+        <small>Arcade · Breakout</small>
+        <div class="platforms">
+          <i class="fas fa-globe"></i>
+        </div>
+        <details class="download-dropdown">
+          <summary class="btn btn--dark">Currently not available</summary>
+        </details>
+      </div>
+    </article>
+  </div>
+</section>
+
+<summary style="font-size: 20px; color: #0d0f12;">a</summary>
+
+  <!-- ===== INFO CARDS ===== -->
+  <section class="games container">
+    <h2><i class="fas fa-thumbs-up"></i> Other</h2>
+  
+    <div class="gamesRow">
+
+    <article class="infoCard">
+      <h3>Game and chat rules<br>(Imposter 3D: Online horror)</h3>
+      <a href="gamerules.html" class="btn">Explore</a>
+    </article>
+
+    <article class="infoCard alt">
+      <h3>Solving problems with the game</h3>
+      <a href="troubleshooting.html" class="btn">Find out more</a>
+    </article>
+
+    <article class="infoCard">
+      <h3>Deleting data (account) from Imposter 3D</h3>
+      <a href="imp3d_account.html" class="btn">Explore</a>
+    </article>
+
+    <article class="infoCard alt">
+      <h3>Imposter 3D changelog</h3>
+      <a href="changelog.html" class="btn">Explore</a>
+    </article>
+
+    <article class="infoCard empty"></article> <!-- пустая, для симметрии -->
+    </div>
+  </section>
+
+  <summary style="font-size: 20px; color: #0d0f12;">a</summary>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="siteFoot">
+    <div class="foot__links">
+      <a href="mailto:snowbatstudio@gmail.com">Contact us</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <span class="copyright">©SnowBat 2025</span>
+  </footer>
+
 </body>
 </html>

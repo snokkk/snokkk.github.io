@@ -2,82 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Imposter 3D — Changelog</title>
 
-  <!-- ===== СТИЛИ ===== -->
+  <!-- Favicon / Icons -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+
+  <!-- Main styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Translate widget styling -->
   <style>
-    /* --- CSS-переменные, совпадают с предыдущей страницей --- */
-    :root{
-      --bg-color:#101214;
-      --card-bg:#ffffff;
-      --accent:rgb(255, 187, 0);
-      --txt-main: rgb(255, 187, 0);
-      --txt-sub:#2c2d2f;
-      --radius:12px;
-      --shadow:0 4px 14px rgba(0,0,0,.08);
-    }
-
-    @media (prefers-color-scheme:dark){
-      :root{
-        --bg-color:#1c1e24;
-        --card-bg:#25272e;
-        --accent:#6e9dff;
-        --txt-main:#f1f2f5;
-        --txt-sub:#9aa0b5;
-        --shadow:0 4px 14px rgba(0,0,0,.45);
-      }
-    }
-
-    /* --- Базовая сетка --- */
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{
-      font:400 16px/1.6 "Inter","Segoe UI",Arial,sans-serif;
-      background:var(--bg-color);
-      color:var(--txt-main);
-      padding:32px 16px;
-    }
-    h1{
-      font-size:2rem;
-      margin-bottom:.5em;
-      text-align:center;
-    }
-    .wrapper{
-      max-width:850px;
-      margin:0 auto;
-      display:flex;
-      flex-direction:column;
-      gap:32px;
-    }
-
-    /* --- Карточки версий --- */
-    section{
-      background:var(--card-bg);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:28px 24px;
-    }
-    section h2{
-      font-size:1.35rem;
-      margin-bottom:.7em;
-      color:var(--accent);
-    }
-    h3{
-      font-size:1.05rem;
-      margin-top:1.3em;
-      margin-bottom:.4em;
-      color:var(--txt-sub);
-      font-weight:600;
-    }
-    ul{padding-left:24px;display:flex;flex-direction:column;gap:.55em;}
-    li{list-style:disc;color:var(--txt-sub);}
-    code{font-family:monospace;font-size:.93em;background:rgba(0,0,0,.06);padding:0 .25em;border-radius:4px;}
-
-    /* --- Google Translate (адаптив) --- */
-    #google_translate_element{margin:0 0 24px 0;}
+    #google_translate_element { margin: 20px 0; }
     @media(max-width:600px){
       .goog-te-menu-frame,
-      .goog-te-menu-frame.skiptranslate{
+      .goog-te-menu-frame.skiptranslate {
         width:auto!important;
         height:auto!important;
         overflow:hidden!important;
@@ -86,30 +27,50 @@
         position:relative!important;
         left:-14px!important;
       }
-      .goog-te-menu2{
+      .goog-te-menu2 {
         max-height:200px!important;
         overflow-y:auto!important;
       }
     }
   </style>
-
-  <!-- ===== ШРИФТ Inter ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-  <div class="wrapper">
 
-    <!-- Google Translate -->
-    <div id="google_translate_element"></div>
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="SnowBat logo">
+      <div class="brand__text">
+        <span class="dev">Indie dev – Danila Demkin</span>
+        <span class="nickname">(Kekl)</span>
+      </div>
+    </a>
+    <nav class="topbar__nav">
+      <a href="https://play.google.com/store/apps/dev?id=8893350295556564477"
+         target="_blank" aria-label="Google Play">
+        <i class="fab fa-google-play"></i>
+      </a>
+      <a href="https://apps.apple.com/us/developer/danila-demkin/id1607882211"
+         target="_blank" aria-label="App Store">
+        <i class="fab fa-app-store"></i>
+      </a>
+      <a href="https://discord.gg/AX9CUSaHTQ"
+         target="_blank" aria-label="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://t.me/snowbastudio"
+         target="_blank" aria-label="Telegram">
+        <i class="fab fa-telegram"></i>
+      </a>
+    </nav>
+  </header>
 
-    <h1>Imposter 3D: Online Horror — Changelog</h1>
+  <!-- ===== GOOGLE TRANSLATE ===== -->
+  <div id="google_translate_element"></div>
 
-    <!-- ===== v10.3.1 ===== -->
-    <section>
-      <h2>v10.3.1 <small>(Android / PC / iOS • Yandex &amp; Playhop)</small></h2>
+  <!-- ===== CHANGELOG ===== -->
+    <article class="infoCard">
+      <h3>v10.3.1 <small>(Android / PC / iOS & Yandex & Playhop)</small></h3>
       <ul>
         <li>Easter event</li>
         <li>New skins</li>
@@ -118,23 +79,22 @@
         <li>Improved performance</li>
         <li>A new achievement</li>
         <li>New quick chat messages “It's not me”, “I'm not lying”, “I'm an imposter”, “Bye!”, “He's lying!”</li>
-        <li>Added “yes”, ‘no’, “i don't know” messages to the lobby chat</li>
-        <li>Improved the look of the window with YouTube videos</li> 
+        <li>Added “yes”, “no”, “i don't know” messages to the lobby chat</li>
+        <li>Improved the look of the window with YouTube videos</li>
         <li>Added button with information about what does the function "private server"</li>
         <li>Renamed the button with quick game</li>
         <li>Fixed bug with traps in Hide and Seek mode on Imp-13 and Maze maps</li>
         <li>Fixed a bug that you could run on pause in single-player game</li>
       </ul>
-      <h3>Known bugs</h3>
+      <h4>Known bugs</h4>
       <ul>
         <li>Sometimes the timer freezes</li>
         <li>…The list of bugs is being updated…</li>
       </ul>
-    </section>
+    </article>
 
-    <!-- ===== v10.2.4 ===== -->
-    <section>
-      <h2>v10.2.4</h2>
+    <article class="infoCard alt">
+      <h3>v10.2.4</h3>
       <ul>
         <li>Added glow from windows and map screens on high and ultra settings</li>
         <li>Added glow for street lamps on city-16 map on ultra settings</li>
@@ -144,11 +104,10 @@
         <li>Fixed bug with flying trap in single player game</li>
         <li>Fixed a bug that sometimes you couldn't customize vents and map when creating Hunt mode</li>
       </ul>
-    </section>
+    </article>
 
-    <!-- ===== v10.2.3 ===== -->
-    <section>
-      <h2>v10.2.3</h2>
+    <article class="infoCard">
+      <h3>v10.2.3</h3>
       <ul>
         <li>Fixed a bug where the imposter would not get caught in the trap when coming out of the vents</li>
         <li>Fixed a bug where the player did not get into the trap when leaving the vent in Hunt mode</li>
@@ -161,11 +120,10 @@
         <li>Fixed a bug with “auto-kill” and “auto-pickup" items</li>
         <li>Camera texture (overlay) is now also disabled in cameras during disabling the interface</li>
       </ul>
-    </section>
+    </article>
 
-    <!-- ===== v10.2.2 ===== -->
-    <section>
-      <h2>v10.2.2</h2>
+    <article class="infoCard alt">
+      <h3>v10.2.2</h3>
       <ul>
         <li>New online map selection window</li>
         <li>Added server information to the pause window in the online game</li>
@@ -177,11 +135,10 @@
         <li>Fixed a bug that one of the new glasses is not saved to the account</li>
         <li>Increased single-player game reward for a part of the players</li>
       </ul>
-    </section>
+    </article>
 
-    <!-- ===== v10.2.1 ===== -->
-    <section>
-      <h2>v10.2.1</h2>
+    <article class="infoCard">
+      <h3>v10.2.1</h3>
       <ul>
         <li>You can now use emoji in chat: "😊😋😍😎😃😂😁😀🤣😊😅😘"</li>
         <li>Bugs fixed on the City-16 map</li>
@@ -192,11 +149,10 @@
         <li>Fixed flickering blood in the command center on the Imp-13 map</li>
         <li>Fixed footstep sound in Hide&Seek game mode while imposter waits</li>
       </ul>
-    </section>
+    </article>
 
-    <!-- ===== v10.2.0 ===== -->
-    <section>
-      <h2>v10.2.0</h2>
+    <article class="infoCard alt">
+      <h3>v10.2.0</h3>
       <ul>
         <li>Skins, stickers, and glass elements added</li>
         <li>Ventilation appearance changed</li>
@@ -210,23 +166,37 @@
         <li>Optimizations for City-16 and Carnival</li>
         <li>The astronaut's emote now moves with the head (previously, the head could cover the emote)</li>
         <li>Donation shop disabled</li>
-        <li>3‑second countdown at the start of the game in the Yandex version</li>
-        <li>Fixed text in the level‑up animation when the player's level exceeds 9999</li>
+        <li>3-second countdown at the start of the game in the Yandex version</li>
+        <li>Fixed text in the level-up animation when the player's level exceeds 9999</li>
         <li>Fixed some login/registration issues</li>
         <li>"Loading" window added during login/registration</li>
         <li>Fixed a bug where the online window did not close under certain conditions</li>
       </ul>
-    </section>
+    </article>
 
-  </div><!-- /.wrapper -->
+    <div class="center">
+      <a href="index.html" class="btn">Back to Home</a>
+    </div>
+  
+    <summary style="font-size: 20px; color: #0d0f12;">a</summary>
+  
 
-  <!-- ===== Google Translate scripts ===== -->
+  <!-- ===== FOOTER ===== -->
+  <footer class="siteFoot">
+    <div class="foot__links">
+      <a href="mailto:snowbatstudio@gmail.com">Contact us</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <span class="copyright">© SnowBat 2025</span>
+  </footer>
+
+  <!-- Google Translate scripts -->
   <script>
-    function googleTranslateElementInit(){
+    function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage:'en',
-        layout:google.translate.TranslateElement.InlineLayout.SIMPLE
-      },'google_translate_element');
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
