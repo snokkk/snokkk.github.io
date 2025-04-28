@@ -3,153 +3,229 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Game Update Notes</title>
+  <title>Imposter 3D — Changelog</title>
+
+  <!-- ===== СТИЛИ ===== -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      padding: 10px;
+    /* --- CSS-переменные, совпадают с предыдущей страницей --- */
+    :root{
+      --bg-color:#f3f5f9;
+      --card-bg:#ffffff;
+      --accent:#5e8bff;
+      --txt-main:#1d2433;
+      --txt-sub:#5b6475;
+      --radius:12px;
+      --shadow:0 4px 14px rgba(0,0,0,.08);
     }
-    h2 {
-      font-size: 1.5em;
-      margin-top: 20px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    #google_translate_element {
-      margin-bottom: 20px;
-    }
-
-    /* --- Адаптивные стили для Google Translate --- */
-    @media (max-width: 600px) {
-      /* 1) Масштабируем само окно-iframe */
-      .goog-te-menu-frame,
-      .goog-te-menu-frame.skiptranslate {
-        width: auto !important;
-        height: auto !important;
-        overflow: hidden !important;
-        transform: scale(0.8) !important;
-        transform-origin: 0 0 !important;
-        position: relative !important;
-        left: -20px !important; /* сдвиг, если нужно; подберите своё значение */
+    @media (prefers-color-scheme:dark){
+      :root{
+        --bg-color:#1c1e24;
+        --card-bg:#25272e;
+        --accent:#6e9dff;
+        --txt-main:#f1f2f5;
+        --txt-sub:#9aa0b5;
+        --shadow:0 4px 14px rgba(0,0,0,.45);
       }
+    }
 
-      /* 2) Задаём максимальную высоту меню и прокрутку */
-      .goog-te-menu2 {
-        max-height: 200px !important;
-        overflow-y: auto !important;
+    /* --- Базовая сетка --- */
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{
+      font:400 16px/1.6 "Inter","Segoe UI",Arial,sans-serif;
+      background:var(--bg-color);
+      color:var(--txt-main);
+      padding:32px 16px;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:.5em;
+      text-align:center;
+    }
+    .wrapper{
+      max-width:850px;
+      margin:0 auto;
+      display:flex;
+      flex-direction:column;
+      gap:32px;
+    }
+
+    /* --- Карточки версий --- */
+    section{
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:28px 24px;
+    }
+    section h2{
+      font-size:1.35rem;
+      margin-bottom:.7em;
+      color:var(--accent);
+    }
+    h3{
+      font-size:1.05rem;
+      margin-top:1.3em;
+      margin-bottom:.4em;
+      color:var(--txt-sub);
+      font-weight:600;
+    }
+    ul{padding-left:24px;display:flex;flex-direction:column;gap:.55em;}
+    li{list-style:disc;color:var(--txt-sub);}
+    code{font-family:monospace;font-size:.93em;background:rgba(0,0,0,.06);padding:0 .25em;border-radius:4px;}
+
+    /* --- Google Translate (адаптив) --- */
+    #google_translate_element{margin:0 0 24px 0;}
+    @media(max-width:600px){
+      .goog-te-menu-frame,
+      .goog-te-menu-frame.skiptranslate{
+        width:auto!important;
+        height:auto!important;
+        overflow:hidden!important;
+        transform:scale(.85)!important;
+        transform-origin:0 0!important;
+        position:relative!important;
+        left:-14px!important;
+      }
+      .goog-te-menu2{
+        max-height:200px!important;
+        overflow-y:auto!important;
       }
     }
   </style>
+
+  <!-- ===== ШРИФТ Inter ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- Элемент Google Translate -->
-  <div id="google_translate_element"></div>
+  <h1>Imposter 3D: Online Horror — Changelog</h1>
 
-  <h2>Imposter 3D: Online horror changelog</h2>
-  <p>The list of changes may not contain all changes</p>
-  <h2>v10.3.1 (The version is currently available for Android, PC and iOS/iPadOs. Version for Yandex/Playhop be available until April 20)</h2>
-  <ul>
-    <li>Easter event</li>
-    <li>New skins</li>
-    <li>Imposters default skins now have glowing eyes</li>
-    <li>New music in the menu</li>
-    <li>Improved performance</li>
-    <li>A new achievement</li>
-    <li>New quick chat messages “It's not me”, “I'm not lying”, “I'm an imposter”, “Bye!”, “He's lying!”</li>
-    <li>Added “yes”, ‘no’, “i don't know” messages to the lobby chat</li>
-    <li>Improved the look of the window with YouTube videos</li> 
-    <li>Added button with information about what does the function "private server"</li>
-    <li>Renamed the button with quick game</li>
-    <li>Fixed bug with traps in Hide and Seek mode on Imp-13 and Maze maps</li>
-    <li>Fixed a bug that you could run on pause in single-player game</li>
-  </ul>
-  <ul>
-    Known bugs:
-    <li>Sometimes the timer freezes</li>
-    <li>...The list of bugs is being updated...</li>
-  </ul>
-  <h2>v10.2.4</h2>
-  <ul>
-    <li>Added glow from windows and map screens on high and ultra settings</li>
-    <li>Added glow for street lamps on city-16 map on ultra settings</li>
-    <li>Added a section with videos from the community in the news window</li>
-    <li>Reduced delay on trap pick up in online game</li>
-    <li>Changed game loading screen</li>
-    <li>Fixed bug with flying trap in single player game</li>
-    <li>Fixed a bug that sometimes you couldn't customize vents and map when creating Hunt mode</li>
-  </ul>
-  <h2>v10.2.3</h2>
-  <ul>
-    <li>Fixed a bug where the imposter would not get caught in the trap when coming out of the vents</li>
-    <li>Fixed a bug where the player did not get into the trap when leaving the vent in Hunt mode</li>
-    <li>Fixed a bug where a ghost could start a vote in Mafia mode</li>
-    <li>Fixed a bug when the number of imps in PvE was incorrectly displayed in the start screen</li>
-    <li>Hide-and-seek reward for victory increased</li>
-    <li>In single-player labyrinth game brought the camera closer</li>
-    <li>Removed teleport button in ventilation in labyrinth in single-player game</li>
-    <li>On Imp13 corrected the stores so that it was impossible to jump in and moved the crate in the armory</li>
-    <li>Fixed a bug with “auto-kill” and “auto-pickup" items</li>
-    <li>Camera texture (overlay) is now also disabled in cameras during disabling the interface</li>
-  </ul>
-  <h2>v10.2.2</h2>
-  <ul>
-    <li>New online map selection window</li>
-    <li>Added server information to the pause window in the online game</li>
-    <li>Fixed a bug where you could pick up a trap from under an imposter or another player</li>
-    <li>Fixed some places where a player could get stuck</li>
-    <li>Fixed imposter sees last babies through walls</li>
-    <li>Fixed a bug where imposter player could be invisible</li>
-    <li>Fixed a bug where you could sometimes die after a victory</li>
-    <li>Fixed a bug that one of the new glasses is not saved to the account</li>
-    <li>Increased single-player game reward for a part of the players</li>
-  </ul>
-  <h2>v10.2.1</h2>
-  <ul>
-    <li>You can now use emoji in chat: "😊😋😍😎😃😂😁😀🤣😊😅😘"</li>
-    <li>Bugs fixed on the City-16 map</li>
-    <li>Moderators now don't get a level for winning in mafia mode, but do get a level in the others</li>
-    <li>Fixed a bug with incorrect display of a new skin in another player's profile window</li>
-    <li>Changed the position of the trap-box in single-player game to Imp-13 (MC was spawned in it)</li>
-    <li>Chat filter updated</li>
-    <li>Fixed flickering blood in the command center on the Imp-13 map</li>
-    <li>Fixed footstep sound in Hide&Seek game mode while imposter waits</li>
-  </ul>
-  <ul>
-    Known bugs:
-    <li>Messages from the quick chat are not translated into the device language</li>
-    <li>Sometimes the timer freezes</li>
-  </ul>
+  <div class="wrapper">
 
-  <h2>v10.2.0</h2>
-  <ul>
-    <li>Skins, stickers, and glass elements added</li>
-    <li>Ventilation appearance changed</li>
-    <li>Decorations removed from maps Imp-13 and Carnival</li>
-    <li>Moderators can now create a server for 20 players and see ghost messages, but do not receive levels for wins</li>
-    <li>Improved shadows on high and ultra settings on the Lab map</li>
-    <li>Timer redesigned for improved compatibility with the Yandex version of the game</li>
-    <li>Chat filter updated</li>
-    <li>Fixed a bug with a running impostor at the start of the game in "Hide and Seek" mode</li>
-    <li>Fixed a bug with traps in "Hunt" mode</li>
-    <li>Optimizations for City-16 and Carnival</li>
-    <li>The astronaut's emote now moves with the head (previously, the head could cover the emote)</li>
-    <li>Donation shop disabled</li>
-    <li>3‑second countdown at the start of the game in the Yandex version</li>
-    <li>Fixed text in the level‑up animation when the player's level exceeds 9999</li>
-    <li>Fixed some login/registration issues</li>
-    <li>"Loading" window added during login/registration</li>
-    <li>Fixed a bug where the online window did not close under certain conditions</li>
-  </ul>
+    <!-- Google Translate -->
+    <div id="google_translate_element"></div>
 
-  <!-- Подключаем скрипты Google Translate -->
+    <!-- ===== v10.3.1 ===== -->
+    <section>
+      <h2>v10.3.1 <small>(Android / PC / iOS • Yandex &amp; Playhop)</small></h2>
+      <ul>
+        <li>Easter event</li>
+        <li>New skins</li>
+        <li>Imposters default skins now have glowing eyes</li>
+        <li>New music in the menu</li>
+        <li>Improved performance</li>
+        <li>A new achievement</li>
+        <li>New quick chat messages “It's not me”, “I'm not lying”, “I'm an imposter”, “Bye!”, “He's lying!”</li>
+        <li>Added “yes”, ‘no’, “i don't know” messages to the lobby chat</li>
+        <li>Improved the look of the window with YouTube videos</li> 
+        <li>Added button with information about what does the function "private server"</li>
+        <li>Renamed the button with quick game</li>
+        <li>Fixed bug with traps in Hide and Seek mode on Imp-13 and Maze maps</li>
+        <li>Fixed a bug that you could run on pause in single-player game</li>
+      </ul>
+      <h3>Known bugs</h3>
+      <ul>
+        <li>Sometimes the timer freezes</li>
+        <li>…The list of bugs is being updated…</li>
+      </ul>
+    </section>
+
+    <!-- ===== v10.2.4 ===== -->
+    <section>
+      <h2>v10.2.4</h2>
+      <ul>
+        <li>Added glow from windows and map screens on high and ultra settings</li>
+        <li>Added glow for street lamps on city-16 map on ultra settings</li>
+        <li>Added a section with videos from the community in the news window</li>
+        <li>Reduced delay on trap pick up in online game</li>
+        <li>Changed game loading screen</li>
+        <li>Fixed bug with flying trap in single player game</li>
+        <li>Fixed a bug that sometimes you couldn't customize vents and map when creating Hunt mode</li>
+      </ul>
+    </section>
+
+    <!-- ===== v10.2.3 ===== -->
+    <section>
+      <h2>v10.2.3</h2>
+      <ul>
+        <li>Fixed a bug where the imposter would not get caught in the trap when coming out of the vents</li>
+        <li>Fixed a bug where the player did not get into the trap when leaving the vent in Hunt mode</li>
+        <li>Fixed a bug where a ghost could start a vote in Mafia mode</li>
+        <li>Fixed a bug when the number of imps in PvE was incorrectly displayed in the start screen</li>
+        <li>Hide-and-seek reward for victory increased</li>
+        <li>In single-player labyrinth game brought the camera closer</li>
+        <li>Removed teleport button in ventilation in labyrinth in single-player game</li>
+        <li>On Imp13 corrected the stores so that it was impossible to jump in and moved the crate in the armory</li>
+        <li>Fixed a bug with “auto-kill” and “auto-pickup" items</li>
+        <li>Camera texture (overlay) is now also disabled in cameras during disabling the interface</li>
+      </ul>
+    </section>
+
+    <!-- ===== v10.2.2 ===== -->
+    <section>
+      <h2>v10.2.2</h2>
+      <ul>
+        <li>New online map selection window</li>
+        <li>Added server information to the pause window in the online game</li>
+        <li>Fixed a bug where you could pick up a trap from under an imposter or another player</li>
+        <li>Fixed some places where a player could get stuck</li>
+        <li>Fixed imposter sees last babies through walls</li>
+        <li>Fixed a bug where imposter player could be invisible</li>
+        <li>Fixed a bug where you could sometimes die after a victory</li>
+        <li>Fixed a bug that one of the new glasses is not saved to the account</li>
+        <li>Increased single-player game reward for a part of the players</li>
+      </ul>
+    </section>
+
+    <!-- ===== v10.2.1 ===== -->
+    <section>
+      <h2>v10.2.1</h2>
+      <ul>
+        <li>You can now use emoji in chat: "😊😋😍😎😃😂😁😀🤣😊😅😘"</li>
+        <li>Bugs fixed on the City-16 map</li>
+        <li>Moderators now don't get a level for winning in mafia mode, but do get a level in the others</li>
+        <li>Fixed a bug with incorrect display of a new skin in another player's profile window</li>
+        <li>Changed the position of the trap-box in single-player game to Imp-13 (MC was spawned in it)</li>
+        <li>Chat filter updated</li>
+        <li>Fixed flickering blood in the command center on the Imp-13 map</li>
+        <li>Fixed footstep sound in Hide&Seek game mode while imposter waits</li>
+      </ul>
+    </section>
+
+    <!-- ===== v10.2.0 ===== -->
+    <section>
+      <h2>v10.2.0</h2>
+      <ul>
+        <li>Skins, stickers, and glass elements added</li>
+        <li>Ventilation appearance changed</li>
+        <li>Decorations removed from maps Imp-13 and Carnival</li>
+        <li>Moderators can now create a server for 20 players and see ghost messages, but do not receive levels for wins</li>
+        <li>Improved shadows on high and ultra settings on the Lab map</li>
+        <li>Timer redesigned for improved compatibility with the Yandex version of the game</li>
+        <li>Chat filter updated</li>
+        <li>Fixed a bug with a running impostor at the start of the game in "Hide and Seek" mode</li>
+        <li>Fixed a bug with traps in "Hunt" mode</li>
+        <li>Optimizations for City-16 and Carnival</li>
+        <li>The astronaut's emote now moves with the head (previously, the head could cover the emote)</li>
+        <li>Donation shop disabled</li>
+        <li>3‑second countdown at the start of the game in the Yandex version</li>
+        <li>Fixed text in the level‑up animation when the player's level exceeds 9999</li>
+        <li>Fixed some login/registration issues</li>
+        <li>"Loading" window added during login/registration</li>
+        <li>Fixed a bug where the online window did not close under certain conditions</li>
+      </ul>
+    </section>
+
+  </div><!-- /.wrapper -->
+
+  <!-- ===== Google Translate scripts ===== -->
   <script>
-    function googleTranslateElementInit() {
+    function googleTranslateElementInit(){
       new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+        pageLanguage:'en',
+        layout:google.translate.TranslateElement.InlineLayout.SIMPLE
+      },'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>

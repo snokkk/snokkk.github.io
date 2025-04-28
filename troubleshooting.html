@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Update Notes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 10px;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-top: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    #google_translate_element {
+      margin-bottom: 20px;
+    }
+
+    /* --- Адаптивные стили для Google Translate --- */
+    @media (max-width: 600px) {
+      /* 1) Масштабируем само окно-iframe */
+      .goog-te-menu-frame,
+      .goog-te-menu-frame.skiptranslate {
+        width: auto !important;
+        height: auto !important;
+        overflow: hidden !important;
+        transform: scale(0.8) !important;
+        transform-origin: 0 0 !important;
+        position: relative !important;
+        left: -20px !important; /* сдвиг, если нужно; подберите своё значение */
+      }
+
+      /* 2) Задаём максимальную высоту меню и прокрутку */
+      .goog-te-menu2 {
+        max-height: 200px !important;
+        overflow-y: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Элемент Google Translate -->
+  <div id="google_translate_element"></div>
+
+  <h2>Solving problems in Imposter 3D Online horror</h2>
+  <p>Here are ways to solve problems you may have in the game</p>
+  <h2>I am not logged in to my account / unable to register</h2>
+  <ul>
+    <li>1. When logging in to your account, make sure your login and password are correct.</li>
+    <li>1.1 If the game says that the password is not correct, then double-check the correctness of the password, pay attention to capital and small letters.</li>
+    <li>1.2 If the game says that your account does not exist, then check the correctness of entering the login, pay attention to small and capital letters. Also try to remember if you have not deleted your account.</li>
+    <li>2. If the game writes “failure” or does not write anything to you, it may be because your internet provider is blocking access to Google's servers.</li>
+    <li>If you still can't get into your account, email snowbatstudio@gmail.com and we'll try to resolve your issue.</li>
+  </ul>
+
+  <h2>I downloaded the PC (Window) version of the game from itch.io and I can't get into my account.</h2>
+  <ul>
+    <li>1. Check in which folder the game is installed. There should not be any special characters and text in Russian (or other language) in the folder path. For example, “C:\Users\User\пользователь\Desktop\игры”. Here, “игры” and “пользователь” are invalid characters. The path to the game should consist of English (Latin) letters only, for example, “C:\Games\”.</li>
+    <li>2. If you have Windows 7 and below, this may be the problem, and it is only possible to upgrade to a newer version of Windows.</li>
+    <li>3. Antivirus or your internet provider is blocking access to Google (or Google is blocked in your region).</li>
+    <li>If you still can't get into your account, email snowbatstudio@gmail.com and we'll try to resolve your issue.</li>
+  </ul>
+
+  <h2>I can't delete my account</h2>
+  <ul>
+    <li>If you are unable to delete an account, please email snowbatstudio@gmail.com with the login of the account you want to delete, as well as the approximate date of registration and the approximate level of the player. Within 7 working days the account will be deleted. You can read more about deleting an account here https://snokkk.github.io/imp3d_account.html</li>
+  </ul>
+
+  <!-- Подключаем скрипты Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
