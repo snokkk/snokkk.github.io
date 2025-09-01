@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
@@ -9,12 +9,12 @@
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="assets/fontawesome/css/all.css">
 
-  <!-- Site-wide styles -->
+  <!-- Общие стили сайта -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Local styles: Roadmap -->
+  <!-- Локальные стили Roadmap -->
   <style>
-    /* Google Translate: same tweaks as changelog */
+    /* Google Translate: как в changelog */
     #google_translate_element { margin: 20px 0; }
     @media(max-width:600px){
       .goog-te-menu-frame, .goog-te-menu-frame.skiptranslate {
@@ -25,7 +25,7 @@
       .goog-te-menu2 { max-height:200px!important; overflow-y:auto!important; }
     }
 
-    /* Roadmap layout */
+    /* Roadmap */
     .roadmap {
       max-width: 1200px;
       margin: 0 auto;
@@ -88,7 +88,7 @@
     .roadline li { margin:6px 0; }
     .muted { color:#9aa3ad; font-size:.86rem; margin-top:8px; }
 
-    /* Mobile */
+    /* Узкие экраны */
     @media (max-width: 768px){
       .timeline { gap:14px; }
       .card { flex-basis: 86vw; }
@@ -97,7 +97,7 @@
 </head>
 <body>
 
-  <!-- ===== TOP BAR (kept from changelog) ===== -->
+  <!-- ===== TOP BAR (оставляем как в changelog) ===== -->
   <header class="topbar">
     <a href="index.html" class="brand">
       <img src="logo.png" alt="SnowBat logo">
@@ -125,104 +125,103 @@
     </nav>
   </header>
 
-  <!-- ===== GOOGLE TRANSLATE ===== -->
+  <!-- ===== GOOGLE TRANSLATE (как в changelog) ===== -->
   <div id="google_translate_element"></div>
 
   <!-- ===== ROADMAP ===== -->
   <main class="roadmap">
     <div class="roadmap__title">
       <h1>Roadmap 2025</h1>
-      <div class="legend" aria-label="Status legend">
-        <span class="legend__item"><i class="legend__dot legend__dot--done"></i> Done</span>
-        <span class="legend__item"><i class="legend__dot legend__dot--progress"></i> In progress</span>
-        <span class="legend__item"><i class="legend__dot legend__dot--planned"></i> Planned</span>
+      <div class="legend" aria-label="Легенда статусов">
+        <span class="legend__item"><i class="legend__dot legend__dot--done"></i> Сделано</span>
+        <span class="legend__item"><i class="legend__dot legend__dot--progress"></i> В работе</span>
+        <span class="legend__item"><i class="legend__dot legend__dot--planned"></i> Запланировано</span>
       </div>
     </div>
 
-    <section class="timeline" aria-label="Horizontal timeline for 2025">
+    <section class="timeline" aria-label="Горизонтальная шкала 2025">
 
-      <!-- H1 (brief) -->
+      <!-- 1 половина года (кратко) -->
       <article class="card card--done">
         <span class="card__stage" aria-hidden="true"></span>
         <header class="card__head">
-          <h3 class="card__title">First half of the year</h3>
-          <span class="badge badge--done">Jan–Aug</span>
+          <h3 class="card__title">1&nbsp;половина года</h3>
+          <span class="badge badge--done">янв–авг</span>
         </header>
         <ul class="roadline">
-          <li>Touch controls customization.</li>
-          <li>New skins and visual content.</li>
-          <li>Bug fixes and stability improvements.</li>
-          <li>Higher FPS on mobile and PC.</li>
-          <li>Map optimizations and tweaks.</li>
-          <li>Community videos section in News.</li>
-          <li>Graphics improvements on High/Ultra.</li>
-          <li>Imposter 3D Filmmaker (beta).</li>
+          <li>Настройка сенсорного управления</li>
+          <li>Новые скины</li>
+          <li>Исправление багов</li>
+          <li>Увеличен FPS на мобильных и ПК устройствах</li>
+          <li>Оптимизации и правки карт</li>
+          <li>Видео в разделе Новостей</li>
+          <li>Улучшена графика на высоких и ультра настройках</li>
+          <li>Бета версия Imposter 3D Filmmaker</li>
         </ul>
-        <p class="muted">
-          Short overview: see details in the
-          <a href="changelog.html">Changelog</a>.
-        </p>
+        <p class="muted">Короткий обзор: см. подробности в Changelog.</p>
       </article>
 
-      <!-- September -->
+      <!-- Сентябрь -->
       <article class="card card--progress">
         <span class="card__stage" aria-hidden="true"></span>
         <header class="card__head">
-          <h3 class="card__title">September</h3>
-          <span class="badge badge--progress">in progress</span>
+          <h3 class="card__title">Сентябрь</h3>
+          <span class="badge badge--progress">в работе</span>
         </header>
         <ul class="roadline">
-          <li>Server language configuration.</li>
-          <li>Compliance updates for stores and regions: age gate, updated game & chat rules.</li>
-          <li>Friends system update (up to 20 friends).</li>
-          <li>Nickname Constructor.</li>
-          <li>New game mode.</li>
-          <li>New skins.</li>
+          <li>Настройка языка сервера</li>
+          <li>Изменения игры под соблюдения правил магазинов и стран, добавлена проверка возраста, изменены правила игры и чата</li>
+          <li>Доработка системы друзей (можно до 20 друзей)</li>
+          <li>Конструктор никнеймов</li>
+          <li>Новый игровой режим</li>
+          <li>Новые скины</li>
         </ul>
       </article>
 
-      <!-- October -->
+      <!-- Октябрь -->
       <article class="card card--planned">
         <span class="card__stage" aria-hidden="true"></span>
         <header class="card__head">
-          <h3 class="card__title">October</h3>
-          <span class="badge badge--planned">planned</span>
+          <h3 class="card__title">Октябрь</h3>
+          <span class="badge badge--planned">запланировано</span>
         </header>
         <ul class="roadline">
-          <li>Halloween event.</li>
-          <li>New map.</li>
-          <li>Release of single-player Imposter 3D Filmmaker (Imposter 3D Sandbox).</li>
+          <li>Хэллоуинское событие</li>
+          <li>Новая карта</li>
+          <li>Выпуск одиночной версии Imposter 3D Filmmaker (Imposter 3D Sandbox)</li>
         </ul>
       </article>
 
-      <!-- November -->
+      <!-- Ноябрь -->
       <article class="card card--planned">
         <span class="card__stage" aria-hidden="true"></span>
         <header class="card__head">
-          <h3 class="card__title">November</h3>
-          <span class="badge badge--planned">planned</span>
+          <h3 class="card__title">Ноябрь</h3>
+          <span class="badge badge--planned">запланировано</span>
         </header>
         <ul class="roadline">
-          <li>Start of a new map development.</li>
+          <li>Начало разработки новой карты</li>
+          <li>Новый режим</li>
         </ul>
       </article>
 
-      <!-- December -->
+      <!-- Декабрь -->
       <article class="card card--planned">
         <span class="card__stage" aria-hidden="true"></span>
         <header class="card__head">
-          <h3 class="card__title">December</h3>
-          <span class="badge badge--planned">planned</span>
+          <h3 class="card__title">Декабрь</h3>
+          <span class="badge badge--planned">запланировано</span>
         </header>
         <ul class="roadline">
-          <li>New Year event (skins, tasks, themed decorations).</li>
+          <li>Новогоднее событие (скины, задания, тематические декорации)</li>
+          <li>Новая карта</li>
         </ul>
       </article>
 
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== FOOTER (оставляем) ===== -->
   <footer class="siteFoot">
     <div class="foot__links">
       <a href="mailto:snowbatstudio@gmail.com">Contact us</a>
@@ -231,11 +230,11 @@
     <span class="copyright">© SnowBat 2025</span>
   </footer>
 
-  <!-- Google Translate scripts -->
+  <!-- Google Translate scripts (как в changelog) -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
-        pageLanguage: 'en',
+        pageLanguage: 'ru',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
