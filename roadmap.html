@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Imposter 3D — Roadmap 2025</title>
+
+  <!-- Favicon / Icons -->
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+
+  <!-- Site-wide styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Local styles: Roadmap -->
+  <style>
+    /* Google Translate: same tweaks as changelog */
+    #google_translate_element { margin: 20px 0; }
+    @media(max-width:600px){
+      .goog-te-menu-frame, .goog-te-menu-frame.skiptranslate {
+        width:auto!important; height:auto!important; overflow:hidden!important;
+        transform:scale(.85)!important; transform-origin:0 0!important;
+        position:relative!important; left:-14px!important;
+      }
+      .goog-te-menu2 { max-height:200px!important; overflow-y:auto!important; }
+    }
+
+    /* Roadmap layout */
+    .roadmap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px 56px;
+    }
+    .roadmap__title {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; margin: 8px 0 24px;
+    }
+    .roadmap__title h1 {
+      margin:0; font-size: clamp(1.4rem, 2.5vw, 2.2rem); color:#fff;
+    }
+    .legend {
+      display:flex; gap:12px; flex-wrap:wrap; font-size: .9rem; opacity:.9;
+    }
+    .legend__item { display:flex; align-items:center; gap:8px; }
+    .legend__dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+    .legend__dot--done { background:#35c46a; }
+    .legend__dot--progress { background:#2aa1ff; }
+    .legend__dot--planned { background:#a3a7ad; }
+
+    .timeline {
+      display:flex; gap:20px; overflow-x:auto; padding: 6px 2px 2px;
+      scroll-snap-type: x mandatory; scrollbar-width: thin;
+    }
+    .card {
+      scroll-snap-align:start;
+      flex: 0 0 320px;
+      background:#12161b; border:1px solid #20262e; border-radius:14px;
+      padding:18px 18px 14px; position:relative;
+      box-shadow: 0 4px 18px rgba(0,0,0,.35);
+    }
+    .card__stage {
+      position:absolute; inset:0; border-radius:14px; pointer-events:none;
+      border-left:6px solid transparent;
+    }
+    .card--done .card__stage { border-left-color:#35c46a; }
+    .card--progress .card__stage { border-left-color:#2aa1ff; }
+    .card--planned .card__stage { border-left-color:#a3a7ad; }
+
+    .card__head {
+      display:flex; align-items:center; justify-content:space-between; gap:8px;
+      margin-bottom:10px;
+    }
+    .card__title {
+      margin:0; font-size:1.05rem; color:#eef3f8; letter-spacing:.2px;
+    }
+    .badge {
+      padding:4px 8px; border-radius:999px; font-size:.75rem; font-weight:600;
+      background:#1c232b; color:#a3a7ad; border:1px solid #26303b;
+      white-space:nowrap;
+    }
+    .badge--done    { color:#c9ffdf; border-color:#2a5c43; background:rgba(53,196,106,.08); }
+    .badge--progress{ color:#d5eaff; border-color:#1f4d7a; background:rgba(42,161,255,.08); }
+    .badge--planned { color:#e6e7e9; }
+
+    .roadline {
+      font-size:.86rem; color:#cfd6de; line-height:1.55; margin:0; padding-left:18px;
+    }
+    .roadline li { margin:6px 0; }
+    .muted { color:#9aa3ad; font-size:.86rem; margin-top:8px; }
+
+    /* Mobile */
+    @media (max-width: 768px){
+      .timeline { gap:14px; }
+      .card { flex-basis: 86vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR (kept from changelog) ===== -->
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <img src="logo.png" alt="SnowBat logo">
+      <div class="brand__text">
+        <span class="dev">Indie dev – Danila Demkin</span>
+        <span class="nickname">(Kekl)</span>
+      </div>
+    </a>
+    <nav class="topbar__nav">
+      <a href="https://play.google.com/store/apps/dev?id=8893350295556564477" target="_blank" aria-label="Google Play">
+        <i class="fab fa-google-play"></i>
+      </a>
+      <a href="https://apps.apple.com/us/developer/danila-demkin/id1607882211" target="_blank" aria-label="App Store">
+        <i class="fab fa-app-store"></i>
+      </a>
+      <a href="https://discord.gg/AX9CUSaHTQ" target="_blank" aria-label="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://t.me/snowbastudio" target="_blank" aria-label="Telegram">
+        <i class="fab fa-telegram"></i>
+      </a>
+      <a href="https://www.youtube.com/@snowbat" target="_blank" aria-label="Youtube">
+        <i class="fab fa-youtube"></i>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ===== GOOGLE TRANSLATE ===== -->
+  <div id="google_translate_element"></div>
+
+  <!-- ===== ROADMAP ===== -->
+  <main class="roadmap">
+    <div class="roadmap__title">
+      <h1>Roadmap 2025</h1>
+      <div class="legend" aria-label="Status legend">
+        <span class="legend__item"><i class="legend__dot legend__dot--done"></i> Done</span>
+        <span class="legend__item"><i class="legend__dot legend__dot--progress"></i> In progress</span>
+        <span class="legend__item"><i class="legend__dot legend__dot--planned"></i> Planned</span>
+      </div>
+    </div>
+
+    <section class="timeline" aria-label="Horizontal timeline for 2025">
+
+      <!-- H1 (brief) -->
+      <article class="card card--done">
+        <span class="card__stage" aria-hidden="true"></span>
+        <header class="card__head">
+          <h3 class="card__title">First half of the year</h3>
+          <span class="badge badge--done">Jan–Aug</span>
+        </header>
+        <ul class="roadline">
+          <li>Touch controls customization.</li>
+          <li>New skins and visual content.</li>
+          <li>Bug fixes and stability improvements.</li>
+          <li>Higher FPS on mobile and PC.</li>
+          <li>Map optimizations and tweaks.</li>
+          <li>Community videos section in News.</li>
+          <li>Graphics improvements on High/Ultra.</li>
+          <li>Imposter 3D Filmmaker (beta).</li>
+        </ul>
+        <p class="muted">
+          Short overview: see details in the
+          <a href="changelog.html">Changelog</a>.
+        </p>
+      </article>
+
+      <!-- September -->
+      <article class="card card--progress">
+        <span class="card__stage" aria-hidden="true"></span>
+        <header class="card__head">
+          <h3 class="card__title">September</h3>
+          <span class="badge badge--progress">in progress</span>
+        </header>
+        <ul class="roadline">
+          <li>Server language configuration.</li>
+          <li>Compliance updates for stores and regions: age gate, updated game & chat rules.</li>
+          <li>Friends system update (up to 20 friends).</li>
+          <li>Nickname Constructor.</li>
+          <li>New game mode.</li>
+          <li>New skins.</li>
+        </ul>
+      </article>
+
+      <!-- October -->
+      <article class="card card--planned">
+        <span class="card__stage" aria-hidden="true"></span>
+        <header class="card__head">
+          <h3 class="card__title">October</h3>
+          <span class="badge badge--planned">planned</span>
+        </header>
+        <ul class="roadline">
+          <li>Halloween event.</li>
+          <li>New map.</li>
+          <li>Release of single-player Imposter 3D Filmmaker (Imposter 3D Sandbox).</li>
+        </ul>
+      </article>
+
+      <!-- November -->
+      <article class="card card--planned">
+        <span class="card__stage" aria-hidden="true"></span>
+        <header class="card__head">
+          <h3 class="card__title">November</h3>
+          <span class="badge badge--planned">planned</span>
+        </header>
+        <ul class="roadline">
+          <li>Start of a new map development.</li>
+        </ul>
+      </article>
+
+      <!-- December -->
+      <article class="card card--planned">
+        <span class="card__stage" aria-hidden="true"></span>
+        <header class="card__head">
+          <h3 class="card__title">December</h3>
+          <span class="badge badge--planned">planned</span>
+        </header>
+        <ul class="roadline">
+          <li>New Year event (skins, tasks, themed decorations).</li>
+        </ul>
+      </article>
+
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="siteFoot">
+    <div class="foot__links">
+      <a href="mailto:snowbatstudio@gmail.com">Contact us</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <span class="copyright">© SnowBat 2025</span>
+  </footer>
+
+  <!-- Google Translate scripts -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
