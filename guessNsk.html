@@ -31,8 +31,8 @@
     }
     .grid{padding:14px;display:grid;gap:12px;grid-template-columns:1.6fr .7fr;align-items:start}
     @media (max-width:950px){.grid{grid-template-columns:1fr}}
-    #pano{height:520px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
-    #miniMap{height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
+    #pano{height:520px;max-height:520px;min-height:260px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
+    #miniMap{height:220px;max-height:240px;min-height:160px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
     .side{display:grid;gap:10px;align-content:start}
     .btn{
       width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);
@@ -50,12 +50,26 @@
     .pill.bad{border-color:rgba(255,179,179,.35);color:var(--bad)}
     #log{
       font-family:var(--mono);font-size:12px;line-height:1.4;background:rgba(0,0,0,.35);
-      border:1px solid var(--border);border-radius:12px;padding:10px;height:240px;overflow:auto;white-space:pre-wrap;word-break:break-word
+      border:1px solid var(--border);border-radius:12px;padding:10px;height:240px;max-height:240px;min-height:160px;overflow:auto;white-space:pre-wrap;word-break:break-word
     }
     .bar{padding:12px 14px;border-top:1px solid var(--border);background:rgba(255,255,255,.02);
       display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
     .danger{color:var(--bad)}
       .hidden{display:none!important}
+  
+    /* Mobile layout fixes:
+       - Avoid iOS/Android "vh" resize loops with explicit JS-set heights.
+       - Keep panels readable on small screens. */
+    @media (max-width:520px){
+      .wrap{padding:12px}
+      h1{font-size:20px}
+      .grid{padding:12px}
+      .btn{padding:14px;font-size:16px}
+      #pano{height:52vh;max-height:520px;min-height:260px}
+      #miniMap{height:24vh;max-height:240px;min-height:160px}
+      #log{height:22vh;max-height:240px;min-height:160px}
+    }
+
   </style>
 </head>
 
@@ -208,7 +222,44 @@
     btnSkip.disabled = !enabled;
     btnNext.disabled = true;
   }
-  btnClearLog.addEventListener("click", () => { elLog.textContent = ""; });
+  
+  // ======================
+  // Mobile layout (prevents "infinite expanding" on phones)
+  // ======================
+  const elPano = document.getElementById("pano");
+  const elMiniMap = document.getElementById("miniMap");
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+  function applyLayoutHeights() {
+    const isMobile = window.matchMedia("(max-width: 700px)").matches;
+    if (!isMobile) {
+      // Desktop defaults (CSS also has these, but keeping explicit avoids odd resizes).
+      elPano.style.height = "520px";
+      elMiniMap.style.height = "220px";
+      elLog.style.height = "240px";
+      return;
+    }
+
+    // Use innerHeight (not 100vh) to avoid iOS address-bar resize loops.
+    const h = window.innerHeight || 800;
+
+    const panoH = clamp(Math.round(h * 0.52), 260, 520);
+    const miniH = clamp(Math.round(h * 0.24), 160, 240);
+    const logH = clamp(Math.round(h * 0.22), 160, 220);
+
+    elPano.style.height = panoH + "px";
+    elMiniMap.style.height = miniH + "px";
+    elLog.style.height = logH + "px";
+  }
+
+  // Debounced resize handler.
+  let _resizeT = 0;
+  window.addEventListener("resize", () => {
+    clearTimeout(_resizeT);
+    _resizeT = setTimeout(() => { applyLayoutHeights(); }, 120);
+  });
+  applyLayoutHeights();
+
+btnClearLog.addEventListener("click", () => { elLog.textContent = ""; });
 
   // ======================
   // Game config
