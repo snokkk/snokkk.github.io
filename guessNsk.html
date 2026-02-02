@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guess Novosibirsk (Yandex Panoramas)</title>
+
+  <style>
+    :root{
+      --bg:#0f1216; --panel:#171b21; --text:#e7edf5; --muted:rgba(231,237,245,.72);
+      --border:rgba(255,255,255,.14); --btn:rgba(255,255,255,.06); --btnh:rgba(255,255,255,.10);
+      --bad:#ffb3b3; --ok:#bfffd7; --accent:#4aa3ff;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: radial-gradient(1200px 800px at 20% 10%, #182033 0%, var(--bg) 55%);
+      color:var(--text);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans","Helvetica Neue",sans-serif;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:16px;display:grid;gap:12px}
+    .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+    h1{margin:0;font-size:22px}
+    .muted{color:var(--muted);font-size:13px;line-height:1.4}
+    .panel{
+      background:rgba(23,27,33,.92);
+      border:1px solid var(--border);
+      border-radius:14px; overflow:hidden;
+      box-shadow:0 12px 40px rgba(0,0,0,.35);
+    }
+    .grid{padding:14px;display:grid;gap:12px;grid-template-columns:1.6fr .7fr;align-items:start}
+    @media (max-width:950px){.grid{grid-template-columns:1fr}}
+    #pano{height:520px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
+    #miniMap{height:220px;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#0b0e12}
+    .side{display:grid;gap:10px;align-content:start}
+    .btn{
+      width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);
+      background:var(--btn);color:var(--text);cursor:pointer;font-size:15px;user-select:none
+    }
+    .btn:hover{background:var(--btnh)}
+    .btn:disabled{opacity:.55;cursor:not-allowed}
+    .box{border:1px solid var(--border);border-radius:12px;padding:10px;background:rgba(255,255,255,.03);display:grid;gap:6px}
+    .kv{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;border:1px solid var(--border);
+      background:rgba(0,0,0,.35);border-radius:999px;padding:6px 10px;font-size:13px;color:var(--muted);width:fit-content
+    }
+    .pill.ok{border-color:rgba(191,255,215,.4);color:var(--ok)}
+    .pill.bad{border-color:rgba(255,179,179,.35);color:var(--bad)}
+    #log{
+      font-family:var(--mono);font-size:12px;line-height:1.4;background:rgba(0,0,0,.35);
+      border:1px solid var(--border);border-radius:12px;padding:10px;height:240px;overflow:auto;white-space:pre-wrap;word-break:break-word
+    }
+    .bar{padding:12px 14px;border-top:1px solid var(--border);background:rgba(255,255,255,.02);
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+    .danger{color:var(--bad)}
+      .hidden{display:none!important}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Guess Novosibirsk</h1>
+        <div class="muted" id="meta">Раунд: — / 10</div>
+      </div>
+      <div class="muted" id="status">Инициализация…</div>
+    </div>
+
+    <div class="panel">
+      <div class="grid">
+        <div>
+          <div id="pano"></div>
+          <div style="height:10px"></div>
+          <div id="miniSection" class="hidden">
+            <div class="muted">Карта с геометкой (появится после ответа):</div>
+            <div id="miniMap"></div>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="box">
+            <div class="kv"><div>Счёт</div><div><b id="score">0</b> / 10</div></div>
+            <div class="kv"><div>Верно</div><div><b id="correct">0</b></div></div>
+            <div class="kv"><div>Ошибок</div><div><b id="wrong">0</b></div></div>
+          </div>
+
+          <button class="btn" id="btnNsk">Это Новосибирск</button>
+          <button class="btn" id="btnOther">Это другой город</button>
+          <button class="btn" id="btnSkip">Пропустить</button>
+          <button class="btn" id="btnNext" disabled>Следующая панорама</button>
+          <button class="btn" id="btnRestart">Новый раунд</button>
+
+          <div class="box">
+            <div class="pill" id="pillApi">API: …</div>
+            <div class="pill" id="pillMap">Карта: …</div>
+            <div class="pill" id="pillPano">Панорамы: …</div>
+            <div class="muted" id="hint"></div>
+          </div>
+
+          <div class="box">
+            <div class="muted">Логи:</div>
+            <div id="log"></div>
+            <button class="btn" id="btnClearLog">Очистить лог</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="bar">
+        <div class="muted" id="expectedHint"></div>
+        <div class="muted">
+          Если <span class="danger">API не загрузился</span>, смотри DevTools → Network → запрос к <code>api-maps.yandex.ru/2.1/</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // ======================
+  // КЛЮЧ
+  // ======================
+  const YANDEX_API_KEY = "64ad31c4-bdc1-49df-a6fd-5f03e346e5ce"; // <-- ВСТАВЬ СЮДА
+
+  // Если true — показываем служебные логи (города/координаты) во время загрузки.
+  const DEBUG = false;
+
+  // ======================
+  // ЛОГИ
+  // ======================
+  const elLog = document.getElementById("log");
+  const elStatus = document.getElementById("status");
+  const elMeta = document.getElementById("meta");
+  const elHint = document.getElementById("hint");
+  const elExpectedHint = document.getElementById("expectedHint");
+
+  const pillApi = document.getElementById("pillApi");
+  const pillMap = document.getElementById("pillMap");
+  const pillPano = document.getElementById("pillPano");
+
+  function nowTime() {
+    const d = new Date();
+    return `${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}:${String(d.getSeconds()).padStart(2,"0")}`;
+  }
+  function logLine(msg, level="info") {
+    const line = `[${nowTime()}] ${msg}`;
+    if (level === "error") { console.error(line); }
+    else if (level === "warn") { console.warn(line); }
+    else { console.log(line); }
+    elLog.textContent += line + "\n";
+    elLog.scrollTop = elLog.scrollHeight;
+  }
+  function errToString(e) {
+  if (!e) { return "null/undefined"; }
+  if (typeof e === "string") { return e; }
+
+  const parts = [];
+  if (e.name) { parts.push(`name=${e.name}`); }
+  if (e.message) { parts.push(`message=${e.message}`); }
+  if (e.code !== undefined) { parts.push(`code=${e.code}`); }
+
+  // иногда полезно увидеть хоть какие-то поля
+  try {
+    const keys = Object.keys(e);
+    if (keys.length) { parts.push(`keys=[${keys.join(",")}]`); }
+  } catch {}
+
+  // stack часто пустой для scriptError, но попытка не помешает
+  if (e.stack) { parts.push(`stack=${String(e.stack).slice(0, 500)}`); }
+
+  return parts.length ? parts.join(" | ") : String(e);
+}
+  function setStatus(t) { elStatus.textContent = t; }
+  function setPill(el, text, ok) {
+    el.textContent = text;
+    el.classList.remove("ok","bad");
+    el.classList.add(ok ? "ok" : "bad");
+  }
+
+  window.addEventListener("error", (e) => {
+    logLine(`window.error: ${e.message || "unknown"} at ${e.filename || "?"}:${e.lineno || "?"}`, "error");
+  });
+  window.addEventListener("unhandledrejection", (e) => {
+    const r = e.reason;
+    try { logLine("unhandledrejection: " + (typeof r === "object" ? JSON.stringify(r) : String(r)), "error"); }
+    catch { logLine("unhandledrejection: [cannot stringify]", "error"); }
+  });
+
+  // ======================
+  // UI / Game state
+  // ======================
+  const btnNsk = document.getElementById("btnNsk");
+  const btnOther = document.getElementById("btnOther");
+  const btnSkip = document.getElementById("btnSkip");
+  const btnRestart = document.getElementById("btnRestart");
+  const btnNext = document.getElementById("btnNext");
+  const btnClearLog = document.getElementById("btnClearLog");
+
+  const elScore = document.getElementById("score");
+  const elCorrect = document.getElementById("correct");
+  const elWrong = document.getElementById("wrong");
+
+  function setButtonsEnabled(enabled) {
+    btnNsk.disabled = !enabled;
+    btnOther.disabled = !enabled;
+    btnSkip.disabled = !enabled;
+    btnNext.disabled = true;
+  }
+  btnClearLog.addEventListener("click", () => { elLog.textContent = ""; });
+
+  // ======================
+  // Game config
+  // ======================
+  const ROUND_SIZE = 10;
+  const NSK_COUNT = 5;
+  const OTHER_COUNT = 5;
+
+  const CITIES = {
+    "Новосибирск": { box: [54.85, 82.60, 55.15, 83.25] },
+    "Москва": { box: [55.55, 37.35, 55.92, 37.90] },
+    "Санкт-Петербург": { box: [59.80, 30.10, 60.10, 30.55] },
+    "Казань": { box: [55.70, 49.00, 55.86, 49.30] },
+    "Екатеринбург": { box: [56.75, 60.45, 56.95, 60.75] },
+    "Нижний Новгород": { box: [56.20, 43.75, 56.38, 44.15] },
+    "Самара": { box: [53.10, 50.00, 53.30, 50.30] },
+    "Красноярск": { box: [55.90, 92.65, 56.15, 93.10] },
+    "Владивосток": { box: [43.05, 131.75, 43.20, 131.98] },
+    "Ростов-на-Дону": { box: [47.15, 39.55, 47.35, 39.85] },
+    "Сочи": { box: [43.48, 39.65, 43.70, 39.88] }
+  };
+  const OTHER_CITY_NAMES = Object.keys(CITIES).filter(n => n !== "Новосибирск");
+  const MAX_PANO_TRIES_PER_CARD = 30;
+  const MAX_CITY_REPLACE_TRIES = 8;
+
+  let deck = [];
+  let answered = [];
+  let index = 0;
+  let correct = 0;
+  let wrong = 0;
+
+  let panoPlayer = null;
+  let miniMap = null;
+  let miniPlacemark = null;
+  const elMiniSection = document.getElementById("miniSection");
+
+  function randInt(min,max){ return Math.floor(Math.random()*(max-min+1))+min; }
+  function shuffle(arr){
+    for(let i=arr.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [arr[i],arr[j]]=[arr[j],arr[i]];
+    }
+    return arr;
+  }
+  function randomPointInBox(box){
+    const [minLat,minLon,maxLat,maxLon]=box;
+    const lat=minLat+Math.random()*(maxLat-minLat);
+    const lon=minLon+Math.random()*(maxLon-minLon);
+    return [lat,lon];
+  }
+  function updateHud(){
+    elMeta.textContent = `Раунд: ${Math.min(index+1,ROUND_SIZE)} / ${ROUND_SIZE}`;
+    elScore.textContent = String(index);
+    elCorrect.textContent = String(correct);
+    elWrong.textContent = String(wrong);
+  }
+  function showExpected(text){ elExpectedHint.textContent = text || ""; }
+
+  function initMiniMap() {
+    miniMap = new ymaps.Map("miniMap", {
+      center: [55.75, 37.62],
+      zoom: 3,
+      controls: ["zoomControl"]
+    });
+    miniPlacemark = new ymaps.Placemark([55.75, 37.62], { hintContent: "Точка" }, { preset: "islands#redDotIcon" });
+    miniMap.geoObjects.add(miniPlacemark);
+  }
+  function showPointOnMiniMap(point, caption) {
+    if (!miniMap || !miniPlacemark) { return; }
+    miniPlacemark.geometry.setCoordinates(point);
+    miniPlacemark.properties.set("hintContent", caption || "point");
+    miniMap.setCenter(point, 12, { duration: 200 });
+  }
+
+  function hideRevealMap() {
+    if (elMiniSection) { elMiniSection.classList.add("hidden"); }
+  }
+  function revealMap(point) {
+    if (point) { showPointOnMiniMap(point, "Точка"); }
+    if (elMiniSection) { elMiniSection.classList.remove("hidden"); }
+  }
+
+async function locateNearestPanorama(cityName) {
+  const box = CITIES[cityName].box;
+
+  for (let attempt = 0; attempt < MAX_PANO_TRIES_PER_CARD; attempt++) {
+    const point = randomPointInBox(box);
+    if (DEBUG) { logLine(`locate: city="${cityName}" attempt=${attempt+1}/${MAX_PANO_TRIES_PER_CARD} point=${point[0].toFixed(6)},${point[1].toFixed(6)}`); }
+    else { logLine(`locate: attempt ${attempt+1}/${MAX_PANO_TRIES_PER_CARD}`); }
+
+    let panoArr = null;
+
+    try {
+      panoArr = await ymaps.panorama.locate(point);
+    } catch (e) {
+      // Ключевой фикс: раньше это падало и ломало buildDeck целиком
+      if (DEBUG) { logLine(`panorama.locate threw: city="${cityName}" -> ${errToString(e)}`, "warn"); }
+      else { logLine(`panorama.locate threw: ${errToString(e)}`, "warn"); }
+      continue;
+    }
+
+    if (Array.isArray(panoArr) && panoArr.length > 0) {
+      if (DEBUG) { logLine(`found pano: city="${cityName}" count=${panoArr.length}`); }
+      else { logLine(`found pano`); }
+      return { pano: panoArr[0], point };
+    }
+
+    // Если API вернул корректно, но панорам нет — это нормальная ситуация, продолжаем
+    if (DEBUG) { logLine(`no pano at point: city="${cityName}"`, "warn"); }
+    else { logLine(`no pano at point`, "warn"); }
+  }
+
+  if (DEBUG) { logLine(`no pano: city="${cityName}"`, "warn"); }
+  else { logLine(`no pano`, "warn"); }
+  return null;
+}
+
+
+  async function showCard() {
+    if (!deck.length) { return; }
+    if (index >= deck.length) {
+      setStatus("Готово");
+      showExpected(`Итог: верно ${correct}/${ROUND_SIZE}`);
+      setButtonsEnabled(false);
+      return;
+    }
+
+    updateHud();
+    setStatus(`Кадр ${index+1}/${ROUND_SIZE}`);
+    showExpected("");
+
+    const card = deck[index];
+
+    hideRevealMap();
+
+    const container = document.getElementById("pano");
+    container.innerHTML = "";
+    panoPlayer = new ymaps.panorama.Player(container, card.pano, {
+      controls: ["zoomControl", "fullscreenControl"]
+    });
+
+    if (DEBUG) { logLine(`player created index=${index} expectedCity="${card.expectedCityName}"`); }
+    else { logLine(`player created index=${index}`); }
+
+    btnNext.disabled = true;
+    setButtonsEnabled(true);
+  }
+
+  function answer(isNsk) {
+    const card = deck[index];
+    const expectedLabel = card.expectedIsNsk ? "Новосибирск" : "Другой город";
+    const userLabel = isNsk ? "Новосибирск" : "Другой город";
+    const ok = (isNsk === card.expectedIsNsk);
+
+    if (ok) { correct++; } else { wrong++; }
+
+    // Не палим конкретный город — только правильный класс
+    showExpected(ok ? "Верно" : `Неверно. Ожидалось: ${expectedLabel}`);
+
+    answered.push({ ok, expectedLabel, userLabel, city: card.expectedCityName, point: card.queryPoint });
+
+    // Показываем карту с меткой только ПОСЛЕ ответа
+    revealMap(card.queryPoint);
+
+    // Ждём явного перехода
+    btnNsk.disabled = true;
+    btnOther.disabled = true;
+    btnSkip.disabled = true;
+    btnNext.disabled = false;
+  }
+
+  function skip() {
+    const card = deck[index];
+    wrong++;
+    showExpected(card.expectedIsNsk ? "Пропуск. Ожидалось: Новосибирск" : "Пропуск. Ожидалось: Другой город");
+
+    answered.push({ ok:false, expectedLabel: card.expectedIsNsk ? "Новосибирск":"Другой город", userLabel:"Пропуск", city: card.expectedCityName, point: card.queryPoint });
+
+    revealMap(card.queryPoint);
+
+    btnNsk.disabled = true;
+    btnOther.disabled = true;
+    btnSkip.disabled = true;
+    btnNext.disabled = false;
+  }
+
+  async function buildDeck() {
+    deck = [];
+    answered = [];
+    index = 0; correct = 0; wrong = 0;
+    updateHud();
+    setButtonsEnabled(false);
+
+    setStatus("Собираю колоду…");
+
+    const targets = [];
+    for (let i = 0; i < NSK_COUNT; i++) { targets.push({ expectedIsNsk:true, cityName:"Новосибирск" }); }
+    const otherPicked = shuffle(OTHER_CITY_NAMES.slice()).slice(0, OTHER_COUNT);
+    for (let i = 0; i < otherPicked.length; i++) { targets.push({ expectedIsNsk:false, cityName: otherPicked[i] }); }
+    shuffle(targets);
+
+    if (DEBUG) { logLine("targets: " + targets.map(t => `${t.expectedIsNsk ? "NSK" : "OTHER"}:${t.cityName}`).join(", ")); }
+    else { logLine("targets: " + targets.map(t => (t.expectedIsNsk ? "NSK" : "OTHER")).join(", ")); }
+
+    const cards = [];
+    for (let i = 0; i < targets.length; i++) {
+      const t = targets[i];
+      setStatus(`Ищу панораму ${i+1}/${ROUND_SIZE}…`);
+
+      let found = await locateNearestPanorama(t.cityName);
+
+      // fallback только для OTHER (чтобы класс не ломался)
+      if (!found && !t.expectedIsNsk) {
+        if (DEBUG) { logLine(`fallback city for OTHER "${t.cityName}"`, "warn"); }
+        else { logLine(`fallback city for OTHER`, "warn"); }
+        for (let r = 0; r < MAX_CITY_REPLACE_TRIES; r++) {
+          const candidate = OTHER_CITY_NAMES[randInt(0, OTHER_CITY_NAMES.length - 1)];
+          if (DEBUG) { logLine(`try replace -> ${candidate} (${r+1}/${MAX_CITY_REPLACE_TRIES})`); }
+          else { logLine(`try replace (${r+1}/${MAX_CITY_REPLACE_TRIES})`); }
+          const tmp = await locateNearestPanorama(candidate);
+          if (tmp) { found = tmp; break; }
+        }
+      }
+
+if (!found) {
+  throw new Error(
+    `Не удалось найти панораму для: ${t.cityName}. ` +
+    `Если в логе были "panorama.locate threw: ...", то это обычно блокировка панорам (домен/контент-блокер) или ограничения ключа/referrer.`
+  );
+}
+
+      cards.push({
+        expectedIsNsk: t.expectedIsNsk,
+        expectedCityName: t.cityName,
+        pano: found.pano,
+        queryPoint: found.point
+      });
+    }
+
+    deck = cards;
+    setStatus("Раунд начался");
+    setButtonsEnabled(true);
+    await showCard();
+  }
+
+  // ======================
+  // Загрузка Яндекс API: ждём onload, логируем onerror, и доп. fetch диагностика
+  // ======================
+  function yandexScriptUrl() {
+    return "https://api-maps.yandex.ru/2.1/?lang=ru_RU&load=package.full&apikey=" + encodeURIComponent(YANDEX_API_KEY);
+  }
+
+  async function debugFetchScriptHead() {
+    // Не гарантировано из-за CORS, но если получится — очень полезно.
+    try {
+      const url = yandexScriptUrl();
+      logLine("fetch diagnose: " + url);
+      const r = await fetch(url, { method: "GET" });
+      logLine("fetch status: " + r.status);
+      const txt = await r.text();
+      logLine("fetch first 120 chars: " + txt.slice(0, 120).replaceAll("\n"," "));
+    } catch (e) {
+      logLine("fetch diagnose failed (can be normal due to CORS): " + (e && e.message ? e.message : String(e)), "warn");
+    }
+  }
+
+  function loadYandexApi() {
+    return new Promise((resolve, reject) => {
+      const url = yandexScriptUrl();
+
+      const s = document.createElement("script");
+      s.src = url;
+      s.type = "text/javascript";
+      s.async = true;
+
+      s.onload = () => {
+        logLine("Yandex script onload");
+        resolve();
+      };
+      s.onerror = () => {
+        logLine("Yandex script onerror (script blocked or network error)", "error");
+        reject(new Error("Yandex script failed to load"));
+      };
+
+      document.head.appendChild(s);
+      logLine("Yandex script tag appended");
+    });
+  }
+
+  // ======================
+  // Events
+  // ======================
+  btnNsk.addEventListener("click", () => { answer(true); });
+  btnOther.addEventListener("click", () => { answer(false); });
+  btnSkip.addEventListener("click", () => { skip(); });
+  btnNext.addEventListener("click", () => {
+    // Переходим к следующей панораме только по кнопке
+    index++;
+    showCard();
+  });
+  btnRestart.addEventListener("click", async () => {
+    try { await buildDeck(); }
+    catch (e) {
+      setStatus("Ошибка");
+      setButtonsEnabled(false);
+      logLine("restart error: " + (e && e.message ? e.message : String(e)), "error");
+      elHint.innerHTML = `<span class="danger">${e && e.message ? e.message : String(e)}</span>`;
+    }
+  });
+
+  // ======================
+  // Start
+  // ======================
+  (async () => {
+    setButtonsEnabled(false);
+    updateHud();
+    logLine("Page loaded");
+
+    if (!YANDEX_API_KEY || YANDEX_API_KEY === "ТВОЙ_КЛЮЧ") {
+      setPill(pillApi, "API: no key", false);
+      setPill(pillMap, "Карта: —", false);
+      setPill(pillPano, "Панорамы: —", false);
+      setStatus("Нет ключа");
+      elHint.textContent = "Вставь ключ в YANDEX_API_KEY и перезагрузи страницу.";
+      return;
+    }
+
+    // Диагностический fetch (если получится)
+    await debugFetchScriptHead();
+
+    setStatus("Загружаю API…");
+    try {
+      await loadYandexApi();
+    } catch (e) {
+      setPill(pillApi, "API: load error", false);
+      setPill(pillMap, "Карта: —", false);
+      setPill(pillPano, "Панорамы: —", false);
+      setStatus("API не загружен");
+      elHint.innerHTML =
+        `<span class="danger">Скрипт api-maps.yandex.ru не загрузился.</span><br/>` +
+        `Проверь DevTools → Network: есть ли запрос к api-maps.yandex.ru и какой статус (200/blocked/403).<br/>` +
+        `Если стоит блокировщик/Privacy расширение — выключи для localhost.`;
+      return;
+    }
+
+    if (typeof window.ymaps === "undefined") {
+      setPill(pillApi, "API: ymaps undefined", false);
+      setStatus("API загрузился, но ymaps нет");
+      elHint.innerHTML =
+        `<span class="danger">Скрипт загрузился, но объект ymaps не появился.</span><br/>` +
+        `Это обычно означает, что сервер вернул не JS (например HTML с ошибкой) или ключ ограничен по referrer.`;
+      return;
+    }
+
+    setPill(pillApi, "API: loaded", true);
+    setStatus("ymaps.ready…");
+
+    await new Promise((resolve) => { ymaps.ready(resolve); });
+    logLine("ymaps.ready fired");
+    setStatus("Инициализация карты…");
+
+    try {
+      initMiniMap();
+      setPill(pillMap, "Карта: ok", true);
+    } catch (e) {
+      setPill(pillMap, "Карта: error", false);
+      setStatus("Ошибка карты");
+      elHint.textContent = "Карта не инициализировалась. Смотри лог.";
+      return;
+    }
+
+    const panoOk = !!(ymaps.panorama && typeof ymaps.panorama.locate === "function");
+    setPill(pillPano, panoOk ? "Панорамы: ok" : "Панорамы: missing", panoOk);
+
+    if (!panoOk) {
+      setStatus("Панорамы недоступны");
+      elHint.innerHTML =
+        `<span class="danger">Нет ymaps.panorama.locate.</span><br/>` +
+        `Проверь, что скрипт загружается с load=package.full (в этом файле уже так), и что ключ реально имеет доступ к панорамам.`;
+      return;
+    }
+
+    setStatus("Собираю раунд…");
+    elHint.textContent = "Тесты прошли. Если дальше будет ошибка — смотри строки locate: …";
+    try {
+      await buildDeck();
+    } catch (e) {
+      setStatus("Ошибка");
+      setButtonsEnabled(false);
+      logLine("buildDeck error: " + (e && e.message ? e.message : String(e)), "error");
+      elHint.innerHTML = `<span class="danger">${e && e.message ? e.message : String(e)}</span>`;
+    }
+  })();
+})();
+</script>
+</body>
+</html>
