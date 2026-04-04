@@ -2,3 +2,4 @@
 2026-04-04: Fixed Download dropdown behavior. Lists now render above cards and only one list can stay open at a time. Files: `style.css`, `site.js`, `index.html`, `games.html`.
 2026-04-04: Added separate website privacy and cookie policy pages, updated footer legal links to separate site and game policies. Files: `site-privacy.html`, `cookie-policy.html`, `style.css`, shared site/legal pages, `docs/entities.json`.
 2026-04-04: Fixed Download dropdown repaint artifact after close by switching hidden state to composited opacity/visibility instead of display toggle. Files: `style.css`, `docs/journal.md`, `docs/entities.json`.
+2026-04-04: Reorganized image assets into `/media`, updated references across pages, and switched the founder Team card to an indexable photo `<img>` with `schema.org/Person`. Files: `index.html`, `games.html`, shared HTML pages, `style.css`, `secret.html`, `media/*`, `docs/entities.json`.

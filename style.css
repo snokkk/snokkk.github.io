@@ -613,21 +613,32 @@ summary {
   width: 72px;
   height: 72px;
   border-radius: 22px;
-  display: grid;
-  place-items: center;
   flex-shrink: 0;
-  color: #fff;
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
   box-shadow: 0 14px 24px rgba(22, 14, 70, 0.28);
 }
 
 .profileAvatar {
-  background: var(--purple-grad);
+  display: block;
+  object-fit: cover;
+  background: linear-gradient(135deg, #243164 0%, #3f56b7 100%);
+}
+
+.profileAvatar--initials {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
 }
 
 .partnerBadge {
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   background: linear-gradient(135deg, #243164 0%, #3f56b7 100%);
 }
 

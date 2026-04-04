@@ -6,7 +6,7 @@
   <title>Snow Bat</title>
 
   <!-- Favicon / Icons -->
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/png" href="media/branding/logo.png">
   <link rel="stylesheet" href="fontawesome/css/all.css">
 
   <!-- Main styles -->
@@ -18,7 +18,7 @@
   <header class="topbar">
     <!-- раньше был <div class="brand"> … </div> -->
     <a href="index.html" class="brand">
-      <img src="logo.png" alt="SnowBat logo">
+      <img src="media/branding/logo.png" alt="SnowBat logo">
       <div class="brand__text">
         <span class="dev">Indie dev - Danila Demkin</span>
         <span class="nickname">(Kekl)</span>
@@ -40,7 +40,7 @@
     <!-- ——— Главная игра ——— -->
     <div class="hero__main">
       <!-- Поставьте здесь реальное горизонтальное promo-изображение -->
-      <img src="impBanner.png" alt="Imposter 3D: Online horror">
+      <img src="media/games/imposter-3d-banner.png" alt="Imposter 3D: Online horror">
       
       <div class="hero__info">
         <h3>Imposter 3D: Online horror</h3>
@@ -86,7 +86,7 @@
   <div class="gamesRow">
         
   <article class="gameCard">
-    <img src="impBanner.png" alt="Imposter 3D icon">
+    <img src="media/games/imposter-3d-banner.png" alt="Imposter 3D icon">
     <div class="gameCard__info">
       <h5>Imposter 3D: Online horror</h5>
       <small>Horror · Multiplayer · Cross-platform</small>
@@ -120,7 +120,7 @@
 
       <!-- Loonies -->
       <article class="gameCard soon">
-        <img src="loonies_banner.png" alt="Loonies.io icon">
+        <img src="media/games/loonies-banner.png" alt="Loonies.io icon">
         <div class="gameCard__info">
           <h5>Loonies.io</h5>
           <small>Shooter · 2D</small>
@@ -135,7 +135,7 @@
 
           <!-- Rootlings -->
           <article class="gameCard new">
-            <img src="rootlings_banner.png" alt="Rootlings icon">
+            <img src="media/games/rootlings-banner.png" alt="Rootlings icon">
             <div class="gameCard__info">
               <h5>Rootlings: Secrets of the Depths</h5>
               <small>Creative · Life Sim · Resource Mgr</small>
@@ -156,7 +156,7 @@
 
     <!-- Zombie ABC -->
     <article class="gameCard">
-      <img src="zombie_banner.png" alt="Zombie ABC icon">
+      <img src="media/games/zombie-abc-banner.png" alt="Zombie ABC icon">
       <div class="gameCard__info">
         <h5>Zombie ABC: Online 3D Shooter</h5>
         <small>Action · Shooter · Multiplayer</small>
@@ -177,7 +177,7 @@
 
     <!-- Space Break -->
     <article class="gameCard">
-      <img src="spaceBreakIcon.png" alt="Space Break icon">
+      <img src="media/games/space-break-icon.png" alt="Space Break icon">
       <div class="gameCard__info">
         <h5>Space Break</h5>
         <small>Arcade · Breakout</small>
@@ -209,19 +209,28 @@
   <div class="teamPartners__grid">
     <div class="sectionGroup">
       <div class="profileGrid">
-        <article class="profileCard profileCard--accent">
+        <article class="profileCard profileCard--accent" itemscope itemtype="https://schema.org/Person">
           <div class="profileCard__top">
-            <div class="profileAvatar" aria-hidden="true">DD</div>
+            <img
+              class="profileAvatar"
+              src="media/team/danila-demkin.jpg"
+              alt="Danila Demkin, founder of SnowBat"
+              width="72"
+              height="72"
+              loading="lazy"
+              decoding="async"
+              itemprop="image"
+            >
             <div>
-              <h3>Danila Demkin (kekl)</h3>
-              <p class="profileRole">Founder</p>
+              <h3 itemprop="name">Danila Demkin (kekl)</h3>
+              <p class="profileRole" itemprop="jobTitle">Founder</p>
             </div>
           </div>
 
-          <p class="profileBio">Handles everything from writing code and game development to engaging with the community</p>
+          <p class="profileBio" itemprop="description">Handles everything from writing code and game development to engaging with the community</p>
 
           <div class="profileLinks">
-            <a class="socialButton" href="https://t.me/+HyGhl2ASUX9mZWUy" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+            <a class="socialButton" href="https://t.me/+HyGhl2ASUX9mZWUy" target="_blank" rel="noopener noreferrer" aria-label="Telegram" itemprop="sameAs">
               <i class="fab fa-telegram"></i>
               <span>Telegram</span>
             </a>
@@ -230,7 +239,7 @@
 
         <article class="profileCard">
           <div class="profileCard__top">
-            <div class="profileAvatar" aria-hidden="true">NP</div>
+            <div class="profileAvatar profileAvatar--initials" aria-hidden="true">NP</div>
             <div>
               <h3>Nikita Petrukovich</h3>
               <p class="profileRole">Composer</p>

@@ -37,7 +37,9 @@
         "defines:ProfileCard",
         "defines:SocialButton",
         "defines:DropdownOverlayState",
-        "defines:DropdownCompositedHiddenState"
+        "defines:DropdownCompositedHiddenState",
+        "defines:ProfileAvatarImageState",
+        "defines:ProfileAvatarInitialsState"
       ]
     },
     {
@@ -58,7 +60,60 @@
       "relations": [
         "uses:ProfileCard",
         "uses:PartnerCard",
-        "uses:SocialButton"
+        "uses:SocialButton",
+        "contains:FounderPersonCard"
+      ]
+    },
+    {
+      "name": "FounderPersonCard",
+      "type": "profile-card",
+      "path": "index.html",
+      "relations": [
+        "uses:SchemaOrgPersonMarkup",
+        "uses:TeamMediaFolder",
+        "renders:FounderProfileImage"
+      ]
+    },
+    {
+      "name": "SiteMediaLibrary",
+      "type": "asset-group",
+      "path": "media",
+      "relations": [
+        "contains:BrandingMediaFolder",
+        "contains:GamesMediaFolder",
+        "contains:TeamMediaFolder"
+      ]
+    },
+    {
+      "name": "BrandingMediaFolder",
+      "type": "asset-folder",
+      "path": "media/branding",
+      "relations": [
+        "contains:SiteLogo"
+      ]
+    },
+    {
+      "name": "GamesMediaFolder",
+      "type": "asset-folder",
+      "path": "media/games",
+      "relations": [
+        "contains:GamePromoImages"
+      ]
+    },
+    {
+      "name": "TeamMediaFolder",
+      "type": "asset-folder",
+      "path": "media/team",
+      "relations": [
+        "contains:FounderProfileImage"
+      ]
+    },
+    {
+      "name": "FounderProfileImage",
+      "type": "image-asset",
+      "path": "media/team/danila-demkin.jpg",
+      "relations": [
+        "usedBy:FounderPersonCard"
       ]
     },
     {
