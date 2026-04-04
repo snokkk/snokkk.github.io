@@ -1,0 +1,117 @@
+{
+  "updatedAt": "2026-04-04",
+  "entities": [
+    {
+      "name": "HomePage",
+      "type": "page",
+      "path": "index.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "uses:DropdownController",
+        "contains:HeroSection",
+        "contains:GamesCatalogSection",
+        "contains:TeamPartnersSection",
+        "contains:SupportCardsSection"
+      ]
+    },
+    {
+      "name": "GamesPage",
+      "type": "page",
+      "path": "games.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "contains:GamesCatalogSection",
+        "contains:SocialFooterLinks",
+        "uses:DropdownController"
+      ]
+    },
+    {
+      "name": "GlobalSiteStyles",
+      "type": "stylesheet",
+      "path": "style.css",
+      "relations": [
+        "styles:HomePage",
+        "styles:GamesPage",
+        "styles:SupportPages",
+        "defines:SectionShell",
+        "defines:ProfileCard",
+        "defines:SocialButton",
+        "defines:DropdownOverlayState"
+      ]
+    },
+    {
+      "name": "DropdownController",
+      "type": "script",
+      "path": "site.js",
+      "relations": [
+        "controls:GamesCatalogSection",
+        "controls:HomePage",
+        "implements:SingleOpenDownloadDropdown",
+        "implements:OutsideClickClose"
+      ]
+    },
+    {
+      "name": "TeamPartnersSection",
+      "type": "homepage-section",
+      "path": "index.html",
+      "relations": [
+        "uses:ProfileCard",
+        "uses:PartnerCard",
+        "uses:SocialButton"
+      ]
+    },
+    {
+      "name": "SharedLegalAndSupportPages",
+      "type": "page-group",
+      "path": "privacy.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "uses:LocalFontAwesome",
+        "shares:SecureExternalLinks",
+        "includes:SitePrivacyPage",
+        "includes:CookiePolicyPage"
+      ]
+    },
+    {
+      "name": "SitePrivacyPage",
+      "type": "page",
+      "path": "site-privacy.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "linksTo:CookiePolicyPage",
+        "linksTo:GamePrivacyPolicyPage",
+        "shares:SiteFooterLegalLinks"
+      ]
+    },
+    {
+      "name": "CookiePolicyPage",
+      "type": "page",
+      "path": "cookie-policy.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "describes:GoogleTranslateWidget",
+        "linksTo:SitePrivacyPage",
+        "shares:SiteFooterLegalLinks"
+      ]
+    },
+    {
+      "name": "GamePrivacyPolicyPage",
+      "type": "page",
+      "path": "privacy.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "shares:SiteFooterLegalLinks"
+      ]
+    },
+    {
+      "name": "SiteFooterLegalLinks",
+      "type": "shared-page-fragment",
+      "path": "index.html",
+      "relations": [
+        "linksTo:SitePrivacyPage",
+        "linksTo:CookiePolicyPage",
+        "linksTo:GamePrivacyPolicyPage"
+      ]
+    }
+  ]
+}
