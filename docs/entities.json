@@ -36,7 +36,8 @@
         "defines:SectionShell",
         "defines:ProfileCard",
         "defines:SocialButton",
-        "defines:DropdownOverlayState"
+        "defines:DropdownOverlayState",
+        "defines:DropdownCompositedHiddenState"
       ]
     },
     {

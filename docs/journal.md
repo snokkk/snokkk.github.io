@@ -1,3 +1,4 @@
 2026-04-04: Unified site UI, fixed shared asset/link issues, added Team & Partners section on homepage with reusable social buttons. Files: `index.html`, `games.html`, `style.css`, shared legal/support pages.
 2026-04-04: Fixed Download dropdown behavior. Lists now render above cards and only one list can stay open at a time. Files: `style.css`, `site.js`, `index.html`, `games.html`.
 2026-04-04: Added separate website privacy and cookie policy pages, updated footer legal links to separate site and game policies. Files: `site-privacy.html`, `cookie-policy.html`, `style.css`, shared site/legal pages, `docs/entities.json`.
+2026-04-04: Fixed Download dropdown repaint artifact after close by switching hidden state to composited opacity/visibility instead of display toggle. Files: `style.css`, `docs/journal.md`, `docs/entities.json`.

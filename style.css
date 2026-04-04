@@ -727,18 +727,28 @@ summary {
   overflow-y: auto;
   overscroll-behavior: contain;
   list-style: none;
-  display: none;
   padding: 8px 0;
   margin: 0;
   border: 1px solid var(--border-strong);
   border-radius: 14px;
   background: rgba(12, 18, 33, 0.98);
   box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(6px) translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+  will-change: opacity, transform;
   z-index: 80;
 }
 
 .download-dropdown[open] .download-list {
-  display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0) translateZ(0);
 }
 
 .download-list li + li {
