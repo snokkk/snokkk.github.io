@@ -1,3 +1,5 @@
+2026-04-18: Relaxed `robots.txt` AI policy to allow public game/site pages to be used for AI training while still blocking `/docs/` and `secret.html`. Files: `robots.txt`, `docs/entities.json`.
+2026-04-18: Added root `robots.txt` with explicit crawler and AI bot rules plus Content Signals, and published `sitemap.xml` with canonical public URLs. Files: `robots.txt`, `sitemap.xml`, `docs/entities.json`.
 2026-04-04: Unified site UI, fixed shared asset/link issues, added Team & Partners section on homepage with reusable social buttons. Files: `index.html`, `games.html`, `style.css`, shared legal/support pages.
 2026-04-04: Fixed Download dropdown behavior. Lists now render above cards and only one list can stay open at a time. Files: `style.css`, `site.js`, `index.html`, `games.html`.
 2026-04-04: Added separate website privacy and cookie policy pages, updated footer legal links to separate site and game policies. Files: `site-privacy.html`, `cookie-policy.html`, `style.css`, shared site/legal pages, `docs/entities.json`.

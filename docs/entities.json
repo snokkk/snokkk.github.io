@@ -1,6 +1,32 @@
 {
-  "updatedAt": "2026-04-04",
+  "updatedAt": "2026-04-18",
   "entities": [
+    {
+      "name": "RobotsPolicy",
+      "type": "seo-config",
+      "path": "robots.txt",
+      "relations": [
+        "references:SiteSitemap",
+        "allows:PublicPages",
+        "disallows:InternalDocs",
+        "disallows:SecretPage",
+        "defines:AICrawlerRules",
+        "defines:ContentSignals",
+        "allows:AITrainingOnPublicPages"
+      ]
+    },
+    {
+      "name": "SiteSitemap",
+      "type": "seo-config",
+      "path": "sitemap.xml",
+      "relations": [
+        "lists:HomePage",
+        "lists:GamesPage",
+        "lists:SharedLegalAndSupportPages",
+        "excludes:SecretPage",
+        "excludes:GoogleVerificationPage"
+      ]
+    },
     {
       "name": "HomePage",
       "type": "page",
@@ -157,6 +183,23 @@
       "relations": [
         "uses:GlobalSiteStyles",
         "shares:SiteFooterLegalLinks"
+      ]
+    },
+    {
+      "name": "SecretPage",
+      "type": "page",
+      "path": "secret.html",
+      "relations": [
+        "disallowedBy:RobotsPolicy",
+        "excludedFrom:SiteSitemap"
+      ]
+    },
+    {
+      "name": "GoogleVerificationPage",
+      "type": "page",
+      "path": "google0d89eccd72dbb628.html",
+      "relations": [
+        "excludedFrom:SiteSitemap"
       ]
     },
     {
