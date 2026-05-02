@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Simple Save Cut</title>
+<style>
+body { font-family: Arial; background:#111; color:#eee; padding:20px; }
+.card { background:#222; padding:15px; margin-bottom:15px; border-radius:10px; }
+button { padding:10px; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<h2>Обрезка нового save по старому</h2>
+
+<div class="card">
+  Старый save:<br>
+  <input type="file" id="oldFile">
+</div>
+
+<div class="card">
+  Новый save:<br>
+  <input type="file" id="newFile">
+</div>
+
+<div class="card">
+  <button onclick="run()">Обрезать</button>
+</div>
+
+<div class="card">
+  <pre id="log"></pre>
+  <button onclick="download()" id="downloadBtn" style="display:none;">Скачать</button>
+</div>
+
+<script>
+let result = null;
+
+async function readFile(input) {
+  const file = input.files[0];
+  if (!file) throw new Error("Файл не выбран");
+  return JSON.parse(await file.text());
+}
+
+async function run() {
+  const log = document.getElementById("log");
+  const btn = document.getElementById("downloadBtn");
+
+  try {
+    const oldSave = await readFile(document.getElementById("oldFile"));
+    const newSave = await readFile(document.getElementById("newFile"));
+
+    const cutIndex = oldSave.items.length;
+
+    if (newSave.items.length < cutIndex) {
+      throw new Error("Новый файл меньше старого — что-то не так");
+    }
+
+    const newItems = newSave.items.slice(cutIndex);
+
+    result = {
+      ...newSave,
+      items: newItems
+    };
+
+    log.textContent =
+      "Старый: " + oldSave.items.length + "\n" +
+      "Новый: " + newSave.items.length + "\n" +
+      "Обрезано: " + cutIndex + "\n" +
+      "Осталось: " + newItems.length;
+
+    btn.style.display = "block";
+
+  } catch (e) {
+    log.textContent = "Ошибка: " + e.message;
+  }
+}
+
+function download() {
+  const blob = new Blob([JSON.stringify(result, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "only_new.json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
