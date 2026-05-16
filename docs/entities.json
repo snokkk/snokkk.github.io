@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-18",
+  "updatedAt": "2026-05-17",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -22,6 +22,7 @@
       "relations": [
         "lists:HomePage",
         "lists:GamesPage",
+        "lists:ChangelogPage",
         "lists:SharedLegalAndSupportPages",
         "excludes:SecretPage",
         "excludes:GoogleVerificationPage"
@@ -49,6 +50,21 @@
         "contains:GamesCatalogSection",
         "contains:SocialFooterLinks",
         "uses:DropdownController"
+      ]
+    },
+    {
+      "name": "ChangelogPage",
+      "type": "page",
+      "path": "changelog.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "uses:LocalFontAwesome",
+        "uses:GoogleTranslateWidget",
+        "contains:Imposter3DReleaseNotes",
+        "contains:Version11_3_6",
+        "contains:Version11_3_3",
+        "contains:Version11_3_1",
+        "contains:Version11_3_0"
       ]
     },
     {
