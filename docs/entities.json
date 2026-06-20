@@ -100,7 +100,8 @@
         "defines:DropdownOverlayState",
         "defines:DropdownCompositedHiddenState",
         "defines:ProfileAvatarImageState",
-        "defines:ProfileAvatarInitialsState"
+        "defines:ProfileAvatarInitialsState",
+        "defines:TeamProfileResponsiveGrid"
       ]
     },
     {
@@ -143,14 +144,16 @@
       "relations": [
         "uses:SchemaOrgOrganizationMarkup",
         "uses:SocialButton",
+        "uses:TeamMediaFolder",
         "linksTo:NedonimeYouTubePlaylist",
-        "describes:InOurMidstSeries"
+        "describes:InOurMidstSeries",
+        "renders:NedonimeProfileImage"
       ]
     },
     {
       "name": "NedonimeYouTubePlaylist",
       "type": "external-link",
-      "path": "https://www.youtube.com/watch?v=lW6ixA0XZmI&list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN",
+      "path": "https://www.youtube.com/watch?v=MnUu527KQdE&list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN&index=5",
       "relations": [
         "linkedFrom:NedonimeOrganizationCard"
       ]
@@ -195,7 +198,8 @@
       "type": "asset-folder",
       "path": "media/team",
       "relations": [
-        "contains:FounderProfileImage"
+        "contains:FounderProfileImage",
+        "contains:NedonimeProfileImage"
       ]
     },
     {
@@ -204,6 +208,14 @@
       "path": "media/team/danila-demkin.jpg",
       "relations": [
         "usedBy:FounderPersonCard"
+      ]
+    },
+    {
+      "name": "NedonimeProfileImage",
+      "type": "image-asset",
+      "path": "media/team/nedonime.jpg",
+      "relations": [
+        "usedBy:NedonimeOrganizationCard"
       ]
     },
     {

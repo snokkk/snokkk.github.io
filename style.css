@@ -562,7 +562,7 @@ summary {
 
 .teamPartners__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.95fr);
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -584,6 +584,10 @@ summary {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
+}
+
+.teamPartners .profileGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .profileCard,
@@ -788,6 +792,10 @@ summary {
 }
 
 @media (max-width: 860px) {
+  .teamPartners .profileGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -807,6 +815,10 @@ summary {
 }
 
 @media (max-width: 600px) {
+  .teamPartners .profileGrid {
+    grid-template-columns: 1fr;
+  }
+
   .brand {
     width: 100%;
   }

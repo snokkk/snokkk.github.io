@@ -1,3 +1,6 @@
+2026-06-21: Added Nedonime profile image asset from the provided desktop JPEG and connected it to the homepage Team card. Files: `index.html`, `media/team/nedonime.jpg`, `media/team/README.md`, `docs/entities.json`.
+2026-06-21: Replaced Nedonime Team card YouTube link with the requested playlist video URL. Files: `index.html`, `docs/entities.json`.
+2026-06-21: Adjusted homepage Team grid so three profile cards stay on one desktop row while preserving two-column and single-column responsive fallbacks. Files: `style.css`, `docs/entities.json`.
 2026-06-21: Added Nedonime creative team card to the homepage Team section with a YouTube link for the `In Our Midst` series. Files: `index.html`, `docs/entities.json`.
 2026-06-04: Restored original moderation-section point order and moved new automated moderation disclosure to appended points 2.6-2.7 in every language. Files: `gamerules.html`, `docs/entities.json`.
 2026-06-04: Added multilingual automated moderation disclosure to game rules, including preliminary detection, message limiting, escalation to moderators, and user-report caveats. Files: `gamerules.html`, `docs/entities.json`.
