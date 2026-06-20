@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-04",
+  "updatedAt": "2026-06-21",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -76,6 +76,13 @@
         "contains:MultilingualGameRules",
         "contains:RussianGameRules",
         "allows:RussianDictionaryTermsAndTrademarks",
+        "reviewedFor:RussiaEUUSLegalComplianceRisks",
+        "removes:PrivateAndGroupChatReferences",
+        "limits:ModeratorMessageAccess",
+        "defines:CountrySpecificAgeRequirements",
+        "strengthens:ChildSafetyReporting",
+        "discloses:AutomatedModerationTools",
+        "preserves:OriginalRulePointOrder",
         "defines:ChatAndGameRestrictions"
       ]
     },
@@ -115,7 +122,8 @@
         "uses:ProfileCard",
         "uses:PartnerCard",
         "uses:SocialButton",
-        "contains:FounderPersonCard"
+        "contains:FounderPersonCard",
+        "contains:NedonimeOrganizationCard"
       ]
     },
     {
@@ -126,6 +134,34 @@
         "uses:SchemaOrgPersonMarkup",
         "uses:TeamMediaFolder",
         "renders:FounderProfileImage"
+      ]
+    },
+    {
+      "name": "NedonimeOrganizationCard",
+      "type": "profile-card",
+      "path": "index.html",
+      "relations": [
+        "uses:SchemaOrgOrganizationMarkup",
+        "uses:SocialButton",
+        "linksTo:NedonimeYouTubePlaylist",
+        "describes:InOurMidstSeries"
+      ]
+    },
+    {
+      "name": "NedonimeYouTubePlaylist",
+      "type": "external-link",
+      "path": "https://www.youtube.com/watch?v=lW6ixA0XZmI&list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN",
+      "relations": [
+        "linkedFrom:NedonimeOrganizationCard"
+      ]
+    },
+    {
+      "name": "InOurMidstSeries",
+      "type": "creative-project",
+      "path": "index.html",
+      "relations": [
+        "producedBy:NedonimeOrganizationCard",
+        "basedOn:Imposter3D"
       ]
     },
     {

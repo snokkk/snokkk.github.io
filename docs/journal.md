@@ -1,3 +1,8 @@
+2026-06-21: Added Nedonime creative team card to the homepage Team section with a YouTube link for the `In Our Midst` series. Files: `index.html`, `docs/entities.json`.
+2026-06-04: Restored original moderation-section point order and moved new automated moderation disclosure to appended points 2.6-2.7 in every language. Files: `gamerules.html`, `docs/entities.json`.
+2026-06-04: Added multilingual automated moderation disclosure to game rules, including preliminary detection, message limiting, escalation to moderators, and user-report caveats. Files: `gamerules.html`, `docs/entities.json`.
+2026-06-04: Updated multilingual game rules to remove private/group chat references, limit moderator message access wording, clarify country-specific age requirements, strengthen U.S. child-safety reporting language, and expand Russian prohibited content categories. Files: `gamerules.html`, `docs/entities.json`.
+2026-06-04: Reviewed `gamerules.html` for Russia, EU, and US legal compliance risks and compared it with related privacy/license pages. Files: `gamerules.html`, `privacy.html`, `personal_data_ru.html`, `personal_data_ru_new.html`, `license_ru.html`, `docs/entities.json`.
 2026-06-04: Restored dictionary-accepted Russian terms in the Russian game rules: slang, referral links, and privacy wording. Files: `gamerules.html`, `docs/entities.json`.
 2026-06-04: Rewrote the Russian game rules to replace non-trademark foreign terms and game slang with Russian wording. Files: `gamerules.html`, `docs/entities.json`.
 2026-05-17: Added English changelog entries for Imposter 3D versions 11.3.6, 11.3.3, 11.3.1, and 11.3.0. Files: `changelog.html`, `docs/entities.json`.
