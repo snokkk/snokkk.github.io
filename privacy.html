@@ -12,6 +12,8 @@
 
   <!-- Main styles -->
   <link rel="stylesheet" href="style.css">
+  <script src="privacy-translations.js" defer></script>
+  <script src="privacy-localization.js" defer></script>
 </head>
 <body>
 
@@ -38,7 +40,7 @@
          target="_blank" rel="noopener noreferrer" aria-label="Discord">
         <i class="fab fa-discord"></i>
       </a>
-      <a href="https://t.me/snowbastudio"
+      <a href="https://t.me/snowbatchat"
          target="_blank" rel="noopener noreferrer" aria-label="Telegram">
         <i class="fab fa-telegram"></i>
       </a>
@@ -48,6 +50,18 @@
 
   <!-- ===== INFO CARD ===== -->
   <section class="info container">
+    <div class="languageSwitcher" data-privacy-language-switcher>
+      <label for="privacy-language">Language</label>
+      <select id="privacy-language" aria-label="Privacy Policy language">
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="es">Español</option>
+        <option value="pt">Português</option>
+        <option value="de">Deutsch</option>
+        <option value="id">Bahasa Indonesia</option>
+      </select>
+      <span class="languageSwitcher__status" role="status" aria-live="polite"></span>
+    </div>
     <article class="infoCard">
 <h2 style="text-align:center;">
   <strong>

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-06-21",
+  "updatedAt": "2026-07-16",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -258,7 +258,105 @@
       "path": "privacy.html",
       "relations": [
         "uses:GlobalSiteStyles",
-        "shares:SiteFooterLegalLinks"
+        "shares:SiteFooterLegalLinks",
+        "uses:PrivacyPolicyLocalizationController",
+        "contains:PrivacyPolicyLanguageSwitcher",
+        "preserves:OriginalEnglishPrivacyPolicy",
+        "supports:EnglishRussianSpanishPortugueseGermanIndonesian"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyLocalizationController",
+      "type": "script",
+      "path": "privacy-localization.js",
+      "relations": [
+        "controls:PrivacyPolicyLanguageSwitcher",
+        "reads:PrivacyPolicyTranslationBundle",
+        "supports:FileProtocolWithoutFetch",
+        "updates:DocumentLanguageAndUrl",
+        "fallsBackTo:OriginalEnglishPrivacyPolicy"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyLanguageSwitcher",
+      "type": "page-control",
+      "path": "privacy.html",
+      "relations": [
+        "controlledBy:PrivacyPolicyLocalizationController",
+        "styledBy:GlobalSiteStyles",
+        "selects:PrivacyPolicyTranslationBundle"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyTranslationBundle",
+      "type": "localization-script",
+      "path": "privacy-translations.js",
+      "relations": [
+        "translatedFrom:OriginalEnglishPrivacyPolicy",
+        "contains:RussianPrivacyPolicy",
+        "contains:SpanishPrivacyPolicy",
+        "contains:PortuguesePrivacyPolicy",
+        "contains:GermanPrivacyPolicy",
+        "contains:IndonesianPrivacyPolicy",
+        "generatedBy:PrivacyPolicyTranslationBundleBuilder",
+        "generatedFrom:PrivacyPolicyTranslationSources",
+        "correctedBy:PrivacyPolicyLegalCorrections",
+        "supports:FileProtocolWithoutFetch",
+        "verifiedBy:PrivacyPolicyLocalizationTests"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyLegalCorrections",
+      "type": "maintenance-tool",
+      "path": "tools/apply-privacy-legal-corrections.cjs",
+      "relations": [
+        "checksAgainst:OriginalEnglishPrivacyPolicy",
+        "corrects:PrivacyPolicyTranslationSources",
+        "preserves:LegalFactsAndObligations",
+        "verifiedBy:PrivacyPolicyLocalizationTests"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyTranslationSources",
+      "type": "localization-assets",
+      "path": "privacy-i18n",
+      "relations": [
+        "translatedFrom:OriginalEnglishPrivacyPolicy",
+        "generatedBy:PrivacyPolicyTranslationGenerator",
+        "bundledInto:PrivacyPolicyTranslationBundle"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyTranslationGenerator",
+      "type": "maintenance-tool",
+      "path": "tools/generate-privacy-translations.cjs",
+      "relations": [
+        "reads:OriginalEnglishPrivacyPolicy",
+        "writes:PrivacyPolicyTranslationSources",
+        "invokes:PrivacyPolicyTranslationBundleBuilder",
+        "preserves:BrandsLinksAndLegalAcronyms"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyTranslationBundleBuilder",
+      "type": "maintenance-tool",
+      "path": "tools/build-privacy-translation-bundle.cjs",
+      "relations": [
+        "reads:PrivacyPolicyTranslationSources",
+        "writes:PrivacyPolicyTranslationBundle"
+      ]
+    },
+    {
+      "name": "PrivacyPolicyLocalizationTests",
+      "type": "browser-test",
+      "path": "tests/privacy-localization.test.cjs",
+      "relations": [
+        "tests:GamePrivacyPolicyPage",
+        "tests:PrivacyPolicyLocalizationController",
+        "verifies:OriginalEnglishFallback",
+        "verifies:AllSupportedLanguages",
+        "verifies:NumericFactsAndPolicyLinks",
+        "verifies:FileProtocolLoading"
       ]
     },
     {
@@ -286,6 +384,17 @@
         "linksTo:SitePrivacyPage",
         "linksTo:CookiePolicyPage",
         "linksTo:GamePrivacyPolicyPage"
+      ]
+    },
+    {
+      "name": "SiteTelegramChannel",
+      "type": "external-link",
+      "path": "https://t.me/snowbatchat",
+      "relations": [
+        "linkedFrom:PublicSitePages",
+        "replaces:https://t.me/snowbastudio",
+        "excludes:PartnerSpecificTelegramLinks",
+        "excludes:InviteTelegramLinks"
       ]
     }
   ]
