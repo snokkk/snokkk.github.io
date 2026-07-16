@@ -21,6 +21,21 @@ const legalMarkers = {
   de: ["Mindestalter für die digitale Einwilligung", "6 Monate", "Wir verkaufen diese Daten nicht"],
   id: ["usia minimum persetujuan digital", "6 bulan", "Kami tidak menjual data ini"]
 };
+const advertisingMarkers = [
+  "InMobi",
+  "zMaticoo",
+  "AppMetrica",
+  "Digital Turbine",
+  "Liftoff",
+  "MGL MY.COM (CYPRUS) LIMITED",
+  "Mintegral International Limited",
+  "ABC Lore 3D: zombie online"
+];
+const forbiddenAdvertisingMarkers = [
+  "VK Ads",
+  "VK LLC",
+  "help.mail.ru/legal/terms/adsvk"
+];
 const englishRetainedRecords = "Moderation and security records are retained only for as long as reasonably necessary for these purposes and are deleted or anonymized in accordance with this Privacy Policy, unless longer retention is required for security, fraud prevention, dispute resolution, or legal obligations.";
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
@@ -69,7 +84,13 @@ test("the original English policy remains the fallback", async () => {
   const originalText = await page.locator(".infoCard").innerText();
 
   assert.match(originalText, /Privacy Policy/);
-  assert.match(originalText, /Last Revised: April 15, 2026/);
+  assert.match(originalText, /Last Revised: July 16, 2026/);
+  advertisingMarkers.forEach((marker) => {
+    assert.ok(originalText.includes(marker), `English policy is missing advertising provider or scope: ${marker}`);
+  });
+  forbiddenAdvertisingMarkers.forEach((marker) => {
+    assert.equal(originalHtml.includes(marker), false, `English policy still contains forbidden provider marker: ${marker}`);
+  });
   assert.equal(await page.locator("#privacy-language option").count(), 6);
 
   await page.selectOption("#privacy-language", "ru");
@@ -99,6 +120,12 @@ test("every supported language loads complete static policy content", async () =
     assert.equal(text.includes(englishRetainedRecords), false, `${language} contains an untranslated legal paragraph`);
     legalMarkers[language].forEach((marker) => {
       assert.ok(text.includes(marker), `${language} is missing legal concept: ${marker}`);
+    });
+    advertisingMarkers.forEach((marker) => {
+      assert.ok(text.includes(marker), `${language} is missing advertising provider or scope: ${marker}`);
+    });
+    forbiddenAdvertisingMarkers.forEach((marker) => {
+      assert.equal(text.includes(marker), false, `${language} still contains forbidden provider marker: ${marker}`);
     });
     assert.equal(text.includes("⟦PH"), false, `${language} contains an unresolved placeholder`);
     assert.deepEqual(numbers, englishNumbers, `${language} changed numeric facts`);
