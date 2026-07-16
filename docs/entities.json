@@ -261,7 +261,10 @@
         "shares:SiteFooterLegalLinks",
         "uses:PrivacyPolicyLocalizationController",
         "contains:PrivacyPolicyLanguageSwitcher",
-        "preserves:OriginalEnglishPrivacyPolicy",
+        "preserves:DetailedLawyerDraftedStructure",
+        "removes:OnlyVerifiedDuplicateParagraphs",
+        "documents:ActualSdkRolesModerationRetentionAndTransfers",
+        "documents:RussianAccountPrimaryProcessingOnRussianServers",
         "supports:EnglishRussianSpanishPortugueseGermanIndonesian"
       ]
     },
@@ -323,7 +326,10 @@
       "relations": [
         "translatedFrom:OriginalEnglishPrivacyPolicy",
         "generatedBy:PrivacyPolicyTranslationGenerator",
-        "bundledInto:PrivacyPolicyTranslationBundle"
+        "bundledInto:PrivacyPolicyTranslationBundle",
+        "mirrors:FullDetailedLegalOutline",
+        "preserves:ProviderLinksAndRetentionRules",
+        "documents:RussianAccountPrimaryProcessingOnRussianServers"
       ]
     },
     {
@@ -355,7 +361,10 @@
         "tests:PrivacyPolicyLocalizationController",
         "verifies:OriginalEnglishFallback",
         "verifies:AllSupportedLanguages",
-        "verifies:NumericFactsAndPolicyLinks",
+        "verifies:FullLegalOutlineAndPolicyLinks",
+        "verifies:RussianAccountPrimaryProcessingDisclosure",
+        "verifies:NoExactEnglishParagraphDuplicates",
+        "verifies:TranslationBundleSourceParity",
         "verifies:FileProtocolLoading"
       ]
     },
