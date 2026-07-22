@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-16",
+  "updatedAt": "2026-07-22",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -61,6 +61,7 @@
         "uses:LocalFontAwesome",
         "uses:GoogleTranslateWidget",
         "contains:Imposter3DReleaseNotes",
+        "contains:Version12_0_0",
         "contains:Version11_3_6",
         "contains:Version11_3_3",
         "contains:Version11_3_1",
@@ -83,7 +84,9 @@
         "strengthens:ChildSafetyReporting",
         "discloses:AutomatedModerationTools",
         "preserves:OriginalRulePointOrder",
-        "defines:ChatAndGameRestrictions"
+        "defines:ChatAndGameRestrictions",
+        "separates:GdprArticle8ConsentAgeFromAccountAndContractAge",
+        "documents:SixMonthChatHistoryAfterAccountDeletion"
       ]
     },
     {
@@ -264,7 +267,21 @@
         "preserves:DetailedLawyerDraftedStructure",
         "removes:OnlyVerifiedDuplicateParagraphs",
         "documents:ActualSdkRolesModerationRetentionAndTransfers",
+        "documents:ImmediateInProductSelfServiceDeletion",
+        "documents:EmailDeletionRequestsWithin30Days",
+        "documents:ResidualBackupsUpTo7Days",
+        "separates:GdprArticle8ConsentAgeFromAccountAndContractAge",
+        "documents:CoppaPersistentIdentifiersInGuestMode",
+        "requires:SeparateCoppaVpcForTargetedAdvertisingDisclosure",
+        "requires:PriorEeaConsentForNonEssentialDeviceAccess",
+        "confirms:SameOrEquivalentThirdPartyProtection",
+        "documents:AttributableSixMonthChatSafetyRetention",
+        "extendsDeletionTo:ProcessorsAndProductDataRecipients",
         "documents:RussianAccountPrimaryProcessingOnRussianServers",
+        "supplements:April2026PrivacyPolicyWithoutReducingUserProtections",
+        "preserves:PersonalizedAdvertisingRefusalChoices",
+        "restores:LegacyIndustryAdvertisingOptOutMechanisms",
+        "restores:LgpdStaffRightsIncidentAndImpactSafeguards",
         "supports:EnglishRussianSpanishPortugueseGermanIndonesian"
       ]
     },
@@ -329,7 +346,10 @@
         "bundledInto:PrivacyPolicyTranslationBundle",
         "mirrors:FullDetailedLegalOutline",
         "preserves:ProviderLinksAndRetentionRules",
-        "documents:RussianAccountPrimaryProcessingOnRussianServers"
+        "preserves:AccountDeletionTimelines",
+        "preserves:EuCoppaAppleAndRussianComplianceClarifications",
+        "documents:RussianAccountPrimaryProcessingOnRussianServers",
+        "preserves:April2026RightsChoicesAndDisclosures"
       ]
     },
     {
@@ -366,6 +386,51 @@
         "verifies:NoExactEnglishParagraphDuplicates",
         "verifies:TranslationBundleSourceParity",
         "verifies:FileProtocolLoading"
+      ]
+    },
+    {
+      "name": "PrivacyComplianceTests",
+      "type": "static-test",
+      "path": "tests/privacy-compliance.test.cjs",
+      "relations": [
+        "tests:GamePrivacyPolicyPage",
+        "tests:AccountDataConsentPages",
+        "tests:GameRulesPage",
+        "verifies:GdprArticle8ContractAgeSeparation",
+        "verifies:CoppaGuestAndParentalConsentWording",
+        "verifies:PriorEeaDeviceAccessConsent",
+        "verifies:Article27StatusDisclosure",
+        "verifies:AppleEquivalentProtectionAndRecipientDeletion",
+        "verifies:SixMonthChatRetentionAfterAccountDeletion",
+        "verifies:AprilToJulyPolicyContinuity",
+        "verifies:RussianCitizenAccountDataLocalizationSequence",
+        "verifies:AdvertisingOptOutMechanismsRemainAvailable",
+        "verifies:TranslationBundleSourceParity"
+      ]
+    },
+    {
+      "name": "AccountDataConsentPages",
+      "type": "legal-pages",
+      "path": "personal_data_new.html; personal_data_ru_new.html",
+      "relations": [
+        "supports:EnglishAndRussian",
+        "rejects:CheckboxOrPlainEmailAsCoppaVpc",
+        "separates:GdprArticle8ConsentAgeFromContractCapacity",
+        "documents:ImmediateSelfServiceAndThirtyDayEmailDeletion",
+        "documents:SixMonthChatRetentionAfterAccountDeletion",
+        "requires:SameOrEquivalentProviderProtection"
+      ]
+    },
+    {
+      "name": "Imposter3DAccountDeletionPage",
+      "type": "legal-page",
+      "path": "imp3d_account.html",
+      "relations": [
+        "documents:ImmediateSelfServiceDeletion",
+        "documents:EmailDeletionWithinThirtyDays",
+        "documents:BackupsUpToSevenDays",
+        "documents:SixMonthChatRetentionAfterAccountDeletion",
+        "distinguishes:ActiveAccountDeletionFromChatSafetyRetention"
       ]
     },
     {

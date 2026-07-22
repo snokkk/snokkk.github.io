@@ -73,7 +73,7 @@
       <td>Identifiers</td>
       <td>Auto-generated login (UID), nickname, Firebase UID</td>
       <td>Authentication, display in matches</td>
-      <td>Until account deletion (nickname may remain in chat history)</td>
+      <td>Until account deletion; identifiers contained in chat history or related records follow the 6-month retention period described below</td>
     </tr>
     <tr>
       <td>Game progress</td>
@@ -85,13 +85,13 @@
       <td>Technical data</td>
       <td>Client version, device ID hash, last login time, device and connection logs</td>
       <td>Security, anti-cheat, support</td>
-      <td>6 months</td>
+      <td>Only as needed for the stated purpose; records related to a chat message follow the 6-month retention period described below</td>
     </tr>
     <tr>
       <td>Chat messages</td>
-      <td>Message text, reports, chat IDs</td>
-      <td>Moderation, rule enforcement</td>
-      <td>6 months</td>
+      <td>Message text and history, reports, chat IDs, and related moderation and security records</td>
+      <td>Moderation, service security, investigation of abuse or suspected crimes, preservation of evidence, and responses to lawful requests</td>
+      <td>6 months from each message, including after account deletion; after that, deleted or irreversibly anonymized unless a specific legal hold, binding order, or applicable law requires a particular record to be retained longer</td>
     </tr>
   </tbody>
 </table>
@@ -100,15 +100,14 @@
 <!-- 2 -->
 <h3>2. Age and consent</h3>
 <ul>
-  <li><strong>Under 14 (including users under 13 in the US per COPPA)</strong> – registration is prohibited. Gameplay is available in guest mode (quick chat only). Guest mode does not allow free text input. Creating an account requires verified parental consent.</li>
-  <li><strong>14–18</strong> – may create an account independently, but parental consent may be requested.</li>
+  <li><strong>Under 14</strong> – registered accounts and free text chat are not available. Limited gameplay may be available in Guest mode with quick chat only.</li>
+  <li><strong>14–18</strong> – an account may be created only where the user has the legal capacity or authorization required by the contract law of the user&apos;s country. The GDPR age of consent for a particular processing operation is not a universal account age.</li>
   <li><strong>18+</strong> – free registration.</li>
 </ul>
-<p>Age is determined on first launch by the date of birth provided. Guest mode collects no personal data beyond the generated nickname and technical logs.</p>
-<p><strong>Note for US users (COPPA):</strong> We do not knowingly collect personal data from children under 13. If you are under 13, please do not use or register an account. Parents may contact us if they believe their child has provided personal data without consent, and we will promptly delete it.</p>
-<p><strong>Parental consent:</strong><br>
-A parent or legal guardian may send an email to 
-<a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a> with subject “Parental Consent” including the child’s name (or nickname/UID), age, and a statement confirming permission to create an account.</p>
+<p>Age is determined through the age information requested by the Product. Guest mode is not anonymous: an IP address, Device or app-instance identifier, and another persistent technical identifier may still be personal data.</p>
+<p><strong>EU/EEA:</strong> Article 8 GDPR applies only where processing is based on consent for an information society service offered directly to a child. The threshold is 16 unless the applicable Member State has set a lower age between 13 and 15. Contractual capacity is assessed separately under national law.</p>
+<p><strong>United States (COPPA):</strong> IP addresses, advertising identifiers, Device identifiers, and other persistent identifiers may be personal information even in Guest mode. We do not currently operate a child-account flow in which a checkbox, app-store credential, or unverified email response is accepted as verifiable parental consent. A U.S. user under 13 therefore may not create a registered account or use free text chat. Advertising or non-essential analytics SDKs must not be activated for a known under-13 user unless a specific COPPA exception applies or the required direct notice and verifiable parental consent have been completed. Separate verifiable parental consent is required for targeted advertising and other non-integral third-party disclosures.</p>
+<p><strong>Parent inquiries:</strong> A parent or legal guardian may contact <a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a> to ask a question or request deletion of a child&apos;s information. An ordinary email does not by itself authorize account creation, targeted advertising, or disclosure of a child&apos;s information to advertising networks.</p>
 
 <!-- 3 -->
 <h3>3. Legal bases</h3>
@@ -146,17 +145,18 @@ A parent or legal guardian may send an email to
     </ul>
   </li>
 </ul>
-<p><strong>We do not sell personal information for money.</strong> The listed providers may receive technical identifiers needed to provide, secure, and measure their services and may process them under their own privacy policies.</p>
+<p><strong>We do not sell personal information for money.</strong> The listed providers may receive technical identifiers needed to provide, secure, and measure their services and may process them under their own privacy policies. Every provider that receives user data from the Product is required to provide the same or equivalent protection described in the Privacy Policy and required by applicable law and App Store rules.</p>
 
 <h3>4.1 International Data Transfers</h3>
 <p>Your data may be transferred to and processed in countries outside your residence (including the United States and Russia) where relevant services, such as Google Firebase, operate. Where required, we rely on the separate cross-border-transfer consent shown below. Where another transfer mechanism applies, the transfer is made under the applicable safeguard or exception permitted by law; this Agreement does not claim that one identical mechanism applies to every provider.</p>
 <!-- 5 -->
 <h3>5. Retention and deletion</h3>
 <ul>
-  <li>Account, profile, progress, and friend data controlled by the Operator are deleted within <strong>30 days</strong> after a valid “Delete Account” request, subject to the moderation, security, legal, backup, and provider-retention exceptions described in the Privacy Policy.</li>
-  <li>Chat logs are deleted automatically after 6 months.</li>
-  <li>Backups are retained for 7 days before secure deletion.</li>
+  <li>Self-service deletion removes the active account, profile, progress, friends, and other user-generated Content controlled by the Operator immediately. It does not delete chat messages or history and related report, moderation, and security records before their 6-month retention period expires. Email deletion requests are completed within <strong>30 days</strong>.</li>
+  <li>Chat messages and history, together with related reports and moderation and security records, are retained for 6 months from each message, including after account deletion, for moderation, service security, investigation of abuse or suspected crimes, preservation of evidence, and responses to lawful requests. Account deletion does not restart the 6-month period.</li>
+  <li>Backups of Data otherwise deleted may remain for up to 7 days; this does not replace a specific statutory retention period.</li>
 </ul>
+<p>Access to retained chat history and related records is restricted, and these records are not used for advertising or personalization. After 6 months, they are deleted or irreversibly anonymized unless a specific legal hold, binding order, or applicable law requires a particular record to be retained longer. We also delete, return, or notify and instruct processors and other Product Data recipients to delete associated Data as appropriate, subject to the same limited exception.</p>
 
 <!-- 6 -->
 <h3>6. Your rights</h3>
@@ -186,7 +186,7 @@ Response time: up to 30 days. Data controller: <strong>Danila Demkin</strong>.</
 
 <!-- 9 -->
 <h3>9. Changes</h3>
-<p>We will notify of material changes in-game or on our website at least 7 days before they take effect. Continued play means acceptance of the new terms.</p>
+<p>We will notify you of material changes in-game or on our website before they take effect. Continued play does not constitute consent to a new optional processing purpose; where new consent is required, we will request a separate affirmative choice before that processing begins.</p>
 
 <!-- 10 -->
 <h3>10. Acceptance</h3>
