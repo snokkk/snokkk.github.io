@@ -170,3 +170,12 @@ test("public pages serve optimized WebP artwork", () => {
     }
   }
 });
+
+test("episode previews keep their 16:9 aspect ratio in Safari flex layouts", () => {
+  const css = read("style.css");
+
+  assert.match(css, /\.episodeCard \.episodeCard__preview\s*\{[^}]*flex:\s*0 0 auto;/s);
+  assert.match(css, /\.episodeCard \.episodeCard__preview\s*\{[^}]*aspect-ratio:\s*16\s*\/\s*9;/s);
+  assert.match(css, /\.episodeCard__preview img\s*\{[^}]*height:\s*auto;/s);
+  assert.doesNotMatch(css, /\.episodeCard__preview img\s*\{[^}]*height:\s*100%;/s);
+});
