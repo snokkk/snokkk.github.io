@@ -110,6 +110,16 @@ test("the In Our Midst hub exposes verified series facts and official episode li
   assert.match(html, /official canonical series in the universe of <em>Imposter 3D: Online Horror<\/em>/i);
   assert.match(html, /playlist\?list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN/);
   assert.equal((html.match(/class="episodeCard"/g) || []).length, 10);
+  assert.deepEqual(
+    Array.from(html.matchAll(/src="media\/series\/episode-(\d{2})-preview\.webp"/g), (match) => match[1]),
+    ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10"]
+  );
+  assert.equal((html.match(/class="episodeCard__preview"/g) || []).length, 10);
+  assert.equal((html.match(/loading="lazy"/g) || []).length, 10);
+  assert.deepEqual(
+    episodes.map((episode) => episode.image),
+    Array.from({ length: 10 }, (_, index) => `${publicOrigin}/media/series/episode-${String(index + 1).padStart(2, "0")}-preview.webp`)
+  );
   assert.equal((html.match(/Watch in English/g) || []).length, 10);
   assert.equal((html.match(/Watch in Russian/g) || []).length, 10);
   assert.doesNotMatch(html, /[А-Яа-яЁё]/, "the English hub must not contain Russian-language text");
