@@ -350,6 +350,10 @@ summary {
   letter-spacing: -0.055em;
 }
 
+.seriesHero__titleAccent {
+  color: #ff0305;
+}
+
 .seriesHero__lead {
   max-width: 680px;
   margin-top: 26px;

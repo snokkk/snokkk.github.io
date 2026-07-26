@@ -108,6 +108,8 @@ test("the In Our Midst hub exposes verified series facts and official episode li
 
   assert.match(html, /produced by the creative team Nedonime/i);
   assert.match(html, /official canonical series in the universe of <em>Imposter 3D: Online Horror<\/em>/i);
+  assert.match(html, /<h1>In Our <span class="seriesHero__titleAccent">Midst<\/span><\/h1>/);
+  assert.match(read("style.css"), /\.seriesHero__titleAccent\s*\{\s*color:\s*#ff0305;/);
   assert.match(html, /playlist\?list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN/);
   assert.equal((html.match(/class="episodeCard"/g) || []).length, 10);
   assert.deepEqual(
