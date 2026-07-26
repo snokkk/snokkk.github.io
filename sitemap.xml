@@ -2,9 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://snokkk.github.io/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>https://snokkk.github.io/in-our-midst.html</loc>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://snokkk.github.io/changelog.html</loc>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://snokkk.github.io/cookie-policy.html</loc>
@@ -14,6 +20,7 @@
   </url>
   <url>
     <loc>https://snokkk.github.io/games.html</loc>
+    <lastmod>2026-07-26</lastmod>
   </url>
   <url>
     <loc>https://snokkk.github.io/imp3d_account.html</loc>
