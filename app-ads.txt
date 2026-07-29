@@ -6634,3 +6634,98 @@ zmaticoo.com,80598,DIRECT
 zmaticoo.com,80685,DIRECT
 zoomd.com, 88478941, RESELLER
 zoomd.com,88478941,RESELLER
+
+pubmatic.com, 156423, RESELLER, 5d62403b186f2ace
+Media.net, 8CU26SCD3, RESELLER
+e-planning.net,ecee0b96300f040e,RESELLER,c1ba615865ed87b2
+Media.net, 8CU675N41, RESELLER
+adyoulike.com, 19113f170392f279f86e9aa401ef3b57, RESELLER
+blasto.ai, 13, RESELLER, 7e936b1feafdaa61
+trustedstack.com, TSL72ADG4, RESELLER
+eskimi.com, 2020000186, RESELLER
+pubnative.net, 1007228, RESELLER, d641df8625486a7b
+bidmachine.io, 1187, RESELLER
+iqzone.com, IQ46, RESELLER
+sharethrough.com, 4568, RESELLER, d53b998a7bd4ecd2
+oko.uk, a4eb11dd-9bc5-4d77-9877-71f69dcfc08f, DIRECT, b3511ffcafb23a32
+insticator.com, a4eb11dd-9bc5-4d77-9877-71f69dcfc08f, RESELLER, b3511ffcafb23a32
+pubmatic.com, 95054, RESELLER, 5d62403b186f2ace
+triplelift.com, 6998, RESELLER, 6c33edb13117fd86
+themediagrid.com, DQ6AMB, RESELLER, 35d5010d7789b49d
+risecodes.com, 6124caed9c7adb0001c028d8, RESELLER
+smartadserver.com,3262,RESELLER,060d053dcf45cbf3
+sharethrough.com,3262,RESELLER,d53b998a7bd4ecd2
+admatic.de, ade-pub-4967241771, DIRECT, uufps1dh5stc6euk
+kueez.com, 4f2805b3399db66bebab78814b83b2a2, RESELLER
+152media.info,152M1121,RESELLER
+lijit.com, 489963-eb, RESELLER, fafdf38b16bf6b2b
+Media.net, 8CUGG4P7J, RESELLER
+themediagrid.com, NC7LXT, DIRECT, 35d5010d7789b49d
+criteo.com,   B-081657, DIRECT, 9fac4a4a87c2a44f
+cgnl.io, 7001, RESELLER
+cgnl.io, 6185, RESELLER
+cignal.io, 7001, RESELLER
+pubgalaxy.com, 500001, RESELLER
+triplelift.com, 14734, RESELLER, 6c33edb13117fd86
+triplelift.com, 14734-EB,RESELLER
+triplelift.com, 14742, RESELLER, 6c33edb13117fd86
+triplelift.com, 14740, RESELLER, 6c33edb13117fd86
+triplelift.com, 14751, RESELLER, 6c33edb13117fd86
+cignal.io, 6185, RESELLER
+carambo.la, 914731121, RESELLER
+carambo.la, 914738127, RESELLER
+indexexchange.com, 216513, RESELLER, 50b1c356f2c5c8fc
+conversantmedia.com, 100986, RESELLER, 03113cd04947736d
+triplelift.com, 14706, RESELLER, 6c33edb13117fd86
+video.unrulymedia.com, 158944470, RESELLER
+lijit.com, 587508, RESELLER, fafdf38b16bf6b2b
+bidmachine.io,1490,RESELLER
+apester.com, 49071, DIRECT
+limpid.tv, 203715, DIRECT
+algorix.co, 604547, RESELLER, 5b394c12fea27a1d
+conversantmedia.com, 101216, RESELLER, 03113cd04947736d
+pubnative.net, 1017942, RESELLER, d641df8625486a7b
+improvedigital.com, 1947, RESELLER
+limpid.tv, 203709, RESELLER
+video.unrulymedia.com, 389912353, RESELLER
+mindtos.com,mt0b219ff842ee3772, RESELLER
+tcl.com,Pub-968324,DIRECT
+openx.com, 558414027, DIRECT, 6a698e2ec38604c6
+openx.com, 560680793, DIRECT, 6a698e2ec38604c6
+indexexchange.com, 207932, DIRECT, 50b1c356f2c5c8fc
+indexexchange.com, 196430, DIRECT, 50b1c356f2c5c8fc
+telaria.com,l58g7-7ga99,RESELLER,1a4e959a1b50034a
+tremorhub.com,l58g7-k4xf6,DIRECT,1a4e959a1b50034a
+originmedia.tv, 84739294, DIRECT, 117241431
+themediagrid.com, 8USKI6, RESELLER, 9fac4a4a87c2a44f
+sharethrough.com, 5450, RESELLER, d53b998a7bd4ecd2
+adingo.jp, 34490, RESELLER
+9dotsmedia.com, 5512, RESELLER, 45ff185b4c4e857d
+trustedstack.com, TS3MF8KJ3, RESELLER
+voisetech.com, 1402, RESELLER, 9009ef0379162448
+kidoz.net,15467,RESELLER,a109366414b7335e
+eskimi.com, 2020001211, RESELLER
+rubiconproject.com,24930,RESELLER,0bfd66d529a55807
+risecodes.com, 669e6c7df95c1e00017cf2c5, RESELLER
+richaudience.com, aGixKCw4qJ, RESELLER
+risecodes.com, 6a32507234030900017ca985, RESELLER
+firstimpression.io,5003,reseller
+pubmatic.com, 168196, RESELLER, 5d62403b186f2ace
+indexexchange.com, 216592, RESELLER, 50b1c356f2c5c8fc
+triplelift.com, 14809, RESELLER, 6c33edb13117fd86
+richaudience.com, h44H1yPBlk, RESELLER
+axonix.com, 59204, reseller
+smartadserver.com, 3262, RESELLER, 060d053dcf45cbf3
+sharethrough.com, 3262, RESELLER, d53b998a7bd4ecd2
+video.unrulymedia.com, 469734233, RESELLER
+themediagrid.com, DQ6AMB, RESELLER, 9fac4a4a87c2a44f
+lijit.com, 257618, RESELLER, fafdf38b16bf6b2b
+appnexus.com, 3695, RESELLER, f5ab79cb980f11d1
+app-stock.com, 982441, RESELLER
+osgdigital.net, 100252, RESELLER
+display.io, 242843, RESELLER
+pubmatic.com, 167346, RESELLER, 5d62403b186f2ace
+adgrid.io, 33342, RESELLER
+gitberry.com, 615100015, RESELLER
+triplelift.com, 14699, RESELLER, 6c33edb13117fd86
+lijit.com, 584539, RESELLER, fafdf38b16bf6b2b
