@@ -72,8 +72,32 @@ test("all JSON-LD blocks parse and the primary entity graph is connected", () =>
   assert.equal(danila.worksFor["@id"], snowBat["@id"]);
   assert.equal(game.creator["@id"], danila["@id"]);
   assert.equal(game.publisher["@id"], snowBat["@id"]);
+  assert.equal(game.url, "https://imposter3d.online");
+  assert.ok(game.sameAs.includes("https://imposter3d.online"));
   assert.equal(series.isBasedOn["@id"], game["@id"]);
   assert.equal(series.url, `${publicOrigin}/in-our-midst.html`);
+});
+
+test("Imposter 3D pages link to the official website and describe Player Companion", () => {
+  const home = read("index.html");
+  const games = read("games.html");
+
+  assert.match(home, /href="https:\/\/imposter3d\.online"[^>]*>official Imposter 3D website<\/a>/i);
+  assert.match(home, /play in your browser or open Player Companion for your account, progress, leaderboard, badges and support/i);
+  assert.match(home, /Official website \(Browser &amp; Player Companion\)/);
+  assert.match(games, /Official website \(Browser &amp; Player Companion\)/);
+});
+
+test("the mobile header and Imposter 3D hero use compact non-overlapping layouts", () => {
+  const home = read("index.html");
+  const css = read("style.css");
+  const mobile = css.match(/@media \(max-width: 600px\) \{([\s\S]*)\}\s*$/)?.[1];
+
+  assert.match(home, /class="devPrefix">Indie dev - <\/span>Danila Demkin/);
+  assert.match(mobile, /\.topbar\s*\{[^}]*flex-wrap:\s*nowrap;/s);
+  assert.match(mobile, /\.topbar__nav\s*\{[^}]*flex-wrap:\s*nowrap;/s);
+  assert.match(mobile, /\.hero__main img\s*\{[^}]*height:\s*230px;[^}]*object-position:\s*center 42%;/s);
+  assert.match(mobile, /\.hero__info\s*\{[^}]*position:\s*relative;[^}]*margin-top:\s*-42px;[^}]*padding:\s*52px 18px 20px;/s);
 });
 
 test("the In Our Midst hub exposes verified series facts and official episode links", () => {

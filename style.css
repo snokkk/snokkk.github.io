@@ -293,6 +293,19 @@ summary {
   font-size: 0.86rem;
 }
 
+.hero__copy p a {
+  color: #d8dcff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(216, 220, 255, 0.45);
+  text-underline-offset: 3px;
+}
+
+.hero__copy p a:hover {
+  color: #fff;
+  text-decoration-color: currentColor;
+}
+
 .genre {
   padding: 5px 10px;
   border-radius: 999px;
@@ -1210,35 +1223,107 @@ summary {
   }
 
   .brand {
-    width: 100%;
+    min-width: 0;
+    flex: 0 1 auto;
+    gap: 6px;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    border-radius: 11px;
   }
 
   .brand__text {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    font-size: 0.9rem;
+    min-width: 0;
+    font-size: 0.72rem;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .brand__text .devPrefix,
+  .brand__text .nickname {
+    display: none;
   }
 
   .topbar {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 8px;
   }
 
   .topbar__nav {
-    width: 100%;
-    justify-content: flex-start;
+    width: auto;
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+    gap: 3px;
+  }
+
+  .topbar__nav a {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    font-size: 0.82rem;
+  }
+
+  .hero {
+    margin-top: 24px;
+    padding: 0 12px;
+  }
+
+  .hero__main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__main::after {
+    inset: 0 0 auto;
+    z-index: 1;
+    height: 230px;
+    background: linear-gradient(180deg, transparent 48%, rgba(13, 19, 36, 0.34) 72%, var(--surface-strong) 100%);
   }
 
   .hero__main img {
-    min-height: 280px;
+    height: 230px;
+    min-height: 0;
+    flex: 0 0 230px;
+    object-position: center 42%;
   }
 
   .hero__info {
-    flex-wrap: wrap;
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin-top: -42px;
+    padding: 52px 18px 20px;
+    border: 0;
+    border-radius: 0;
+    background: linear-gradient(180deg, transparent 0, var(--surface-strong) 42px);
+    backdrop-filter: none;
   }
 
   .hero__copy {
-    flex-basis: 100%;
+    grid-column: 1 / -1;
+    margin-right: 0;
+  }
+
+  .hero__info h1 {
+    font-size: 1.3rem;
+  }
+
+  .hero__copy p {
+    margin-top: 10px;
+    font-size: 0.88rem;
+  }
+
+  .hero__info .platforms {
+    justify-self: start;
   }
 
   .hero__side {

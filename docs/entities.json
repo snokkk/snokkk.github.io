@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-22",
+  "updatedAt": "2026-08-25",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -23,7 +23,10 @@
         "lists:HomePage",
         "lists:GamesPage",
         "lists:ChangelogPage",
+        "lists:InOurMidstHubPage",
+        "lists:AbcCloudAccountConsentPage",
         "lists:SharedLegalAndSupportPages",
+        "records:UpdatedPageDates",
         "excludes:SecretPage",
         "excludes:GoogleVerificationPage"
       ]
@@ -35,10 +38,14 @@
       "relations": [
         "uses:GlobalSiteStyles",
         "uses:DropdownController",
+        "uses:SeoMetadataSet",
+        "contains:SiteEntityGraph",
         "contains:HeroSection",
         "contains:GamesCatalogSection",
         "contains:TeamPartnersSection",
-        "contains:SupportCardsSection"
+        "contains:SupportCardsSection",
+        "linksTo:InOurMidstHubPage",
+        "linksTo:Imposter3DOfficialSite"
       ]
     },
     {
@@ -47,9 +54,13 @@
       "path": "games.html",
       "relations": [
         "uses:GlobalSiteStyles",
+        "uses:SeoMetadataSet",
+        "contains:GameCatalogJsonLd",
         "contains:GamesCatalogSection",
         "contains:SocialFooterLinks",
-        "uses:DropdownController"
+        "uses:DropdownController",
+        "linksTo:InOurMidstHubPage",
+        "linksTo:Imposter3DOfficialSite"
       ]
     },
     {
@@ -58,9 +69,14 @@
       "path": "changelog.html",
       "relations": [
         "uses:GlobalSiteStyles",
+        "uses:SeoMetadataSet",
+        "contains:ChangelogJsonLd",
         "uses:LocalFontAwesome",
         "uses:GoogleTranslateWidget",
         "contains:Imposter3DReleaseNotes",
+        "linksTo:InOurMidstHubPage",
+        "contains:Version12_0_3",
+        "contains:Version12_0_1",
         "contains:Version12_0_0",
         "contains:Version11_3_6",
         "contains:Version11_3_3",
@@ -96,6 +112,7 @@
       "relations": [
         "styles:HomePage",
         "styles:GamesPage",
+        "styles:InOurMidstHubPage",
         "styles:SupportPages",
         "defines:SectionShell",
         "defines:ProfileCard",
@@ -104,7 +121,9 @@
         "defines:DropdownCompositedHiddenState",
         "defines:ProfileAvatarImageState",
         "defines:ProfileAvatarInitialsState",
-        "defines:TeamProfileResponsiveGrid"
+        "defines:TeamProfileResponsiveGrid",
+        "defines:CompactMobileTopbar",
+        "defines:MobileHeroSplitLayout"
       ]
     },
     {
@@ -127,7 +146,8 @@
         "uses:PartnerCard",
         "uses:SocialButton",
         "contains:FounderPersonCard",
-        "contains:NedonimeOrganizationCard"
+        "contains:NedonimeOrganizationCard",
+        "linksTo:InOurMidstHubPage"
       ]
     },
     {
@@ -150,24 +170,139 @@
         "uses:TeamMediaFolder",
         "linksTo:NedonimeYouTubePlaylist",
         "describes:InOurMidstSeries",
+        "linksTo:InOurMidstHubPage",
         "renders:NedonimeProfileImage"
       ]
     },
     {
       "name": "NedonimeYouTubePlaylist",
       "type": "external-link",
-      "path": "https://www.youtube.com/watch?v=MnUu527KQdE&list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN&index=5",
+      "path": "https://www.youtube.com/playlist?list=PLI4FEkqmB_3kxcMFfaJanNdM5vDV3fwjN",
       "relations": [
-        "linkedFrom:NedonimeOrganizationCard"
+        "linkedFrom:NedonimeOrganizationCard",
+        "linkedFrom:InOurMidstHubPage"
+      ]
+    },
+    {
+      "name": "Imposter3DOfficialSite",
+      "type": "external-link",
+      "path": "https://imposter3d.online",
+      "relations": [
+        "linkedFrom:HomePage",
+        "linkedFrom:GamesPage",
+        "offers:BrowserGame",
+        "offers:PlayerCompanion",
+        "describes:AccountProgressLeaderboardBadgesAndSupport",
+        "declaredAs:Imposter3DOfficialUrl",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "InOurMidstTelegramCommunity",
+      "type": "external-link",
+      "path": "https://t.me/Nedonime_inOurMidst",
+      "relations": [
+        "linkedFrom:InOurMidstHubPage",
+        "describes:InOurMidstSeries"
       ]
     },
     {
       "name": "InOurMidstSeries",
       "type": "creative-project",
+      "path": "in-our-midst.html",
+      "relations": [
+        "describedBy:InOurMidstHubPage",
+        "producedBy:NedonimeOrganizationCard",
+        "basedOn:Imposter3D",
+        "canonicalTo:Imposter3DUniverse",
+        "publishedIn:English",
+        "publishedIn:Russian",
+        "contains:InOurMidstEpisodeCatalog"
+      ]
+    },
+    {
+      "name": "InOurMidstHubPage",
+      "type": "page",
+      "path": "in-our-midst.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "uses:SeoMetadataSet",
+        "contains:InOurMidstSeriesJsonLd",
+        "describes:InOurMidstSeries",
+        "linksTo:NedonimeYouTubePlaylist",
+        "linksTo:InOurMidstTelegramCommunity",
+        "linksTo:HomePage",
+        "linksTo:GamesPage",
+        "linksTo:ChangelogPage",
+        "contains:InOurMidstEpisodeCatalog",
+        "renders:InOurMidstSeriesArtwork",
+        "uses:InOurMidstTitleAccent",
+        "uses:OptimizedSiteLogo",
+        "uses:OptimizedNedonimeProfileImage"
+      ]
+    },
+    {
+      "name": "InOurMidstTitleAccent",
+      "type": "style",
+      "path": "style.css",
+      "relations": [
+        "styles:InOurMidstHubPage",
+        "colors:MidstRed"
+      ]
+    },
+    {
+      "name": "InOurMidstEpisodeCatalog",
+      "type": "episode-list",
+      "path": "in-our-midst.html",
+      "relations": [
+        "contains:10BilingualEpisodes",
+        "contains:EnglishSynopses",
+        "linksTo:EnglishAndRussianVideoEditions",
+        "linksTo:20OfficialYouTubeVideos",
+        "linksTo:NedonimeYouTubePlaylist",
+        "linksTo:InOurMidstTelegramCommunity",
+        "renders:InOurMidstEpisodePreviewSet",
+        "verifiedFrom:OfficialTelegramExport",
+        "verifiedFrom:OfficialYouTubeMetadata",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "SeoMetadataSet",
+      "type": "seo-config",
+      "path": "public HTML pages",
+      "relations": [
+        "defines:UniqueMetaDescriptions",
+        "defines:CanonicalUrls",
+        "defines:OpenGraphForPrimaryPages",
+        "defines:TwitterCardsForPrimaryPages",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "SiteEntityGraph",
+      "type": "json-ld",
       "path": "index.html",
       "relations": [
-        "producedBy:NedonimeOrganizationCard",
-        "basedOn:Imposter3D"
+        "connects:SnowBatOrganization",
+        "connects:DanilaDemkinPerson",
+        "connects:Imposter3D",
+        "connects:NedonimeOrganizationCard",
+        "connects:InOurMidstSeries",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "SeoMetadataTests",
+      "type": "static-test",
+      "path": "tests/seo-metadata.test.cjs",
+      "relations": [
+        "verifies:SiteSitemap",
+        "verifies:SeoMetadataSet",
+        "verifies:SiteEntityGraph",
+        "verifies:InOurMidstHubPage",
+        "verifies:InternalHtmlLinks",
+        "verifies:OptimizedWebpAssets"
       ]
     },
     {
@@ -177,6 +312,7 @@
       "relations": [
         "contains:BrandingMediaFolder",
         "contains:GamesMediaFolder",
+        "contains:SeriesMediaFolder",
         "contains:TeamMediaFolder"
       ]
     },
@@ -185,7 +321,8 @@
       "type": "asset-folder",
       "path": "media/branding",
       "relations": [
-        "contains:SiteLogo"
+        "contains:SiteLogo",
+        "contains:OptimizedSiteLogo"
       ]
     },
     {
@@ -193,7 +330,8 @@
       "type": "asset-folder",
       "path": "media/games",
       "relations": [
-        "contains:GamePromoImages"
+        "contains:GamePromoImages",
+        "contains:OptimizedGameMediaSet"
       ]
     },
     {
@@ -202,7 +340,8 @@
       "path": "media/team",
       "relations": [
         "contains:FounderProfileImage",
-        "contains:NedonimeProfileImage"
+        "contains:NedonimeProfileImage",
+        "contains:OptimizedNedonimeProfileImage"
       ]
     },
     {
@@ -222,6 +361,86 @@
       ]
     },
     {
+      "name": "OptimizedSiteLogo",
+      "type": "image-asset",
+      "path": "media/branding/logo.webp",
+      "relations": [
+        "optimizedFrom:SiteLogo",
+        "usedBy:InOurMidstHubPage"
+      ]
+    },
+    {
+      "name": "OptimizedNedonimeProfileImage",
+      "type": "image-asset",
+      "path": "media/team/nedonime.webp",
+      "relations": [
+        "optimizedFrom:NedonimeProfileImage",
+        "usedBy:InOurMidstHubPage"
+      ]
+    },
+    {
+      "name": "SeriesMediaFolder",
+      "type": "asset-folder",
+      "path": "media/series",
+      "relations": [
+        "contains:InOurMidstSeriesArtwork",
+        "contains:InOurMidstEpisodePreviewSet"
+      ]
+    },
+    {
+      "name": "InOurMidstSeriesArtwork",
+      "type": "image-asset",
+      "path": "media/series/in-our-midst-poster.webp",
+      "relations": [
+        "usedBy:InOurMidstHubPage",
+        "usedBy:InOurMidstOpenGraphMetadata",
+        "encodedAs:WebPQuality90"
+      ]
+    },
+    {
+      "name": "InOurMidstEpisodePreviewSet",
+      "type": "image-asset-set",
+      "path": "media/series/episode-*-preview.webp",
+      "relations": [
+        "contains:10EnglishYouTubeEpisodePreviews",
+        "usedBy:InOurMidstEpisodeCatalog",
+        "usedBy:InOurMidstSeriesJsonLd",
+        "encodedAs:WebPQuality90",
+        "preservesAspectRatio:16x9InSafariFlexLayouts",
+        "loadedWith:NativeLazyLoading",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "OptimizedGameMediaSet",
+      "type": "image-asset-set",
+      "path": "media/games/*.webp",
+      "relations": [
+        "optimizedFrom:GamePromoImages",
+        "usedBy:HomePage",
+        "usedBy:GamesPage",
+        "usedBy:ChangelogPageOpenGraphMetadata",
+        "encodedAs:WebPQuality90",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "SiteWideWebpOptimization",
+      "type": "performance-optimization",
+      "path": "public HTML pages",
+      "relations": [
+        "uses:OptimizedSiteLogo",
+        "uses:OptimizedGameMediaSet",
+        "uses:OptimizedNedonimeProfileImage",
+        "uses:InOurMidstSeriesArtwork",
+        "uses:InOurMidstEpisodePreviewSet",
+        "preserves:SourcePngAndJpgFiles",
+        "measuredOn:HomePage",
+        "measuredOn:InOurMidstHubPage",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
       "name": "SharedLegalAndSupportPages",
       "type": "page-group",
       "path": "privacy.html",
@@ -230,7 +449,8 @@
         "uses:LocalFontAwesome",
         "shares:SecureExternalLinks",
         "includes:SitePrivacyPage",
-        "includes:CookiePolicyPage"
+        "includes:CookiePolicyPage",
+        "includes:AbcCloudAccountConsentPage"
       ]
     },
     {
@@ -406,6 +626,35 @@
         "verifies:RussianCitizenAccountDataLocalizationSequence",
         "verifies:AdvertisingOptOutMechanismsRemainAvailable",
         "verifies:TranslationBundleSourceParity"
+      ]
+    },
+    {
+      "name": "AbcCloudAccountConsentPage",
+      "type": "legal-page",
+      "path": "privacy_abc.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "supports:EnglishAndRussian",
+        "copies:CloudAccountConsentVersion3",
+        "documents:MinimalAgeCategoryWithoutBirthDate",
+        "documents:Under14CloudChatAndNameRestrictionWithOnlineAllowed",
+        "documents:AgeCorrectionInGameplaySettings",
+        "linksTo:GamePrivacyPolicyPage",
+        "linkedFrom:ShooterCloudAccountConsentWindow",
+        "listedBy:SiteSitemap",
+        "verifiedBy:AbcCloudAccountConsentTests"
+      ]
+    },
+    {
+      "name": "AbcCloudAccountConsentTests",
+      "type": "static-test",
+      "path": "tests/privacy-abc.test.cjs",
+      "relations": [
+        "verifies:AbcCloudAccountConsentPage",
+        "verifies:EnglishAndRussianConsentTextParity",
+        "verifies:AgeGateAndUnder14Restrictions",
+        "verifies:CanonicalAndSitemapDiscovery",
+        "verifies:NoThirdPartyScripts"
       ]
     },
     {
