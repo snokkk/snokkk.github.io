@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Connection Help — Imposter 3D</title>
+  <meta name="description" content="Step-by-step Windows troubleshooting for Imposter 3D account, news, and Firebase connection problems.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <link rel="icon" type="image/webp" href="media/branding/logo.webp">
+  <link rel="stylesheet" href="fontawesome/css/all.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .firebaseGuide {
+      max-width: 960px;
+      margin: 54px auto 0;
+      padding: 0 18px;
+    }
+
+    .firebaseGuide__card {
+      min-height: auto;
+      gap: 22px;
+    }
+
+    .firebaseGuide__card h1 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.15;
+    }
+
+    .firebaseGuide__lead {
+      color: #46516d;
+      font-size: 1.05rem;
+    }
+
+    .firebaseNotice {
+      padding: 18px;
+      border: 1px solid rgba(165, 45, 45, 0.26);
+      border-radius: 16px;
+      background: rgba(255, 224, 224, 0.7);
+    }
+
+    .firebaseNotice h2 {
+      margin-bottom: 8px;
+      color: #7e1515;
+      font-size: 1.18rem;
+    }
+
+    .firebaseNotice p + p {
+      margin-top: 8px;
+    }
+
+    .firebaseRule {
+      padding: 16px 18px;
+      border: 1px solid rgba(35, 53, 111, 0.1);
+      border-radius: 16px;
+      background: rgba(60, 77, 145, 0.08);
+    }
+
+    .firebaseSteps {
+      display: grid;
+      gap: 18px;
+      padding: 0;
+      list-style: none;
+      counter-reset: firebase-step;
+    }
+
+    .firebaseStep {
+      counter-increment: firebase-step;
+      padding: 20px;
+      border: 1px solid rgba(35, 53, 111, 0.1);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.66);
+    }
+
+    .firebaseStep h2 {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-size: 1.25rem;
+    }
+
+    .firebaseStep h2::before {
+      content: counter(firebase-step);
+      flex: 0 0 30px;
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border-radius: 50%;
+      background: #3a21a6;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .firebaseStep p + p,
+    .firebaseStep p + ul,
+    .firebaseStep p + ol,
+    .firebaseStep ul + p,
+    .firebaseStep ol + p,
+    .firebaseStep pre + p {
+      margin-top: 12px;
+    }
+
+    .firebaseStep ul,
+    .firebaseStep ol {
+      display: grid;
+      gap: 8px;
+      padding-left: 22px;
+    }
+
+    .firebaseStep a {
+      color: #234dc2;
+      text-decoration: underline;
+      text-underline-offset: 0.16em;
+    }
+
+    .firebaseStep pre {
+      max-width: 100%;
+      margin-top: 12px;
+      padding: 13px 15px;
+      overflow-x: auto;
+      border-radius: 12px;
+      background: #10172a;
+      color: #f5f7ff;
+      font: 0.9rem/1.5 Consolas, "Courier New", monospace;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .firebaseResult {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-left: 4px solid #5636e2;
+      border-radius: 10px;
+      background: rgba(86, 54, 226, 0.09);
+    }
+
+    @media (max-width: 600px) {
+      .firebaseGuide {
+        margin-top: 26px;
+        padding: 0 12px;
+      }
+
+      .firebaseGuide__card {
+        padding: 24px 18px;
+      }
+
+      .firebaseStep {
+        padding: 17px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">
+      <img src="media/branding/logo.webp" alt="Snow Bat logo">
+      <div class="brand__text">
+        <span class="dev">Indie dev – Danila Demkin</span>
+        <span class="nickname">(Kekl)</span>
+      </div>
+    </a>
+  </header>
+
+  <main class="firebaseGuide">
+    <article class="infoCard firebaseGuide__card">
+      <h1>Firebase connection problems on Windows</h1>
+      <p class="firebaseGuide__lead">
+        Use this guide if the PC version of Imposter 3D cannot load your account,
+        news, or other online data.
+      </p>
+
+      <aside class="firebaseNotice" aria-labelledby="firebase-safety-title">
+        <h2 id="firebase-safety-title">Important safety notice</h2>
+        <p>
+          Continue only if you understand the setting or command you are changing.
+          Save or write down the original settings before making changes.
+        </p>
+        <p>
+          You perform these actions at your own risk. Snow Bat and the game
+          developers are not responsible for system, network, or software changes
+          you make, or for any consequences of those changes.
+        </p>
+        <p>
+          Do not download individual DLL files from third-party websites, do not
+          permanently disable security software, and do not change settings on a
+          work, school, or managed PC without permission from its administrator.
+        </p>
+      </aside>
+
+      <div class="firebaseRule">
+        <strong>Test after every step.</strong> Fully close the game, open it again,
+        and check whether the account and news load. If everything works, stop and
+        do not perform the remaining steps.
+      </div>
+
+      <ol class="firebaseSteps">
+        <li class="firebaseStep">
+          <h2>Check your Windows version</h2>
+          <ol>
+            <li>Press <strong>Win + R</strong>.</li>
+            <li>Enter <strong>winver</strong> and press Enter.</li>
+            <li>Check the version shown in the window.</li>
+          </ol>
+          <p>
+            The game requires Windows 10 version 1903 (OS build 18362) or newer.
+            Windows 11 is supported. Windows 7, Windows 8, Windows 8.1, Windows 10
+            version 1809, and Windows 10 LTSC 2019 may be missing the system
+            <strong>icu.dll</strong> library required by Firebase.
+          </p>
+          <p>
+            If your version is older, install all available Windows updates or
+            upgrade to a supported Windows version. Never download icu.dll
+            separately.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Install or repair Microsoft Visual C++ Runtime</h2>
+          <ol>
+            <li>
+              Download the official
+              <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" rel="noopener">
+                Microsoft Visual C++ Redistributable x64
+              </a>.
+            </li>
+            <li>Run the downloaded installer.</li>
+            <li>Select <strong>Install</strong>, or select <strong>Repair</strong> if it is already installed.</li>
+            <li>Complete the installer and follow its restart request, if one appears.</li>
+            <li>Open the game and test the account and news.</li>
+          </ol>
+          <p>
+            The 64-bit Firebase libraries require MSVCP140.dll,
+            VCRUNTIME140.dll, and VCRUNTIME140_1.dll. The official installer is
+            the safe way to install or repair them.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Compare your normal network with a mobile hotspot</h2>
+          <ol>
+            <li>Fully close the game.</li>
+            <li>Enable a mobile hotspot on your phone.</li>
+            <li>Connect the PC to the hotspot instead of the usual Wi-Fi or Ethernet connection.</li>
+            <li>Open the game and check the account and news.</li>
+          </ol>
+          <div class="firebaseResult">
+            <strong>If Firebase works through the hotspot:</strong> the game and
+            Windows libraries are probably working. The likely cause is your
+            usual DNS, router, filtering software, or internet provider. Continue
+            with the network steps below.
+          </div>
+          <div class="firebaseResult">
+            <strong>If Firebase still does not work:</strong> reconnect to your
+            normal network and continue with the next step. The cause may still
+            be a PC-wide DNS/filter setting or damaged Windows components.
+          </div>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Change DNS and clear the DNS cache</h2>
+          <p>First, write down the existing DNS setting so you can restore it later.</p>
+          <ol>
+            <li>Open <strong>Settings → Network &amp; Internet</strong>.</li>
+            <li>Open the properties of the active Wi-Fi or Ethernet connection.</li>
+            <li>Find <strong>DNS server assignment</strong> and select <strong>Edit</strong>.</li>
+            <li>Select <strong>Manual</strong> and enable IPv4.</li>
+            <li>
+              Enter either Cloudflare DNS:
+              <strong>1.1.1.1</strong> and <strong>1.0.0.1</strong>,
+              or Google DNS:
+              <strong>8.8.8.8</strong> and <strong>8.8.4.4</strong>.
+            </li>
+            <li>Save the settings.</li>
+            <li>Open Command Prompt and run:</li>
+          </ol>
+          <pre><code>ipconfig /flushdns</code></pre>
+          <p>Open the game and test again. If this does not help, you may restore the original DNS setting.</p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Check antivirus, ad blocking, and parental-control filtering</h2>
+          <p>
+            Check AdGuard, NextDNS, Pi-hole, Kaspersky, ESET, antivirus web
+            protection, parental controls, router filters, and similar software.
+          </p>
+          <ol>
+            <li>Add the game executable (.exe) to the application's trusted or excluded apps.</li>
+            <li>Exclude the game from HTTPS, SSL/TLS, encrypted-connection, or network-traffic inspection.</li>
+            <li>Add these domains to the allowlist:</li>
+          </ol>
+          <pre><code>identitytoolkit.googleapis.com
+securetoken.googleapis.com
+firebaseremoteconfig.googleapis.com
+imposter-3d-eb94a-default-rtdb.europe-west1.firebasedatabase.app</code></pre>
+          <p>
+            Keep the rest of your protection enabled. Close and reopen the game
+            after saving the exclusions.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Check for an unwanted Windows proxy</h2>
+          <ol>
+            <li>Open Command Prompt.</li>
+            <li>Run:</li>
+          </ol>
+          <pre><code>netsh winhttp show proxy</code></pre>
+          <p>
+            If it says <strong>Direct access (no proxy server)</strong>, continue
+            to the next step.
+          </p>
+          <p>
+            If it shows a proxy that you intentionally use, do not remove it.
+            If this is your personal PC and the proxy is unknown or no longer
+            needed, open Command Prompt as administrator and run:
+          </p>
+          <pre><code>netsh winhttp reset proxy</code></pre>
+          <p>
+            Also open <strong>Settings → Network &amp; Internet → Proxy</strong>
+            and disable a manual proxy only if you did not configure or need it.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Test with a reputable VPN or Cloudflare WARP</h2>
+          <ol>
+            <li>Fully close the game.</li>
+            <li>Connect through a reputable VPN or Cloudflare WARP.</li>
+            <li>Open the game and test Firebase.</li>
+          </ol>
+          <div class="firebaseResult">
+            <strong>If Firebase works only with the VPN:</strong> your internet
+            provider or network is probably filtering or incorrectly routing
+            Google/Firebase traffic. Changing game files will not fix that.
+            Contact the provider and report that Google API HTTPS connections
+            are unavailable, or use a trusted encrypted connection. Avoid
+            unknown free VPN applications.
+          </div>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Inspect the Windows hosts file</h2>
+          <ol>
+            <li>Open Notepad as administrator.</li>
+            <li>Select <strong>File → Open</strong>.</li>
+            <li>Open <strong>C:\Windows\System32\drivers\etc\hosts</strong>. You may need to select <strong>All files</strong>.</li>
+            <li>Save a backup copy before editing.</li>
+            <li>
+              Look for active lines containing <strong>googleapis.com</strong>,
+              <strong>firebase</strong>, or <strong>firebasedatabase.app</strong>.
+            </li>
+          </ol>
+          <p>
+            Remove or comment out only entries that you understand and that
+            incorrectly redirect or block these services. Do not erase unrelated
+            entries. Save the file, run <strong>ipconfig /flushdns</strong>, and
+            test the game again.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Repair Windows system files</h2>
+          <p>
+            Use this step if Firebase also fails through another network and the
+            earlier steps did not help.
+          </p>
+          <ol>
+            <li>Search for <strong>Command Prompt</strong>.</li>
+            <li>Right-click it and select <strong>Run as administrator</strong>.</li>
+            <li>Run the first command and wait for it to finish:</li>
+          </ol>
+          <pre><code>DISM.exe /Online /Cleanup-Image /RestoreHealth</code></pre>
+          <p>Then run:</p>
+          <pre><code>sfc /scannow</code></pre>
+          <p>
+            Do not close the window before both checks finish. Install any
+            pending Windows updates afterward, then test the game again.
+          </p>
+        </li>
+
+        <li class="firebaseStep">
+          <h2>Send the diagnostic log to support</h2>
+          <p>If Firebase still does not work:</p>
+          <ol>
+            <li>Open the game and reproduce the problem once.</li>
+            <li>Close the game.</li>
+            <li>Press <strong>Win + R</strong>.</li>
+            <li>Paste this path and press Enter:</li>
+          </ol>
+          <pre><code>%USERPROFILE%\AppData\LocalLow\Snow Bat\Online Imposter 3D</code></pre>
+          <ol start="5">
+            <li>Find <strong>Player.log</strong>.</li>
+            <li>
+              Send it privately to
+              <a href="mailto:snowbatstudio@gmail.com">snowbatstudio@gmail.com</a>.
+            </li>
+            <li>
+              Include your Windows version, whether the mobile hotspot or VPN
+              worked, and the last step you completed.
+            </li>
+          </ol>
+          <p>
+            Do not publish Player.log in a public chat or forum because diagnostic
+            logs may contain device or account identifiers.
+          </p>
+        </li>
+      </ol>
+    </article>
+  </main>
+
+  <div class="sectionSpacer" aria-hidden="true"></div>
+
+  <footer class="siteFoot">
+    <div class="foot__links">
+      <a href="mailto:snowbatstudio@gmail.com">Contact support</a>
+      <a href="site-privacy.html">Site Privacy Policy</a>
+    </div>
+    <span class="copyright">© SnowBat 2026</span>
+  </footer>
+</body>
+</html>
