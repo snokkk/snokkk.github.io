@@ -43,7 +43,7 @@ test("every sitemap HTML page declares a description and its canonical URL", () 
 });
 
 test("primary discovery pages expose one H1 and complete social metadata", () => {
-  for (const file of ["index.html", "games.html", "changelog.html", "in-our-midst.html"]) {
+  for (const file of ["index.html", "games.html", "changelog.html", "changelog_abc.html", "in-our-midst.html"]) {
     const html = read(file);
 
     assert.equal((html.match(/<h1\b/gi) || []).length, 1, `${file} must contain exactly one H1`);
@@ -55,7 +55,7 @@ test("primary discovery pages expose one H1 and complete social metadata", () =>
 });
 
 test("all JSON-LD blocks parse and the primary entity graph is connected", () => {
-  const files = ["index.html", "games.html", "changelog.html", "in-our-midst.html"];
+  const files = ["index.html", "games.html", "changelog.html", "changelog_abc.html", "in-our-midst.html"];
 
   for (const file of files) {
     assert.ok(extractJsonLd(read(file), file).length > 0, `${file} is missing JSON-LD`);
@@ -86,6 +86,21 @@ test("Imposter 3D pages link to the official website and describe Player Compani
   assert.match(home, /play in your browser or open Player Companion for your account, progress, leaderboard, badges and support/i);
   assert.match(home, /Official website \(Browser &amp; Player Companion\)/);
   assert.match(games, /Official website \(Browser &amp; Player Companion\)/);
+});
+
+test("Zombie ABC changelog publishes the complete English version 2.0 notes", () => {
+  const home = read("index.html");
+  const html = read("changelog_abc.html");
+
+  assert.match(home, /href="changelog_abc\.html"[^>]*>Explore<\/a>/i);
+  assert.match(html, /<h1[^>]*>.*Zombie ABC Changelog<\/h1>/i);
+  assert.match(html, /<h2>Version 2\.0<\/h2>/);
+  assert.match(html, /new bosses and mini-bosses with unique attacks, effects and minions/i);
+  assert.match(html, /evacuation objective after the 10th zombie wave/i);
+  assert.match(html, /Normal, Hardcore and Impossible difficulty options/i);
+  assert.match(html, /Pausing in offline mode now fully stops the game/i);
+  assert.match(html, /Slightly increased shotgun damage/i);
+  assert.equal((html.match(/<li>/g) || []).length, 50);
 });
 
 test("the mobile header and Imposter 3D hero use compact non-overlapping layouts", () => {
@@ -152,7 +167,7 @@ test("the In Our Midst hub exposes verified series facts and official episode li
 });
 
 test("new internal HTML links resolve to tracked site pages", () => {
-  for (const file of ["index.html", "games.html", "changelog.html", "in-our-midst.html"]) {
+  for (const file of ["index.html", "games.html", "changelog.html", "changelog_abc.html", "in-our-midst.html"]) {
     const html = read(file);
     const links = Array.from(html.matchAll(/href=["']([^"'#?]+\.html)(?:#[^"']*)?["']/gi), (match) => match[1]);
 

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-25",
+  "updatedAt": "2026-08-28",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -23,6 +23,7 @@
         "lists:HomePage",
         "lists:GamesPage",
         "lists:ChangelogPage",
+        "lists:ZombieAbcChangelogPage",
         "lists:InOurMidstHubPage",
         "lists:AbcCloudAccountConsentPage",
         "lists:SharedLegalAndSupportPages",
@@ -45,7 +46,8 @@
         "contains:TeamPartnersSection",
         "contains:SupportCardsSection",
         "linksTo:InOurMidstHubPage",
-        "linksTo:Imposter3DOfficialSite"
+        "linksTo:Imposter3DOfficialSite",
+        "linksTo:ZombieAbcChangelogPage"
       ]
     },
     {
@@ -82,6 +84,22 @@
         "contains:Version11_3_3",
         "contains:Version11_3_1",
         "contains:Version11_3_0"
+      ]
+    },
+    {
+      "name": "ZombieAbcChangelogPage",
+      "type": "page",
+      "path": "changelog_abc.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "uses:SeoMetadataSet",
+        "contains:ZombieAbcChangelogJsonLd",
+        "uses:LocalFontAwesome",
+        "contains:ZombieAbcVersion2_0ReleaseNotes",
+        "linksTo:HomePage",
+        "linksTo:AbcCloudAccountConsentPage",
+        "renders:ZombieAbcBanner",
+        "verifiedBy:SeoMetadataTests"
       ]
     },
     {
@@ -301,6 +319,7 @@
         "verifies:SeoMetadataSet",
         "verifies:SiteEntityGraph",
         "verifies:InOurMidstHubPage",
+        "verifies:ZombieAbcChangelogPage",
         "verifies:InternalHtmlLinks",
         "verifies:OptimizedWebpAssets"
       ]
