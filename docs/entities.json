@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-30",
+  "updatedAt": "2026-08-31",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -97,6 +97,7 @@
         "uses:SeoMetadataSet",
         "contains:ZombieAbcChangelogJsonLd",
         "uses:LocalFontAwesome",
+        "contains:ZombieAbcVersion2_0_5ReleaseNotes",
         "contains:ZombieAbcVersion2_0_4ReleaseNotes",
         "contains:ZombieAbcVersion2_0ReleaseNotes",
         "linksTo:HomePage",

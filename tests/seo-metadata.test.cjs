@@ -88,7 +88,7 @@ test("Imposter 3D pages link to the official website and describe Player Compani
   assert.match(games, /Official website \(Browser &amp; Player Companion\)/);
 });
 
-test("Zombie ABC changelog publishes the complete English version 2.0.4 and 2.0 notes", () => {
+test("Zombie ABC changelog publishes the complete English version 2.0.5, 2.0.4 and 2.0 notes", () => {
   const home = read("index.html");
   const games = read("games.html");
   const html = read("changelog_abc.html");
@@ -98,8 +98,10 @@ test("Zombie ABC changelog publishes the complete English version 2.0.4 and 2.0 
   const gamesList = extractJsonLd(games, "games.html")[0].mainEntity.itemListElement;
   const zombieCatalogItem = gamesList.find(({ item }) => item["@id"] === `${publicOrigin}/#zombie-abc`)?.item;
   const changelogPage = extractJsonLd(html, "changelog_abc.html")[0];
+  const version205 = html.match(/<h2>Version 2\.0\.5<\/h2>([\s\S]*?)<\/article>/)?.[1];
   const version204 = html.match(/<h2>Version 2\.0\.4<\/h2>([\s\S]*?)<\/article>/)?.[1];
   const version20 = html.match(/<h2>Version 2\.0<\/h2>([\s\S]*?)<\/article>/)?.[1];
+  const version205Items = Array.from(version205?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
   const version204Items = Array.from(version204?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
 
   assert.match(home, /href="changelog_abc\.html"[^>]*>Explore<\/a>/i);
@@ -111,6 +113,12 @@ test("Zombie ABC changelog publishes the complete English version 2.0.4 and 2.0 
   assert.equal(zombieCatalogItem.url, pcUrl);
   assert.equal(changelogPage.about.url, pcUrl);
   assert.match(html, /<h1[^>]*>.*Zombie ABC Changelog<\/h1>/i);
+  assert.ok(version205, "Version 2.0.5 release notes are missing");
+  assert.deepEqual(version205Items, [
+    "Fixed a bug that caused zombies to freeze.",
+    "Fixed a bug affecting the evacuation message.",
+    "Added new achievements."
+  ]);
   assert.ok(version204, "Version 2.0.4 release notes are missing");
   assert.deepEqual(version204Items, [
     "Fixed bullets getting stuck in the evacuation-zone trigger.",
