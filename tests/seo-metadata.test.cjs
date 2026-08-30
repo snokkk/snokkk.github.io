@@ -88,19 +88,52 @@ test("Imposter 3D pages link to the official website and describe Player Compani
   assert.match(games, /Official website \(Browser &amp; Player Companion\)/);
 });
 
-test("Zombie ABC changelog publishes the complete English version 2.0 notes", () => {
+test("Zombie ABC changelog publishes the complete English version 2.0.4 and 2.0 notes", () => {
   const home = read("index.html");
+  const games = read("games.html");
   const html = read("changelog_abc.html");
+  const pcUrl = "https://snowbat.itch.io/abc-lore-zombie-online";
+  const homeGraph = extractJsonLd(home, "index.html")[0]["@graph"];
+  const zombieGame = homeGraph.find((entity) => entity["@id"] === `${publicOrigin}/#zombie-abc`);
+  const gamesList = extractJsonLd(games, "games.html")[0].mainEntity.itemListElement;
+  const zombieCatalogItem = gamesList.find(({ item }) => item["@id"] === `${publicOrigin}/#zombie-abc`)?.item;
+  const changelogPage = extractJsonLd(html, "changelog_abc.html")[0];
+  const version204 = html.match(/<h2>Version 2\.0\.4<\/h2>([\s\S]*?)<\/article>/)?.[1];
+  const version20 = html.match(/<h2>Version 2\.0<\/h2>([\s\S]*?)<\/article>/)?.[1];
+  const version204Items = Array.from(version204?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
 
   assert.match(home, /href="changelog_abc\.html"[^>]*>Explore<\/a>/i);
+  assert.match(home, new RegExp(`href="${pcUrl}"[^>]*>PC \\(Windows\\)<\\/a>`, "i"));
+  assert.match(games, new RegExp(`href="${pcUrl}"[^>]*>PC \\(Windows\\)<\\/a>`, "i"));
+  assert.match(html, new RegExp(`href="${pcUrl}"[^>]*>Download the PC version \\(Windows\\)<\\/a>`, "i"));
+  assert.equal(zombieGame.url, pcUrl);
+  assert.ok(zombieGame.sameAs.includes(pcUrl));
+  assert.equal(zombieCatalogItem.url, pcUrl);
+  assert.equal(changelogPage.about.url, pcUrl);
   assert.match(html, /<h1[^>]*>.*Zombie ABC Changelog<\/h1>/i);
+  assert.ok(version204, "Version 2.0.4 release notes are missing");
+  assert.deepEqual(version204Items, [
+    "Fixed bullets getting stuck in the evacuation-zone trigger.",
+    "Fixed zombies running outside the map boundaries on the House map.",
+    "Fixed the next difficulty not unlocking.",
+    "Fixed the achievement for unlocking the Bestiary.",
+    "Fixed the flying weapons bug (probably).",
+    "On PC, fixed the chat scrolling while the player was moving.",
+    "Attempted to fix small, fast zombies. They sometimes passed through barricades instead of trying to break them.",
+    "Fixed bugs with the Worker class's barricades.",
+    "Increased the radius of the Bear's ability.",
+    "Increased damage dealt by the Bear's and Sniper's abilities to 200.",
+    "Added a player list to the pause window in Zombie mode.",
+    "Added red “RUN TO THE EVACUATION ZONE” text when at least one player is inside the evacuation zone.",
+    "Increased shotgun damage."
+  ]);
   assert.match(html, /<h2>Version 2\.0<\/h2>/);
   assert.match(html, /new bosses and mini-bosses with unique attacks, effects and minions/i);
   assert.match(html, /evacuation objective after the 10th zombie wave/i);
   assert.match(html, /Normal, Hardcore and Impossible difficulty options/i);
   assert.match(html, /Pausing in offline mode now fully stops the game/i);
   assert.match(html, /Slightly increased shotgun damage/i);
-  assert.equal((html.match(/<li>/g) || []).length, 50);
+  assert.equal((version20?.match(/<li>/g) || []).length, 50);
 });
 
 test("the mobile header and Imposter 3D hero use compact non-overlapping layouts", () => {

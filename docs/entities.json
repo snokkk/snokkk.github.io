@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-28",
+  "updatedAt": "2026-08-30",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -47,7 +47,8 @@
         "contains:SupportCardsSection",
         "linksTo:InOurMidstHubPage",
         "linksTo:Imposter3DOfficialSite",
-        "linksTo:ZombieAbcChangelogPage"
+        "linksTo:ZombieAbcChangelogPage",
+        "linksTo:ZombieAbcPcDownload"
       ]
     },
     {
@@ -62,7 +63,8 @@
         "contains:SocialFooterLinks",
         "uses:DropdownController",
         "linksTo:InOurMidstHubPage",
-        "linksTo:Imposter3DOfficialSite"
+        "linksTo:Imposter3DOfficialSite",
+        "linksTo:ZombieAbcPcDownload"
       ]
     },
     {
@@ -95,9 +97,11 @@
         "uses:SeoMetadataSet",
         "contains:ZombieAbcChangelogJsonLd",
         "uses:LocalFontAwesome",
+        "contains:ZombieAbcVersion2_0_4ReleaseNotes",
         "contains:ZombieAbcVersion2_0ReleaseNotes",
         "linksTo:HomePage",
         "linksTo:AbcCloudAccountConsentPage",
+        "linksTo:ZombieAbcPcDownload",
         "renders:ZombieAbcBanner",
         "verifiedBy:SeoMetadataTests"
       ]
@@ -216,6 +220,19 @@
       ]
     },
     {
+      "name": "ZombieAbcPcDownload",
+      "type": "external-link",
+      "path": "https://snowbat.itch.io/abc-lore-zombie-online",
+      "relations": [
+        "linkedFrom:HomePage",
+        "linkedFrom:GamesPage",
+        "linkedFrom:ZombieAbcChangelogPage",
+        "declaredAs:ZombieAbcOfficialUrl",
+        "supports:Windows",
+        "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
       "name": "InOurMidstTelegramCommunity",
       "type": "external-link",
       "path": "https://t.me/Nedonime_inOurMidst",
@@ -305,6 +322,7 @@
         "connects:SnowBatOrganization",
         "connects:DanilaDemkinPerson",
         "connects:Imposter3D",
+        "connects:ZombieAbc",
         "connects:NedonimeOrganizationCard",
         "connects:InOurMidstSeries",
         "verifiedBy:SeoMetadataTests"
