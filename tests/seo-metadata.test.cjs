@@ -88,7 +88,7 @@ test("Imposter 3D pages link to the official website and describe Player Compani
   assert.match(games, /Official website \(Browser &amp; Player Companion\)/);
 });
 
-test("Zombie ABC changelog publishes the complete English version 2.0.5, 2.0.4 and 2.0 notes", () => {
+test("Zombie ABC changelog publishes the complete English version 2.0.6, 2.0.5, 2.0.4 and 2.0 notes", () => {
   const home = read("index.html");
   const games = read("games.html");
   const html = read("changelog_abc.html");
@@ -98,9 +98,11 @@ test("Zombie ABC changelog publishes the complete English version 2.0.5, 2.0.4 a
   const gamesList = extractJsonLd(games, "games.html")[0].mainEntity.itemListElement;
   const zombieCatalogItem = gamesList.find(({ item }) => item["@id"] === `${publicOrigin}/#zombie-abc`)?.item;
   const changelogPage = extractJsonLd(html, "changelog_abc.html")[0];
+  const version206 = html.match(/<h2>Version 2\.0\.6<\/h2>([\s\S]*?)<\/article>/)?.[1];
   const version205 = html.match(/<h2>Version 2\.0\.5<\/h2>([\s\S]*?)<\/article>/)?.[1];
   const version204 = html.match(/<h2>Version 2\.0\.4<\/h2>([\s\S]*?)<\/article>/)?.[1];
   const version20 = html.match(/<h2>Version 2\.0<\/h2>([\s\S]*?)<\/article>/)?.[1];
+  const version206Items = Array.from(version206?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
   const version205Items = Array.from(version205?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
   const version204Items = Array.from(version204?.matchAll(/<li>(.*?)<\/li>/g) || [], (match) => match[1]);
 
@@ -113,6 +115,16 @@ test("Zombie ABC changelog publishes the complete English version 2.0.5, 2.0.4 a
   assert.equal(zombieCatalogItem.url, pcUrl);
   assert.equal(changelogPage.about.url, pcUrl);
   assert.match(html, /<h1[^>]*>.*Zombie ABC Changelog<\/h1>/i);
+  assert.ok(version206, "Version 2.0.6 release notes are missing");
+  assert.deepEqual(version206Items, [
+    "Added a new interface.",
+    "Escaping the location now requires at least 50% of the players. For example, on a two-player server, only one player needs to reach the evacuation zone.",
+    "Reduced lag; players and zombies now move more smoothly.",
+    "Buffed the Sniper's mine special ability.",
+    "Fixed a bug that caused weapons held by other players to float.",
+    "Fixed a bug that sometimes prevented players from joining online games.",
+    "Added the ability to configure a Zombie server's name and player limit (2–4 players)."
+  ]);
   assert.ok(version205, "Version 2.0.5 release notes are missing");
   assert.deepEqual(version205Items, [
     "Fixed a bug that caused zombies to freeze.",
