@@ -158,11 +158,9 @@
   </script>
 
   <!-- Favicon / Icons -->
-  <link rel="icon" type="image/webp" href="media/branding/logo.webp">
-  <link rel="stylesheet" href="fontawesome/css/all.css">
-
+  <link rel="icon" type="image/webp" href="media/branding/logo-64w.webp">
   <!-- Main styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="site.min.css">
 </head>
 <body>
 
@@ -170,7 +168,7 @@
   <header class="topbar">
     <!-- раньше был <div class="brand"> … </div> -->
     <a href="index.html" class="brand">
-      <img src="media/branding/logo.webp" alt="SnowBat logo">
+      <img src="media/branding/logo.webp" alt="SnowBat logo" srcset="media/branding/logo-64w.webp 64w, media/branding/logo-128w.webp 128w" sizes="(max-width: 600px) 38px, 60px" width="512" height="512">
       <div class="brand__text">
         <span class="dev"><span class="devPrefix">Indie dev - </span>Danila Demkin</span>
         <span class="nickname">(Kekl)</span>
@@ -186,13 +184,14 @@
     </nav>
   </header>
 
+  <main>
   <!-- ===== HERO ===== -->
   <section class="hero container" id="imposter-3d">
 
     <!-- ——— Главная игра ——— -->
     <div class="hero__main">
       <!-- Поставьте здесь реальное горизонтальное promo-изображение -->
-      <img src="media/games/imposter-3d-banner.webp" alt="Imposter 3D: Online horror">
+      <img src="media/games/imposter-3d-banner.webp" alt="Imposter 3D: Online horror" srcset="media/games/imposter-3d-banner-480w.webp 480w, media/games/imposter-3d-banner-768w.webp 768w, media/games/imposter-3d-banner-1280w.webp 1280w" sizes="(max-width: 600px) calc(100vw - 26px), (max-width: 860px) calc(100vw - 38px), (max-width: 1200px) calc((100vw - 62px) * 2 / 3), 759px" width="1920" height="1080" fetchpriority="high">
       
       <div class="hero__info">
         <div class="hero__copy">
@@ -215,15 +214,15 @@
     <!-- ——— Две мини-карточки справа остаются прежними ——— -->
     <div class="hero__side">
       <article class="miniCard discordCard">
-        <h4>Join our Community!</h4>
+        <h2>Join our Community!</h2>
         <a href="https://discord.gg/AX9CUSaHTQ" target="_blank" rel="noopener noreferrer" class="btn">Discord</a>
         <a href="https://t.me/snowbatchat" target="_blank" rel="noopener noreferrer" class="btn">Telegram</a>
         <a href="https://www.youtube.com/@snowbat" target="_blank" rel="noopener noreferrer" class="btn">YouTube</a>
       </article>
 
       <article class="miniCard">
-        <h4>Imposter 3D<br>Privacy Policy</h4>
-        <a href="privacy.html" class="btn">Learn more</a>
+        <h2>Imposter 3D<br>Privacy Policy</h2>
+        <a href="privacy.html" class="btn">Privacy Policy</a>
       </article>
     </div>
   </section>
@@ -241,9 +240,9 @@
   <div class="gamesRow">
         
   <article class="gameCard">
-    <img src="media/games/imposter-3d-banner.webp" alt="Imposter 3D icon">
+    <img src="media/games/imposter-3d-banner.webp" alt="Imposter 3D icon" srcset="media/games/imposter-3d-banner-480w.webp 480w, media/games/imposter-3d-banner-768w.webp 768w, media/games/imposter-3d-banner-1280w.webp 1280w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="1920" height="1080" loading="lazy" decoding="async">
     <div class="gameCard__info">
-      <h5>Imposter 3D: Online horror</h5>
+      <h3>Imposter 3D: Online horror</h3>
       <small>Horror · Multiplayer · Cross-platform</small>
 
       <div class="platforms">
@@ -276,9 +275,9 @@
 
       <!-- Loonies -->
       <article class="gameCard soon">
-        <img src="media/games/loonies-banner.webp" alt="Loonies.io icon">
+        <img src="media/games/loonies-banner.webp" alt="Loonies.io icon" srcset="media/games/loonies-banner-480w.webp 480w, media/games/loonies-banner-525w.webp 525w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="525" height="309" loading="lazy" decoding="async">
         <div class="gameCard__info">
-          <h5>Loonies.io</h5>
+          <h3>Loonies.io</h3>
           <small>Shooter · 2D</small>
           <div class="platforms">
             <i class="fas fa-globe"></i>
@@ -291,9 +290,9 @@
 
           <!-- Rootlings -->
           <article class="gameCard new">
-            <img src="media/games/rootlings-banner.webp" alt="Rootlings icon">
+            <img src="media/games/rootlings-banner.webp" alt="Rootlings icon" srcset="media/games/rootlings-banner-480w.webp 480w, media/games/rootlings-banner-525w.webp 525w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="525" height="309" loading="lazy" decoding="async">
             <div class="gameCard__info">
-              <h5>Rootlings: Secrets of the Depths</h5>
+              <h3>Rootlings: Secrets of the Depths</h3>
               <small>Creative · Life Sim · Resource Mgr</small>
               <div class="platforms">
                 <i class="fas fa-globe"></i>
@@ -312,9 +311,9 @@
 
     <!-- Zombie ABC -->
     <article class="gameCard">
-      <img src="media/games/zombie-abc-banner.webp" alt="Zombie ABC icon">
+      <img src="media/games/zombie-abc-banner.webp" alt="Zombie ABC icon" srcset="media/games/zombie-abc-banner-480w.webp 480w, media/games/zombie-abc-banner-768w.webp 768w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="1920" height="1080" loading="lazy" decoding="async">
       <div class="gameCard__info">
-        <h5>Zombie ABC: Online 3D Shooter</h5>
+        <h3>Zombie ABC: Online 3D Shooter</h3>
         <small>Action · Shooter · Multiplayer</small>
         <div class="platforms">
           <i class="fab fa-google-play"></i>
@@ -335,9 +334,9 @@
 
     <!-- Space Break -->
     <article class="gameCard">
-      <img src="media/games/space-break-icon.webp" alt="Space Break icon">
+      <img src="media/games/space-break-icon.webp" alt="Space Break icon" srcset="media/games/space-break-icon-480w.webp 480w, media/games/space-break-icon-512w.webp 512w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="512" height="512" loading="lazy" decoding="async">
       <div class="gameCard__info">
-        <h5>Space Break</h5>
+        <h3>Space Break</h3>
         <small>Arcade · Breakout</small>
         <div class="platforms">
           <i class="fas fa-globe"></i>
@@ -355,9 +354,9 @@
 
         <!-- Imposter 3D: Sandbox -->
     <article class="gameCard">
-      <img src="media/games/imposter-3d-sandbox.webp" alt="Imposter 3D: Sandbox">
+      <img src="media/games/imposter-3d-sandbox.webp" alt="Imposter 3D: Sandbox" srcset="media/games/imposter-3d-sandbox-480w.webp 480w, media/games/imposter-3d-sandbox-525w.webp 525w" sizes="(max-width: 600px) calc(100vw - 38px), (max-width: 691px) calc(100vw - 46px), (max-width: 1025px) calc((100vw - 68px) / 2), (max-width: 1200px) calc((100vw - 124px) / 3), 359px" width="525" height="309" loading="lazy" decoding="async">
       <div class="gameCard__info">
-        <h5>Imposter 3D: Sandbox</h5>
+        <h3>Imposter 3D: Sandbox</h3>
         <small>Sandbox · Singleplayer</small>
         <div class="platforms">
           <i class="fab fa-google-play"></i>
@@ -399,7 +398,7 @@
               loading="lazy"
               decoding="async"
               itemprop="image"
-            >
+             srcset="media/team/danila-demkin-72w.webp 72w, media/team/danila-demkin-144w.webp 144w" sizes="72px">
             <div>
               <h3 itemprop="name">Danila Demkin (kekl)</h3>
               <p class="profileRole" itemprop="jobTitle">Founder</p>
@@ -440,7 +439,7 @@
               loading="lazy"
               decoding="async"
               itemprop="image"
-            >
+             srcset="media/team/nedonime-72w.webp 72w, media/team/nedonime-144w.webp 144w" sizes="72px">
             <div>
               <h3 itemprop="name">Nedonime</h3>
               <p class="profileRole">Creative Team</p>
@@ -516,6 +515,7 @@
   <div class="sectionSpacer" aria-hidden="true"></div>
 
   <!-- ===== FOOTER ===== -->
+  </main>
   <footer class="siteFoot">
     <div class="foot__links">
       <a href="mailto:snowbatstudio@gmail.com">Contact us</a>

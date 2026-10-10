@@ -675,6 +675,7 @@ summary {
   color: #fff;
 }
 
+.miniCard h2,
 .miniCard h4 {
   font-size: 1.2rem;
   line-height: 1.35;
@@ -732,6 +733,8 @@ summary {
   border-radius: 0 0 calc(var(--radius) - 1px) calc(var(--radius) - 1px);
 }
 
+.gameCard__info h2,
+.gameCard__info h3,
 .gameCard__info h5 {
   font-size: 1.05rem;
   margin-bottom: 6px;
