@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-08-31",
+  "updatedAt": "2026-10-21",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -79,6 +79,7 @@
         "uses:GoogleTranslateWidget",
         "contains:Imposter3DReleaseNotes",
         "linksTo:InOurMidstHubPage",
+        "contains:Version12_1_4",
         "contains:Version12_0_3",
         "contains:Version12_0_1",
         "contains:Version12_0_0",
