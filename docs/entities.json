@@ -788,6 +788,16 @@
         "optimizedBy:tools/build-site-assets.py",
         "provides:ResponsiveWebpSizes"
       ]
+    },
+    {
+      "name": "GamesCatalogSection",
+      "type": "shared-page-section",
+      "path": "index.html; games.html",
+      "relations": [
+        "ordersGames:Imposter3DOnlineHorror,ZombieAbc,SpaceBreak,Imposter3DSandbox,Rootlings,LooniesIo",
+        "renders:GameCardsWithoutNewBadges",
+        "mirroredBy:GameCatalogJsonLd"
+      ]
     }
   ]
 }
