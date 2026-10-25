@@ -13,6 +13,10 @@ from rcssmin import cssmin
 ROOT = Path(__file__).resolve().parent.parent
 ARTWORK = {
     "media/games/imposter-3d-banner.webp": (480, 768, 1280),
+    "media/games/imposter-3d-neon-city.webp": (480, 768, 1280),
+    "media/games/imposter-3d-toxic-lava.webp": (480, 768, 1280),
+    "media/games/imposter-3d-night-parking.webp": (480, 768, 1280),
+    "media/games/imposter-3d-monster-chase.webp": (480, 768, 1280),
     "media/games/zombie-abc-banner.webp": (480, 768),
     "media/games/rootlings-banner.webp": (480, 525),
     "media/games/loonies-banner.webp": (480, 525),

@@ -260,6 +260,108 @@ summary {
   display: block;
 }
 
+.hero__slideshow {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  touch-action: pan-y pinch-zoom;
+}
+
+.hero__slide {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.hero__slide + .hero__slide {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__slide.is-active {
+  opacity: 1;
+}
+
+.hero__main .hero__slide--photo {
+  object-fit: contain;
+  background: #000;
+}
+
+.hero__slideshow:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -4px;
+}
+
+.hero__slideControl {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.hero__slideshow.is-ready .hero__slideControl {
+  display: flex;
+}
+
+.hero__slideControl:hover,
+.hero__slideControl:focus-visible {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(5, 8, 17, 0.28);
+}
+
+.hero__slideControl:focus-visible {
+  outline: 2px solid var(--accent);
+}
+
+.hero__slideControl svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.hero__slideControl--previous,
+.hero__slideControl--next {
+  top: 38%;
+  transform: translateY(-50%);
+}
+
+.hero__slideControl--previous {
+  left: 4px;
+}
+
+.hero__slideControl--next {
+  right: 4px;
+}
+
+.hero__slideControl--pause {
+  top: 4px;
+  right: 4px;
+}
+
+.hero__slideControl--pause .hero__playIcon,
+.hero__slideControl--pause[aria-pressed="true"] .hero__pauseIcon {
+  display: none;
+}
+
+.hero__slideControl--pause[aria-pressed="true"] .hero__playIcon {
+  display: block;
+}
+
 .hero__info {
   position: absolute;
   left: 18px;
@@ -1292,6 +1394,16 @@ summary {
     min-height: 0;
     flex: 0 0 230px;
     object-position: center 42%;
+  }
+
+  .hero__slideshow {
+    height: 230px;
+    flex: 0 0 230px;
+  }
+
+  .hero__slideControl--previous,
+  .hero__slideControl--next {
+    top: 50%;
   }
 
   .hero__info {

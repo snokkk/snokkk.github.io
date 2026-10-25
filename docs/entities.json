@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-21",
+  "updatedAt": "2026-10-25",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -29,7 +29,8 @@
         "lists:SharedLegalAndSupportPages",
         "records:UpdatedPageDates",
         "excludes:SecretPage",
-        "excludes:GoogleVerificationPage"
+        "excludes:GoogleVerificationPage",
+        "listsImages:Imposter3DScreenshotSet"
       ]
     },
     {
@@ -48,7 +49,8 @@
         "linksTo:InOurMidstHubPage",
         "linksTo:Imposter3DOfficialSite",
         "linksTo:ZombieAbcChangelogPage",
-        "linksTo:ZombieAbcPcDownload"
+        "linksTo:ZombieAbcPcDownload",
+        "uses:HeroSlideshow"
       ]
     },
     {
@@ -370,7 +372,8 @@
       "path": "media/games",
       "relations": [
         "contains:GamePromoImages",
-        "contains:OptimizedGameMediaSet"
+        "contains:OptimizedGameMediaSet",
+        "contains:Imposter3DScreenshotSet"
       ]
     },
     {
@@ -757,6 +760,33 @@
         "replaces:https://t.me/snowbastudio",
         "excludes:PartnerSpecificTelegramLinks",
         "excludes:InviteTelegramLinks"
+      ]
+    },
+    {
+      "name": "HeroSlideshow",
+      "type": "homepage-component",
+      "path": "index.html",
+      "relations": [
+        "controlledBy:site.js",
+        "styledBy:GlobalSiteStyles",
+        "renders:Imposter3DScreenshotSet",
+        "implements:TwoSecondCircularAutoplay",
+        "implements:PointerSwipesAndArrowControls",
+        "implements:PauseAndReducedMotion",
+        "exposes:DescriptiveImageAltText"
+      ]
+    },
+    {
+      "name": "Imposter3DScreenshotSet",
+      "type": "image-asset-set",
+      "path": "media/games/imposter-3d-*.webp",
+      "relations": [
+        "contains:ExistingBannerAndFourNewScreenshots",
+        "usedBy:HeroSlideshow",
+        "declaredAs:VideoGameScreenshots",
+        "listedBy:SiteSitemap",
+        "optimizedBy:tools/build-site-assets.py",
+        "provides:ResponsiveWebpSizes"
       ]
     }
   ]

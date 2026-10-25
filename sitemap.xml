@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://snokkk.github.io/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-10-25</lastmod>
+    <image:image>
+      <image:loc>https://snokkk.github.io/media/games/imposter-3d-banner.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://snokkk.github.io/media/games/imposter-3d-neon-city.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://snokkk.github.io/media/games/imposter-3d-toxic-lava.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://snokkk.github.io/media/games/imposter-3d-night-parking.webp</image:loc>
+    </image:image>
+    <image:image>
+      <image:loc>https://snokkk.github.io/media/games/imposter-3d-monster-chase.webp</image:loc>
+    </image:image>
   </url>
   <url>
     <loc>https://snokkk.github.io/in-our-midst.html</loc>
