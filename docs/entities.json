@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-25",
+  "updatedAt": "2026-10-26",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -50,6 +50,7 @@
         "linksTo:Imposter3DOfficialSite",
         "linksTo:ZombieAbcChangelogPage",
         "linksTo:ZombieAbcPcDownload",
+        "linksTo:ZombieAbcPlaygama",
         "uses:HeroSlideshow"
       ]
     },
@@ -66,7 +67,8 @@
         "uses:DropdownController",
         "linksTo:InOurMidstHubPage",
         "linksTo:Imposter3DOfficialSite",
-        "linksTo:ZombieAbcPcDownload"
+        "linksTo:ZombieAbcPcDownload",
+        "linksTo:ZombieAbcPlaygama"
       ]
     },
     {
@@ -106,6 +108,7 @@
         "linksTo:HomePage",
         "linksTo:AbcCloudAccountConsentPage",
         "linksTo:ZombieAbcPcDownload",
+        "linksTo:ZombieAbcPlaygama",
         "renders:ZombieAbcBanner",
         "verifiedBy:SeoMetadataTests"
       ]
@@ -234,6 +237,18 @@
         "declaredAs:ZombieAbcOfficialUrl",
         "supports:Windows",
         "verifiedBy:SeoMetadataTests"
+      ]
+    },
+    {
+      "name": "ZombieAbcPlaygama",
+      "type": "external-link",
+      "path": "https://playgama.com/game/zombie-abc-online-shooter",
+      "relations": [
+        "linkedFrom:HomePage",
+        "linkedFrom:GamesPage",
+        "linkedFrom:ZombieAbcChangelogPage",
+        "declaredIn:GameJsonLdSameAs",
+        "supports:WebBrowser"
       ]
     },
     {
