@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-17",
   "entities": [
     {
       "name": "RobotsPolicy",
@@ -510,7 +510,36 @@
         "shares:SecureExternalLinks",
         "includes:SitePrivacyPage",
         "includes:CookiePolicyPage",
+        "includes:GameTermsAndLicensePages",
+        "includes:AbcTermsAndLicensePage",
         "includes:AbcCloudAccountConsentPage"
+      ]
+    },
+    {
+      "name": "AbcTermsAndLicensePage",
+      "type": "legal-page",
+      "path": "license_abc.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "follows:GameTermsAndLicensePages",
+        "describes:ZombieAbcTermsOfServiceAndEndUserLicense",
+        "documents:AppodealAdvertisingMediation",
+        "linksTo:GamePrivacyPolicyPage",
+        "linksTo:AbcCloudAccountConsentPage",
+        "listedBy:SiteSitemap"
+      ]
+    },
+    {
+      "name": "GameTermsAndLicensePages",
+      "type": "legal-pages",
+      "path": "license.html; license_ru.html",
+      "relations": [
+        "uses:GlobalSiteStyles",
+        "supports:EnglishAndRussian",
+        "describes:Imposter3DTermsOfServiceAndEndUserLicense",
+        "linksTo:GamePrivacyPolicyPage",
+        "linksTo:AccountDataConsentPages",
+        "listedBy:SiteSitemap"
       ]
     },
     {
