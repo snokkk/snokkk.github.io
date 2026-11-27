@@ -83,6 +83,7 @@
         "uses:GoogleTranslateWidget",
         "contains:Imposter3DReleaseNotes",
         "linksTo:InOurMidstHubPage",
+        "contains:Version12_2_3",
         "contains:Version12_2_0",
         "contains:Version12_1_6",
         "contains:Version12_1_5",
